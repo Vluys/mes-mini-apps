@@ -121,10 +121,10 @@ textarea{resize:none}
 
 /* Import modal */
 .import-modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:16px}
-.import-sheet{width:100%;max-width:400px;background:var(--surface);border-radius:20px;padding:24px;border:1px solid var(--border)}
+.import-sheet{width:100%;max-width:400px;background:var(--surface);border-radius:20px;padding:24px;border:1px solid var(--border);max-height:92vh;overflow-y:auto}
 .import-sheet h2{font-size:16px;font-weight:700;margin-bottom:4px}
 .import-sheet p{font-size:12px;color:var(--text3);margin-bottom:16px;line-height:1.5}
-.import-drop{border:2px dashed var(--border);border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.import-drop{border:2px dashed var(--border);border-radius:14px;padding:20px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
 .import-drop:hover,.import-drop.dragover{border-color:var(--accent);background:rgba(99,102,241,.06)}
 .import-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .import-drop svg{display:block;margin:0 auto 10px;opacity:.5}
@@ -133,6 +133,10 @@ textarea{resize:none}
 .import-actions{display:flex;gap:8px;margin-top:16px}
 .import-actions button{flex:1;padding:12px;border-radius:12px;font-size:14px;font-weight:600}
 .import-cancel{background:var(--surface2);color:var(--text2)}
+.import-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:12px;color:var(--text);font-family:monospace;line-height:1.5;outline:none;resize:vertical;min-height:120px}
+.import-textarea:focus{border-color:var(--accent)}
+.import-divider{text-align:center;font-size:12px;color:var(--text3);margin:12px 0;display:flex;align-items:center;gap:8px}
+.import-divider::before,.import-divider::after{content:'';flex:1;height:1px;background:var(--surface2)}
 
 /* Search overlay */
 .search-overlay{position:fixed;inset:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);padding:16px}
@@ -169,9 +173,9 @@ textarea{resize:none}
 // ============ TRANSLATIONS ============
 const T={
 fr:{appName:"EisenhowerBox",q1:"Faire",q1d:"Urgent & Important",q2:"Planifier",q2d:"Important, Pas Urgent",q3:"Déléguer",q3d:"Urgent, Pas Important",q4:"Éliminer",q4d:"Ni Urgent, Ni Important",add:"Nouveau",title:"Titre",notes:"Notes / Description",reminder:"Rappel",save:"Enregistrer",delete:"Supprimer",download:"Télécharger",search:"Rechercher...",noItems:"Aucun élément ici",addFirst:"Appuyez sur + pour ajouter",attach:"Pièces jointes",photo:"Image",doc:"Document",voice:"Vocal",recording:"Stop",toCalendar:"📅 Ajouter au calendrier",items:"éléments",cancel:"Annuler",created:"Créé le",reminderOn:"Rappel",confirmDel:"Confirmer la suppression ?",yes:"Supprimer",no:"Annuler",results:"Résultats",noResults:"Aucun résultat",selectQ:"Quadrant",edit:"Modifier",play:"▶ Écouter",stop:"⏹ Stop",downloadAll:"Tout télécharger",
-importBtn:"Importer JSON",importTitle:"Importer des tâches",importDesc:"Sélectionnez un fichier JSON contenant vos tâches. Format accepté : tableau d'objets avec les champs <strong>title</strong> (requis), <strong>quadrant</strong> 1-4 (requis), <strong>notes</strong>, <strong>reminder</strong>.",importDrop:"Choisir un fichier .json",importOk:"tâche(s) importée(s) !",importSkip:"ignorée(s) (champs manquants)",importErr:"Fichier JSON invalide",importClose:"Fermer",importConfirm:"Importer"},
+importBtn:"Importer des tâches",importTitle:"Importer des tâches",importDesc:"Collez votre JSON ou choisissez un fichier. Format : tableau d'objets avec <strong>title</strong> (requis) et <strong>quadrant</strong> 1-4 (requis).",importDrop:"Choisir un fichier .json",importOk:"tâche(s) importée(s) !",importSkip:"ignorée(s) (champs manquants)",importErr:"JSON invalide ou format incorrect",importClose:"Fermer",importConfirm:"Importer",importPaste:"Coller du JSON :",importOrFile:"ou choisir un fichier",importPastePlaceholder:'[{"title":"Ma tâche","quadrant":1}]',importPreview:"Prévisualiser"},
 en:{appName:"EisenhowerBox",q1:"Do",q1d:"Urgent & Important",q2:"Schedule",q2d:"Important, Not Urgent",q3:"Delegate",q3d:"Urgent, Not Important",q4:"Eliminate",q4d:"Not Urgent, Not Important",add:"New",title:"Title",notes:"Notes / Description",reminder:"Reminder",save:"Save",delete:"Delete",download:"Download",search:"Search...",noItems:"Nothing here yet",addFirst:"Tap + to add",attach:"Attachments",photo:"Image",doc:"Document",voice:"Voice",recording:"Stop",toCalendar:"📅 Add to Calendar",items:"items",cancel:"Cancel",created:"Created",reminderOn:"Reminder",confirmDel:"Confirm delete?",yes:"Delete",no:"Cancel",results:"Results",noResults:"No results",selectQ:"Quadrant",edit:"Edit",play:"▶ Play",stop:"⏹ Stop",downloadAll:"Download all",
-importBtn:"Import JSON",importTitle:"Import tasks",importDesc:"Select a JSON file containing your tasks. Accepted format: array of objects with fields <strong>title</strong> (required), <strong>quadrant</strong> 1-4 (required), <strong>notes</strong>, <strong>reminder</strong>.",importDrop:"Choose a .json file",importOk:"task(s) imported!",importSkip:"skipped (missing fields)",importErr:"Invalid JSON file",importClose:"Close",importConfirm:"Import"}
+importBtn:"Import tasks",importTitle:"Import tasks",importDesc:"Paste your JSON or choose a file. Format: array of objects with <strong>title</strong> (required) and <strong>quadrant</strong> 1-4 (required).",importDrop:"Choose a .json file",importOk:"task(s) imported!",importSkip:"skipped (missing fields)",importErr:"Invalid JSON or wrong format",importClose:"Close",importConfirm:"Import",importPaste:"Paste JSON:",importOrFile:"or choose a file",importPastePlaceholder:'[{"title":"My task","quadrant":1}]',importPreview:"Preview"}
 };
 
 // ============ ICONS (inline SVG) ============
@@ -205,7 +209,7 @@ const QC=[null,'q1','q2','q3','q4'];
 // ============ STATE ============
 let state={view:'matrix',lang:'fr',items:[],selQ:null,selItem:null,searchOpen:false,searchQ:'',showDel:false,
   formTitle:'',formNotes:'',formQ:1,formReminder:'',formAtts:[],editId:null,isRec:false,toast:null,
-  showImport:false,importPending:null};
+  showImport:false,importPending:null,showImportModal:false,importText:''};
 let mediaRec=null,audioChunks=[],audioEls={},playingId=null;
 
 function t(k){return T[state.lang][k]||k}
@@ -218,7 +222,29 @@ function qItems(qid){return state.items.filter(i=>i.quadrant===qid)}
 function load(){
   try{
     const l=localStorage.getItem('eis-lang');if(l)state.lang=l;
-    const d=localStorage.getItem('eis-items');if(d)state.items=JSON.parse(d);
+    const d=localStorage.getItem('eis-items');
+    if(d){
+      state.items=JSON.parse(d);
+    }else{
+      const now=new Date().toISOString();
+      state.items=[
+        {id:uid(),title:"Créer le compte Instagram @immatch.app",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Tourner 3 Reels Score en direct",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Découper le Guide Acquéreur en 5 carrousels Instagram",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Calendrier éditorial 4 semaines",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Série Reels MargImmo en action",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Série Reels RenoVision",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Posts collaboratifs avec pros partenaires",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Créer une page TikTok IMMATCH",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Rédiger 10 scripts de Reels éducatifs",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Templates graphiques Canva aux couleurs IMMATCH",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Banque de hooks pour Reels",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Veille hebdo DomeusAI + concurrents",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"NE PAS copier le produit DomeusAI",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"NE PAS acheter de followers",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now}
+      ];
+      saveItems();
+    }
   }catch(e){console.error(e)}
 }
 function saveItems(){try{localStorage.setItem('eis-items',JSON.stringify(state.items))}catch(e){console.error(e)}}
@@ -268,6 +294,10 @@ function readJSONFile(file){
   });
 }
 
+function parseImportList(raw){
+  return Array.isArray(raw)?raw:Array.isArray(raw.tasks)?raw.tasks:Array.isArray(raw.items)?raw.items:null;
+}
+
 async function handleImportFile(file){
   if(!file||!file.name.toLowerCase().endsWith('.json')){
     showToast(t('importErr'),'err');
@@ -275,10 +305,26 @@ async function handleImportFile(file){
   }
   try{
     const raw=await readJSONFile(file);
-    // Accept both a root array or an object with a tasks/items array
-    let list=Array.isArray(raw)?raw:Array.isArray(raw.tasks)?raw.tasks:Array.isArray(raw.items)?raw.items:null;
+    const list=parseImportList(raw);
     if(!list){showToast(t('importErr'),'err');return;}
     state.importPending=list;
+    state.showImportModal=false;
+    state.importText='';
+    state.showImport=true;
+    render();
+  }catch(e){
+    showToast(t('importErr'),'err');
+  }
+}
+
+function handleImportText(text){
+  try{
+    const raw=JSON.parse(text.trim());
+    const list=parseImportList(raw);
+    if(!list){showToast(t('importErr'),'err');return;}
+    state.importPending=list;
+    state.showImportModal=false;
+    state.importText='';
     state.showImport=true;
     render();
   }catch(e){
@@ -324,6 +370,7 @@ function render(){
 
   if(state.searchOpen)html+=renderSearch();
   if(state.showDel)html+=renderDeleteModal();
+  if(state.showImportModal)html+=renderImportInputModal();
   if(state.showImport)html+=renderImportModal();
   if(state.toast)html+=`<div class="toast toast-${state.toast.type}">${state.toast.msg}</div>`;
 
@@ -352,12 +399,34 @@ function renderMatrix(){
   <button class="fab" data-action="addNew">${I.plus}</button>`;
 }
 
-// ============ IMPORT MODAL ============
+// ============ IMPORT INPUT MODAL (paste JSON or pick file) ============
+function renderImportInputModal(){
+  const hasText=state.importText.trim().length>0;
+  return `<div class="import-modal">
+    <div class="import-sheet">
+      <h2>${t('importTitle')}</h2>
+      <p>${t('importDesc')}</p>
+      <label style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px">${t('importPaste')}</label>
+      <textarea id="import-text" class="import-textarea" rows="6" placeholder="${t('importPastePlaceholder')}">${esc(state.importText)}</textarea>
+      <div class="import-divider">${t('importOrFile')}</div>
+      <label class="import-drop" style="display:block;cursor:pointer">
+        ${I.upload}
+        <span><strong>${t('importDrop')}</strong></span>
+        <input type="file" id="import-file-modal" accept=".json,application/json" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+      </label>
+      <div class="import-actions">
+        <button class="import-cancel" data-action="closeImportInput">${t('cancel')}</button>
+        <button class="btn-primary btn-action" style="flex:1" id="btn-paste-import" data-action="pasteImport" ${!hasText?'disabled':''}>${t('importPreview')}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ============ IMPORT PREVIEW MODAL ============
 function renderImportModal(){
   const list=state.importPending||[];
   const valid=list.filter(i=>i.title&&[1,2,3,4].includes(parseInt(i.quadrant,10)));
   const skipped=list.length-valid.length;
-  // Preview: up to 5 items
   const preview=valid.slice(0,5).map(i=>{
     const q=parseInt(i.quadrant,10);const c=QC[q];
     return `<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface2)">
@@ -587,10 +656,9 @@ function bind(){
       if(att)toggleAudio(att);
     }
     // Import JSON actions
-    else if(action==='openImport'){
-      const inp=document.getElementById('json-file-input');
-      if(inp){inp.value='';inp.click();}
-    }
+    else if(action==='openImport'){state.showImportModal=true;state.importText='';render();setTimeout(()=>{const el=document.getElementById('import-text');if(el)el.focus()},50)}
+    else if(action==='closeImportInput'){state.showImportModal=false;state.importText='';render()}
+    else if(action==='pasteImport'){if(state.importText.trim())handleImportText(state.importText)}
     else if(action==='closeImport'){state.showImport=false;state.importPending=null;render()}
     else if(action==='confirmImport'){doImport()}
   };
@@ -605,6 +673,22 @@ function bind(){
   const si=document.getElementById('search-input');
   if(si)si.oninput=()=>{state.searchQ=si.value;render();setTimeout(()=>{const el=document.getElementById('search-input');if(el){el.focus();el.selectionStart=el.selectionEnd=el.value.length}},10)};
 
+  // Import textarea binding
+  const it=document.getElementById('import-text');
+  if(it)it.oninput=()=>{
+    state.importText=it.value;
+    const pb=document.getElementById('btn-paste-import');
+    if(pb)pb.disabled=!it.value.trim();
+  };
+
+  // File input in import modal
+  const jf=document.getElementById('import-file-modal');
+  if(jf)jf.onchange=(e)=>{
+    const file=e.target.files?.[0];
+    if(file)handleImportFile(file);
+    jf.value='';
+  };
+
   // File inputs (attachments)
   const fi=document.getElementById('f-img');
   if(fi)fi.onchange=async(e)=>{
@@ -618,20 +702,6 @@ function bind(){
     const data=await fileToB64(file);
     state.formAtts.push({id:uid(),name:file.name,type:file.type,data});fd.value='';render();
   };
-
-  // JSON import file input (lives outside #app to survive re-renders)
-  let ji=document.getElementById('json-file-input');
-  if(!ji){
-    ji=document.createElement('input');
-    ji.type='file';ji.accept='.json,application/json';
-    ji.id='json-file-input';ji.style.display='none';
-    document.body.appendChild(ji);
-    ji.onchange=(e)=>{
-      const file=e.target.files?.[0];
-      if(file)handleImportFile(file);
-      ji.value='';
-    };
-  }
 }
 
 function resetForm(){
