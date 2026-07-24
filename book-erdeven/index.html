@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenue à Erdeven — Une maison à réinventer</title>
+<meta name="description" content="Maison individuelle de plain-pied à Erdeven (56) : 102 m² habitables, 71 m² de combles aménageables, terrain de 757 m². Un potentiel unique entre plages et campagne.">
+<meta property="og:title" content="Bienvenue à Erdeven — Une maison à réinventer">
+<meta property="og:description" content="102 m² habitables · 71 m² de combles aménageables · terrain de 757 m² · à moins de 3 km de l'océan.">
+<meta property="og:image" content="assets/hero-dunes.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── Charte : le magazine IMMATCH transposé au web ─────────────────────── */
+:root{
+  --sable:#EDE6D8;        /* fond du magazine */
+  --lin:#F8F5EE;          /* fond clair alterné */
+  --encre:#22261F;        /* encre presque noire */
+  --ocean:#33605F;        /* accent : l'océan breton */
+  --lichen:#837F70;       /* texte secondaire */
+  --rouge:#A6342F;        /* DrHouse — réservé au contact */
+  --filet:#D8CFBC;        /* filets, bordures */
+  --display:'Cormorant Garamond', Georgia, serif;
+  --body:'Lora', Georgia, serif;
+  --ui:'Karla', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--sable);color:var(--encre);font-family:var(--body);font-size:1.05rem;line-height:1.75}
+img{display:block;max-width:100%}
+a{color:var(--ocean)}
+::selection{background:var(--ocean);color:var(--lin)}
+
+/* Fil d'horizon : progression de lecture */
+#horizon{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ocean);z-index:60;transition:width .15s linear}
+
+/* Rail de chapitres (ordinateur) */
+#rail{position:fixed;left:1.4rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:.55rem}
+#rail a{font-family:var(--ui);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--lichen);display:flex;align-items:center;gap:.5rem;transition:color .25s}
+#rail a::before{content:'';width:14px;height:1px;background:currentColor;transition:width .25s}
+#rail a.actif{color:var(--ocean)}
+#rail a.actif::before{width:26px}
+#rail a span{opacity:0;transform:translateX(-4px);transition:.25s}
+#rail a.actif span,#rail a:hover span,#rail a:focus-visible span{opacity:1;transform:none}
+@media(max-width:1120px){#rail{display:none}}
+
+/* Structure éditoriale */
+section{padding:6.5rem 1.5rem}
+.colonne{max-width:820px;margin:0 auto}
+.large{max-width:1060px;margin:0 auto}
+.chapitre{font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ocean);display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem}
+.chapitre::after{content:'';flex:1;height:1px;background:var(--filet)}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.12;margin-bottom:1.4rem}
+h3{font-family:var(--display);font-weight:600;font-size:1.45rem;margin:2.2rem 0 .7rem}
+p{margin-bottom:1.1rem}
+p.chapo{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.5rem);line-height:1.5;color:var(--encre)}
+.note{font-family:var(--ui);font-size:.8rem;color:var(--lichen)}
+figcaption{font-family:var(--ui);font-size:.78rem;color:var(--lichen);margin-top:.55rem}
+.fondclair{background:var(--lin)}
+.fondencre{background:var(--encre);color:var(--sable)}
+.fondencre .chapitre{color:#9DB9B4}.fondencre .chapitre::after{background:#3C4038}
+.fondencre .note,.fondencre figcaption{color:#A9A594}
+
+/* Apparition au défilement */
+.rev{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.rev.vu{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none;transition:none}
+  #couv img{animation:none !important}
+}
+
+/* ── Couverture ── */
+#couv{position:relative;min-height:100svh;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding:0}
+#couv .visuel{position:absolute;inset:0}
+#couv .visuel img{width:100%;height:100%;object-fit:cover;object-position:center 70%;animation:respire 9s ease-out forwards}
+@keyframes respire{from{transform:scale(1.06)}to{transform:scale(1)}}
+#couv .visuel::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(237,230,216,.94) 0%,rgba(237,230,216,.82) 34%,rgba(237,230,216,0) 72%)}
+#couv .titre{position:relative;z-index:2;text-align:center;padding:15vh 1.5rem 0;max-width:760px}
+#couv .marque{font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--rouge);margin-bottom:2.2rem}
+#couv h1{font-family:var(--display);font-weight:500;font-size:clamp(2.6rem,8vw,5rem);line-height:1.05}
+#couv .soustitre{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.8rem);margin-top:1.2rem}
+#couv .accroche{font-family:var(--display);font-style:italic;font-size:clamp(1.05rem,2.2vw,1.3rem);margin-top:1.6rem;line-height:1.6}
+#couv .fleche{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--lin);font-family:var(--ui);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+#couv .fleche::after{content:'';display:block;width:1px;height:34px;background:var(--lin);margin:.6rem auto 0;animation:desc 1.8s ease-in-out infinite}
+@keyframes desc{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+/* ── Grilles photos ── */
+.mosaique{display:grid;gap:.9rem;grid-template-columns:repeat(6,1fr);margin:2rem 0}
+.mosaique figure{overflow:hidden;border-radius:2px}
+.mosaique img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.mosaique figure:hover img{transform:scale(1.03)}
+.m-a{grid-column:span 4;aspect-ratio:16/9}
+.m-b{grid-column:span 2;aspect-ratio:4/5}
+.m-c{grid-column:span 2;aspect-ratio:4/3}
+@media(max-width:640px){.m-a,.m-b,.m-c{grid-column:span 6;aspect-ratio:16/10}}
+
+/* Repères de distances */
+.reperes{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0}
+.reperes span{font-family:var(--ui);font-size:.8rem;letter-spacing:.04em;border:1px solid var(--filet);border-radius:999px;padding:.42rem .95rem;background:rgba(255,255,255,.35)}
+
+/* ── Chiffres clés ── */
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--filet);border:1px solid var(--filet);margin:2.4rem 0}
+.chiffres div{background:var(--lin);padding:1.5rem 1rem;text-align:center}
+.chiffres b{display:block;font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.1}
+.chiffres small{font-family:var(--ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lichen)}
+
+/* Atouts */
+.atouts{list-style:none;columns:2;column-gap:2.5rem;margin:1.4rem 0}
+.atouts li{break-inside:avoid;padding:.5rem 0 .5rem 1.6rem;position:relative;border-bottom:1px solid var(--filet)}
+.atouts li::before{content:'✓';position:absolute;left:0;color:var(--ocean);font-family:var(--ui);font-weight:700}
+@media(max-width:640px){.atouts{columns:1}}
+
+/* Transparence travaux */
+.transparence{border:1px solid var(--filet);background:rgba(255,255,255,.4);padding:1.6rem 1.8rem;margin:2.2rem 0;border-left:3px solid var(--ocean)}
+.transparence h3{margin-top:0}
+.dpe{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--ui);font-size:.8rem;font-weight:700;margin-top:.4rem}
+.dpe i{font-style:normal;background:#C1272D;color:#fff;padding:.2rem .6rem;border-radius:2px}
+
+/* ── Avant / Après (curseur) ── */
+.comparateur{position:relative;overflow:hidden;border-radius:2px;user-select:none;touch-action:pan-y;cursor:ew-resize;margin:2rem 0 .4rem}
+.comparateur img{width:100%;aspect-ratio:3/2;object-fit:cover;pointer-events:none}
+.comparateur .avant{position:absolute;inset:0;width:50%;overflow:hidden}
+.comparateur .avant img{width:calc(100% / var(--part,0.5));max-width:none;height:100%}
+.comparateur .poignee{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--lin);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.comparateur .poignee::after{content:'⟨ ⟩';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--lin);color:var(--encre);font-family:var(--ui);font-size:.75rem;letter-spacing:.05em;padding:.5rem .7rem;border-radius:999px;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.comparateur .etiquette{position:absolute;top:.8rem;font-family:var(--ui);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(34,38,31,.72);color:var(--lin);padding:.3rem .7rem;border-radius:2px;pointer-events:none}
+.comparateur .etiquette.g{left:.8rem}.comparateur .etiquette.d{right:.8rem}
+
+.paires{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.paires figure{overflow:hidden;border-radius:2px}
+.paires img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:640px){.paires{grid-template-columns:1fr}}
+
+/* ── Onglets plans ── */
+.onglets{display:flex;gap:.5rem;margin:1.8rem 0 1.4rem;border-bottom:1px solid var(--filet)}
+.onglets button{font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;padding:.8rem 1rem;color:var(--lichen);cursor:pointer}
+.onglets button[aria-selected="true"]{color:var(--encre);border-color:var(--ocean)}
+.panneau{display:none}
+.panneau.ouvert{display:block}
+.deuxplans{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.deuxplans img{background:#fff;border:1px solid var(--filet);border-radius:2px}
+@media(max-width:760px){.deuxplans{grid-template-columns:1fr}}
+
+/* ── Urbanisme ── */
+.regles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+.regles div{border:1px solid var(--filet);background:rgba(255,255,255,.4);padding:1.2rem 1.3rem}
+.regles b{display:block;font-family:var(--display);font-weight:600;font-size:1.3rem;margin-bottom:.2rem}
+.regles small{font-family:var(--ui);font-size:.75rem;color:var(--lichen);letter-spacing:.03em}
+.boutons{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.8rem 0}
+.btn{font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.4rem;border-radius:2px;border:1px solid var(--encre);color:var(--encre);transition:.25s;display:inline-block;background:none;cursor:pointer}
+.btn:hover,.btn:focus-visible{background:var(--encre);color:var(--sable)}
+.btn.plein{background:var(--ocean);border-color:var(--ocean);color:var(--lin)}
+.btn.plein:hover,.btn.plein:focus-visible{background:#264A49;border-color:#264A49}
+.btn.contact{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.btn.contact:hover,.btn.contact:focus-visible{background:#832722;border-color:#832722}
+.opportunite{border:1px solid var(--ocean);padding:1.6rem 1.8rem;margin:2.2rem 0;background:rgba(51,96,95,.06)}
+.opportunite h3{margin-top:0;color:var(--ocean)}
+
+/* ── Technique ── */
+.technique{list-style:none;margin:1.4rem 0;border-top:1px solid var(--filet)}
+.technique li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem .2rem;border-bottom:1px solid var(--filet);font-size:.98rem}
+.technique li span:last-child{font-family:var(--ui);font-size:.8rem;color:var(--lichen);text-align:right}
+
+/* ── Visite virtuelle ── */
+.visite{position:relative;aspect-ratio:16/9;background:var(--encre);border-radius:2px;overflow:hidden;margin:2rem 0 .4rem}
+.visite iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visite .lanceur{position:absolute;inset:0;width:100%;border:0;cursor:pointer;background:none;padding:0}
+.visite .lanceur img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.visite .lanceur span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--lin);color:var(--encre);font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:1rem 1.6rem;border-radius:999px;box-shadow:0 4px 24px rgba(0,0,0,.35)}
+
+/* ── Quiz ── */
+#quiz .carte{background:var(--lin);border:1px solid var(--filet);padding:2rem;border-radius:2px;margin-top:2rem}
+#quiz .question{font-family:var(--display);font-weight:600;font-size:1.4rem;margin-bottom:1.2rem}
+#quiz .reponses{display:grid;gap:.7rem}
+#quiz .reponses button{font-family:var(--body);font-size:1rem;text-align:left;padding:.9rem 1.2rem;border:1px solid var(--filet);background:#fff;border-radius:2px;cursor:pointer;transition:.2s}
+#quiz .reponses button:hover:not(:disabled){border-color:var(--ocean)}
+#quiz .reponses button.juste{border-color:var(--ocean);background:rgba(51,96,95,.1)}
+#quiz .reponses button.faux{border-color:var(--rouge);background:rgba(166,52,47,.07);opacity:.7}
+#quiz .explication{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--filet);font-size:.95rem;display:none}
+#quiz .barre{display:flex;justify-content:space-between;align-items:center;margin-top:1.4rem}
+#quiz .compteur{font-family:var(--ui);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lichen)}
+#quiz .score b{font-family:var(--display);font-size:2.6rem;font-weight:600}
+
+/* Bloc "À vous de vous projeter" (HomeByme) */
+.projeter{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.6rem;border:1px solid #3C4038;background:rgba(255,255,255,.03);padding:1.4rem 1.6rem;border-radius:2px;margin:2rem 0 0}
+.projeter img{width:120px;height:90px;object-fit:cover;border-radius:2px;background:#fff}
+.projeter-txt h3{margin:0 0 .3rem;color:var(--sable)}
+.projeter-txt p{margin:0;font-size:.92rem;color:#B9B5A5}
+@media(max-width:720px){.projeter{grid-template-columns:1fr;text-align:center}.projeter img{width:100%;height:150px}.projeter .btn{justify-self:center}}
+
+.video-btn{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.video-btn:hover,.video-btn:focus-visible{background:#832722;border-color:#832722}
+
+/* Modale vidéo verticale (YouTube Short) */
+.video-modal{position:fixed;inset:0;z-index:100;background:rgba(20,22,18,.92);display:none;align-items:center;justify-content:center;padding:1rem}
+.video-modal.ouvert{display:flex}
+.video-cadre{position:relative;width:min(94vw,420px);aspect-ratio:9/16;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.video-cadre iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-fermer{position:absolute;top:1.2rem;right:1.4rem;z-index:101;background:var(--lin);color:var(--encre);border:none;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;font-family:var(--ui);box-shadow:0 2px 12px rgba(0,0,0,.3)}
+
+/* Encart "Cette maison n'est pas la vôtre ?" */
+#pas-la-votre{padding:5rem 1.5rem}
+.pas-votre{text-align:center;border:1px solid var(--ocean);background:rgba(51,96,95,.06);padding:2.6rem 2rem;border-radius:2px}
+.pas-votre h2{margin-bottom:1rem}
+.pas-votre p{max-width:560px;margin:0 auto 1.6rem;color:var(--lichen)}
+#contact{text-align:center;padding-bottom:3rem}
+#contact .portrait{width:112px;height:112px;border-radius:50%;object-fit:cover;margin:2rem auto 1rem;border:2px solid var(--sable)}
+#contact .nom{font-family:var(--display);font-size:1.5rem;font-weight:600}
+#contact .role{font-family:var(--ui);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#A9A594;margin-bottom:1.8rem}
+#contact .miroir{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.5;max-width:680px;margin:0 auto}
+#contact .miroir em{font-style:normal;border-bottom:1px solid var(--ocean)}
+footer{background:var(--encre);color:#8B877A;text-align:center;font-family:var(--ui);font-size:.68rem;line-height:1.7;padding:0 1.5rem 2.5rem}
+footer a{color:#A9A594}
+</style>
+</head>
+<body>
+
+<div id="horizon" aria-hidden="true"></div>
+
+<nav id="rail" aria-label="Chapitres">
+  <a href="#village"><span>Le village</span></a>
+  <a href="#maison"><span>La maison</span></a>
+  <a href="#transformation"><span>Avant / Après</span></a>
+  <a href="#plans"><span>Les plans</span></a>
+  <a href="#urbanisme"><span>Urbanisme</span></a>
+  <a href="#diagnostics"><span>Diagnostics</span></a>
+  <a href="#visite"><span>Visite virtuelle</span></a>
+  <a href="#quiz"><span>Le quiz</span></a>
+  <a href="#contact"><span>Contact</span></a>
+</nav>
+
+<!-- ═══ COUVERTURE ═══ -->
+<section id="couv">
+  <div class="visuel"><img src="assets/hero-dunes.jpg" alt="Les dunes d'Erdeven face à l'océan"></div>
+  <div class="titre">
+    <p class="marque">Dr House-Immo · Spécialiste immobilier</p>
+    <h1>Bienvenue à Erdeven</h1>
+    <p class="soustitre">Une maison à réinventer</p>
+    <p class="accroche">Un terrain généreux, des volumes existants, des combles aménageables.<br>
+    Un cadre calme, à deux pas des commerces et de l'océan.<br>
+    <strong>À vous d'écrire la suite.</strong></p>
+  </div>
+  <a class="fleche" href="#village">Ouvrir le book</a>
+</section>
+
+<!-- ═══ 01 LE VILLAGE ═══ -->
+<section id="village">
+  <div class="large">
+    <p class="chapitre rev">01 — Erdeven, entre terre et océan</p>
+    <div class="colonne" style="margin-left:0">
+      <h2 class="rev">La nature en grand format</h2>
+      <p class="chapo rev">Nichée au cœur du littoral morbihannais, Erdeven est un village balnéaire où la nature s'exprime en grand format : 8 km de plages sauvages, des dunes protégées et des sentiers côtiers pour respirer, marcher, se ressourcer.</p>
+    </div>
+    <div class="reperes rev">
+      <span>🌊 Océan à moins de 3 km</span>
+      <span>🚄 Gare TGV d'Auray à 15 min</span>
+      <span>🛣️ Lorient &amp; Vannes par la RN165</span>
+      <span>🏪 Commerces au bourg, à pied</span>
+    </div>
+    <div class="mosaique">
+      <figure class="m-a rev"><img src="assets/plage-kerhillio.jpg" alt="La plage de Kerhillio" loading="lazy"></figure>
+      <figure class="m-b rev"><img src="assets/menhirs.jpg" alt="Les alignements mégalithiques de Kerzerho" loading="lazy"></figure>
+      <figure class="m-c rev"><img src="assets/bourg-ecole.jpg" alt="Le bourg d'Erdeven" loading="lazy"></figure>
+      <figure class="m-c rev"><img src="assets/fete-bretonne.jpg" alt="Fête traditionnelle bretonne" loading="lazy"></figure>
+      <figure class="m-c rev"><img src="assets/bourg-marche.jpg" alt="Animation dans le bourg" loading="lazy"></figure>
+      <figure class="m-a rev" style="grid-column:span 6;aspect-ratio:21/9"><img src="assets/keraveon.jpg" alt="Le parc de Keravéon" loading="lazy"></figure>
+    </div>
+    <div class="colonne" style="margin-left:0">
+      <h3 class="rev">Plages et nature</h3>
+      <p class="rev">La plage de Kerhillio, immense et familiale, est un spot réputé pour le kite et le char à voile. Les plages plus intimes de Kerminihy ou Kerouriec, un réseau de pistes cyclables et de chemins de randonnée relient la mer, les bois et les villages voisins.</p>
+      <h3 class="rev">Patrimoine et histoire</h3>
+      <p class="rev">Dolmens, menhirs, chapelles et villages de pierre rappellent que ce territoire est un véritable musée à ciel ouvert, habité depuis des millénaires. À seulement 15 minutes d'Auray, Erdeven combine l'esprit village — bourg animé, écoles, associations — et l'ouverture sur le monde.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 LA MAISON ═══ -->
+<section id="maison" class="fondclair">
+  <div class="large">
+    <p class="chapitre rev">02 — La maison aujourd'hui</p>
+    <h2 class="rev">Une base saine, un potentiel rare</h2>
+    <figure class="rev"><img src="assets/maison-aerienne.jpg" alt="Vue aérienne de la maison et de son terrain de 757 m²" style="border-radius:2px" loading="lazy">
+      <figcaption>La maison sur sa parcelle privative de 757 m², à proximité immédiate du centre-bourg.</figcaption>
+    </figure>
+    <div class="chiffres rev">
+      <div><b>757&nbsp;m²</b><small>Terrain privatif</small></div>
+      <div><b>102&nbsp;m²</b><small>Habitables de plain-pied</small></div>
+      <div><b>+71&nbsp;m²</b><small>Combles aménageables</small></div>
+      <div><b>≈173&nbsp;m²</b><small>Potentiel habitable</small></div>
+      <div><b>1972</b><small>Année de construction</small></div>
+    </div>
+    <div class="colonne" style="margin-left:0">
+      <p class="rev">Construite dans les années 1970, cette maison individuelle bénéficie d'un emplacement privilégié : le centre-bourg à pied, les plages d'Erdeven à moins de 3 km. Ses combles sur <strong>plancher béton</strong>, desservis par un escalier intérieur et coiffés d'une <strong>charpente en excellent état</strong>, offrent une réserve d'espace immédiatement exploitable.</p>
+      <h3 class="rev">Les principaux atouts</h3>
+      <ul class="atouts rev">
+        <li>Terrain privatif de 757 m²</li>
+        <li>Parcelle située en zone UB</li>
+        <li>Combles aménageables, plancher béton</li>
+        <li>Charpente en excellent état</li>
+        <li>Fort potentiel d'agrandissement</li>
+        <li>Exposition plein sud</li>
+        <li>Centre-bourg accessible à pied</li>
+        <li>Plages d'Erdeven à moins de 3 km</li>
+        <li>Terrain constructible attenant de 456 m² en option</li>
+      </ul>
+      <div class="transparence rev">
+        <h3>À prévoir — parlons vrai</h3>
+        <p>Des travaux de rénovation (isolation, chauffage, électricité, rafraîchissement intérieur) permettront de révéler tout le potentiel de la maison. La structure, le plancher béton des combles et la charpente constituent une excellente base pour un projet durable. Devis sur demande.</p>
+        <p class="dpe">Diagnostic énergétique&nbsp;: <i>DPE G</i> — un projet de rénovation énergétique, pas une surprise.</p>
+      </div>
+      <p class="rev">Erdeven est une commune littorale particulièrement recherchée, où les maisons rénovées se négocient aujourd'hui autour de <strong>3&nbsp;700 à 4&nbsp;000&nbsp;€/m²</strong> selon leur emplacement et leurs prestations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 AVANT / APRÈS ═══ -->
+<section id="transformation">
+  <div class="large">
+    <p class="chapitre rev">03 — La transformation</p>
+    <h2 class="rev">Je vous partage mes idées</h2>
+    <div class="colonne" style="margin-left:0">
+      <p class="chapo rev">Le rez-de-chaussée propose une cuisine indépendante et un séjour lumineux avec insert bois. Restés dans leur configuration d'origine, ces espaces constituent une formidable base de transformation.</p>
+      <p class="rev">Ouvrir la cuisine sur le salon pour créer une grande pièce de vie conviviale, moderniser les finitions, prolonger l'espace vers le jardin&nbsp;: faites glisser le curseur pour passer de l'existant à la projection.</p>
+    </div>
+    <div class="comparateur rev" id="comparateur" role="slider" aria-label="Comparer avant et après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="assets/sejour-apres.jpg" alt="Projection : le séjour transformé en grande pièce de vie meublée">
+      <div class="avant"><img src="assets/sejour-avant.jpg" alt="Le séjour dans son état d'origine, avec insert bois"></div>
+      <span class="etiquette g">Avant</span>
+      <span class="etiquette d">Projection</span>
+      <div class="poignee"></div>
+    </div>
+    <p class="note rev">Projection d'aménagement non contractuelle. Curseur&nbsp;: glissez, ou utilisez les flèches du clavier.</p>
+    <div class="paires">
+      <figure class="rev"><img src="assets/cuisine-avant-2.jpg" alt="La cuisine indépendante dans son état d'origine" loading="lazy"><figcaption>La cuisine indépendante de 15,6 m², à ouvrir sur le séjour pour créer une grande pièce de vie.</figcaption></figure>
+      <figure class="rev"><img src="assets/porte-entree.jpg" alt="La porte d'entrée en bois d'origine" loading="lazy"><figcaption>La porte d'entrée en bois, d'origine, apporte du caractère à la façade.</figcaption></figure>
+      <figure class="rev"><img src="assets/escalier-avant.jpg" alt="L'escalier et son placard intégré" loading="lazy"><figcaption>Sous l'escalier, un placard intégré optimise les volumes.</figcaption></figure>
+      <figure class="rev"><img src="assets/placard-apres.jpg" alt="Projection d'aménagement du placard sous escalier" loading="lazy"><figcaption>Projection&nbsp;: le même volume, repensé en rangements sur mesure.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 LES PLANS ═══ -->
+<section id="plans" class="fondclair">
+  <div class="large">
+    <p class="chapitre rev">04 — Les plans</p>
+    <h2 class="rev">Aujourd'hui modulable, demain sur mesure</h2>
+    <div class="onglets rev" role="tablist" aria-label="Plans de la maison">
+      <button role="tab" id="ong-actuel" aria-selected="true" aria-controls="pan-actuel">La maison telle qu'elle est</button>
+      <button role="tab" id="ong-projet" aria-selected="false" aria-controls="pan-projet">Une maison réinventée</button>
+    </div>
+    <div class="panneau ouvert" id="pan-actuel" role="tabpanel" aria-labelledby="ong-actuel">
+      <div class="deuxplans">
+        <figure><img src="assets/plan-rdc.jpg" alt="Plan actuel du rez-de-chaussée" loading="lazy"><figcaption>Rez-de-chaussée — entrée, cuisine indépendante, séjour lumineux avec insert, quatre chambres, salle de bains, WC séparés et cellier.</figcaption></figure>
+        <figure><img src="assets/plan-etage.jpg" alt="Plan actuel des combles" loading="lazy"><figcaption>Étage — combles bruts d'environ 71 m², facilement aménageables grâce au plancher béton et à la charpente en bon état.</figcaption></figure>
+      </div>
+      <figure style="margin-top:1.4rem"><img src="assets/combles.jpg" alt="Les combles et leur charpente" style="border-radius:2px" loading="lazy"><figcaption>Les combles aujourd'hui&nbsp;: un plateau libre sous une charpente saine.</figcaption></figure>
+    </div>
+    <div class="panneau" id="pan-projet" role="tabpanel" aria-labelledby="ong-projet">
+      <div class="deuxplans">
+        <figure><img src="assets/plan3d-rdc.jpg" alt="Projection 3D du rez-de-chaussée réinventé" loading="lazy"><figcaption>Rez-de-chaussée projeté — grand séjour de 34 m² ouvert sur le jardin, cuisine avec accès terrasse, suite parentale avec dressing et salle de bains, bureau pour le télétravail, buanderie et cellier.</figcaption></figure>
+        <figure><img src="assets/plan3d-etage.jpg" alt="Projection 3D de l'étage aménagé" loading="lazy"><figcaption>Étage projeté — quatre chambres confortables, une salle d'eau moderne et un espace polyvalent (salle de jeux, salon TV ou bureau secondaire).</figcaption></figure>
+      </div>
+      <figure style="margin-top:1.4rem;max-width:520px"><img src="assets/maison-3d.jpg" alt="Projection 3D de la maison après aménagement" style="border-radius:2px" loading="lazy"><figcaption>≈173 m² habitables après aménagement. Projections non contractuelles.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 URBANISME ═══ -->
+<section id="urbanisme">
+  <div class="large">
+    <p class="chapitre rev">05 — Urbanisme, zone UB</p>
+    <h2 class="rev">Un règlement favorable, noir sur blanc</h2>
+    <div class="colonne" style="margin-left:0">
+      <p class="rev">Située en zone UB du PLU d'Erdeven, la propriété bénéficie d'un cadre réglementaire propice aux projets d'extension comme de construction. Les règles essentielles, vérifiables dans le règlement officiel&nbsp;:</p>
+    </div>
+    <div class="regles rev">
+      <div><b>70&nbsp;%</b><small>d'emprise au sol possible, soit ≈500 m² sur la parcelle</small></div>
+      <div><b>6&nbsp;m / 9&nbsp;m</b><small>hauteur maximale à l'égout / au faîtage</small></div>
+      <div><b>1,80 – 2&nbsp;m</b><small>clôtures, en harmonie avec l'environnement</small></div>
+      <div><b>Piscine</b><small>autorisée, sous réserve d'une bonne intégration paysagère</small></div>
+    </div>
+    <figure class="rev"><img src="assets/cadastre.jpg" alt="Plan de division parcellaire" style="border-radius:2px;background:#fff;border:1px solid var(--filet)" loading="lazy"><figcaption>La division parcellaire réalisée&nbsp;: la maison sur 757 m², le lot n°1 de 456 m² déjà borné.</figcaption></figure>
+    <div class="opportunite rev">
+      <h3>Opportunité patrimoniale</h3>
+      <p style="margin:0">Possibilité d'acquérir en complément un <strong>terrain à bâtir attenant de 456 m²</strong>, déjà borné et issu d'une division parcellaire. Une véritable opportunité pour un projet familial, une construction indépendante ou une stratégie patrimoniale.</p>
+    </div>
+    <div class="boutons rev">
+      <a class="btn plein" href="https://data.geopf.fr/annexes/gpu/documents/DU_56054/cc30e2799f801c9652a228ca12f8ed1c/56054_reglement_20250708.pdf" target="_blank" rel="noopener">Règlement du PLU (Géoportail)</a>
+      <a class="btn" href="https://errial.georisques.gouv.fr/#/6FfNBk31" target="_blank" rel="noopener">État des risques — ERP officiel</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 DIAGNOSTICS ═══ -->
+<section id="diagnostics" class="fondclair">
+  <div class="colonne">
+    <p class="chapitre rev">06 — Informations techniques &amp; diagnostics</p>
+    <h2 class="rev">Tout est sur la table</h2>
+    <ul class="technique rev">
+      <li><span>Assainissement</span><span>Tout-à-l'égout conforme</span></li>
+      <li><span>Alimentation en eau</span><span>Actuellement par eau de source</span></li>
+      <li><span>Performance énergétique</span><span>DPE G — rénovation énergétique à prévoir</span></li>
+      <li><span>Chauffage</span><span>À recréer</span></li>
+      <li><span>Électricité</span><span>À reprendre</span></li>
+      <li><span>Menuiseries</span><span>PVC majoritaires</span></li>
+      <li><span>Structure &amp; charpente</span><span>Excellente base — plancher béton aux combles</span></li>
+    </ul>
+    <h3 class="rev">Notre analyse</h3>
+    <p class="rev">Les travaux sont importants mais concernent principalement l'amélioration énergétique et le confort. La structure, le plancher béton des combles et la charpente constituent une excellente base pour un projet de rénovation durable. <strong>Devis sur demande.</strong></p>
+  </div>
+</section>
+
+<!-- ═══ 07 VISITE VIRTUELLE ═══ -->
+<section id="visite" class="fondencre">
+  <div class="large">
+    <p class="chapitre rev">07 — Visite virtuelle</p>
+    <h2 class="rev">Et si vous commenciez la visite maintenant&nbsp;?</h2>
+    <div class="colonne" style="margin-left:0">
+      <p class="rev">Explorez chaque pièce comme si vous y étiez. Découvrez les volumes, imaginez vos aménagements et projetez-vous dans votre futur chez-vous, en toute liberté.</p>
+    </div>
+
+    <div class="visite rev" id="matterport">
+      <button class="lanceur" type="button" aria-label="Lancer la visite virtuelle Matterport 360°">
+        <img src="assets/combles.jpg" alt="">
+        <span>▶&nbsp;&nbsp;Lancer la visite 360°</span>
+      </button>
+    </div>
+    <p class="note rev">Visite immersive Matterport — déplacez-vous de pièce en pièce, à la souris ou au doigt, plein écran disponible.</p>
+
+    <div class="projeter rev">
+      <img src="assets/plan3d-rdc.jpg" alt="Plan 3D de la maison réinventée">
+      <div class="projeter-txt">
+        <h3>À vous de vous projeter</h3>
+        <p>Ouvrez le plan 3D de la maison dans HomeByMe et testez librement vos propres idées d'aménagement.</p>
+      </div>
+      <a class="btn plein" href="https://home.by.me/fr/project/c74b1c53471853ea47d4dda/maison-individuelle-56410-erdeven?open_planner=true" target="_blank" rel="noopener">Ouvrir le plan 3D</a>
+    </div>
+
+    <div class="boutons rev" style="justify-content:center;margin-top:2rem">
+      <button class="btn video-btn" type="button" id="videoBtn">▶ Voir la vidéo du bien</button>
+      <a class="btn" href="https://www.canva.com/design/DAGxftM8JfA/iSg3HuJwO9a3cc7uzizRUw/view" target="_blank" rel="noopener">Feuilleter le magazine</a>
+    </div>
+  </div>
+</section>
+
+<!-- Vidéo YouTube en superposition (format vertical) -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Vidéo de présentation">
+  <button class="video-fermer" id="videoFermer" aria-label="Fermer la vidéo">✕</button>
+  <div class="video-cadre" id="videoCadre"></div>
+</div>
+
+<!-- ═══ 08 QUIZ ═══ -->
+<section id="quiz">
+  <div class="colonne">
+    <p class="chapitre rev">08 — L'interlude</p>
+    <h2 class="rev">Connaissez-vous Erdeven&nbsp;?</h2>
+    <p class="rev">Cinq questions pour vérifier si vous avez l'étoffe d'un Erdevennois. Tout est dans ce book… ou presque.</p>
+    <div class="carte rev">
+      <p class="compteur" style="font-family:var(--ui);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lichen)"></p>
+      <p class="question"></p>
+      <div class="reponses"></div>
+      <p class="explication"></p>
+      <div class="barre">
+        <span class="compteur2 compteur"></span>
+        <button class="btn suivante" style="display:none">Question suivante</button>
+      </div>
+      <div class="score" style="display:none;text-align:center">
+        <b></b>
+        <p class="verdict"></p>
+        <button class="btn rejouer">Rejouer</button>
+        <a class="btn contact" href="#contact" style="margin-left:.6rem">Organiser une vraie visite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAS LA VÔTRE ? ═══ -->
+<section id="pas-la-votre">
+  <div class="colonne">
+    <div class="pas-votre rev">
+      <p class="chapitre" style="justify-content:center">Une recherche sur mesure</p>
+      <h2>Cette maison n'est pas tout à fait la vôtre&nbsp;?</h2>
+      <p>Un peu plus de terrain, une architecture différente, la mer plus près, un budget précis&nbsp;? Dites-moi ce que vous cherchez vraiment&nbsp;: je pars en quête du bien qui vous ressemble, y compris ceux qui ne sont pas encore en vitrine.</p>
+      <a class="btn contact" href="#contact">Décrire le bien de mes rêves</a>
+    </div>
+  </div>
+</section>
+<section id="contact" class="fondencre">
+  <div class="colonne">
+    <p class="chapitre rev" style="justify-content:center">09 — Écrire la suite</p>
+    <p class="miroir rev">Entre plages et campagne, une maison attend sa suite.<br><em>Et si c'était vous qui l'écriviez&nbsp;?</em></p>
+    <img class="portrait rev" src="assets/roger.jpg" alt="Roger-Jacques Vluys">
+    <p class="nom rev">Roger-Jacques Vluys</p>
+    <p class="role rev">Mandataire immobilier · Erdeven (56)</p>
+    <div class="boutons rev" style="justify-content:center">
+      <a class="btn contact" href="tel:+33614204847">📞 06 14 20 48 47</a>
+      <a class="btn contact" href="mailto:rj.vluys@drhouse.immo?subject=Maison%20%C3%A0%20Erdeven%20%E2%80%94%20demande%20de%20visite">✉️ rj.vluys@drhouse.immo</a>
+    </div>
+    <p class="note rev">ERDEVEN (56410) — Maison individuelle semi plain-pied · 102 m² habitables · combles aménageables (possible 71 m²) · terrain de 757 m².</p>
+  </div>
+</section>
+<footer>
+  <p>Nord-Sud Immo, SAS au capital de 20 760 € — RCS Aix-en-Provence 789 995 107. DR HOUSE IMMO est une marque déposée.<br>
+  Siège social : 3 AB Avenue des Belges, 13100 Aix-en-Provence — Tél. 09 72 40 71 68 — <a href="https://www.drhouse-immo.com" target="_blank" rel="noopener">www.drhouse-immo.com</a><br>
+  Carte n° CPI 9201 2018 000 029 521 délivrée par la CCI Marseille Provence le 31/10/2023.</p>
+</footer>
+
+<script>
+/* ── Fil d'horizon + chapitre actif ── */
+const horizon = document.getElementById('horizon');
+const liens = [...document.querySelectorAll('#rail a')];
+const cibles = liens.map(a => document.querySelector(a.getAttribute('href')));
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  horizon.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  const y = h.scrollTop + innerHeight * 0.4;
+  let actif = -1;
+  cibles.forEach((s, i) => { if (s && s.offsetTop <= y) actif = i; });
+  liens.forEach((a, i) => a.classList.toggle('actif', i === actif));
+}, { passive: true });
+
+/* ── Apparitions au défilement ── */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('vu'); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+/* ── Comparateur avant / après ── */
+const comp = document.getElementById('comparateur');
+if (comp) {
+  const avant = comp.querySelector('.avant');
+  const poignee = comp.querySelector('.poignee');
+  let part = 0.5;
+  const rendre = () => {
+    avant.style.width = (part * 100) + '%';
+    avant.style.setProperty('--part', part || 0.0001);
+    poignee.style.left = (part * 100) + '%';
+    comp.setAttribute('aria-valuenow', Math.round(part * 100));
+  };
+  const depuis = x => {
+    const r = comp.getBoundingClientRect();
+    part = Math.min(0.97, Math.max(0.03, (x - r.left) / r.width));
+    rendre();
+  };
+  let glisse = false;
+  comp.addEventListener('pointerdown', e => { glisse = true; comp.setPointerCapture(e.pointerId); depuis(e.clientX); });
+  comp.addEventListener('pointermove', e => glisse && depuis(e.clientX));
+  comp.addEventListener('pointerup', () => glisse = false);
+  comp.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { part = Math.max(0.03, part - 0.05); rendre(); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { part = Math.min(0.97, part + 0.05); rendre(); e.preventDefault(); }
+  });
+  rendre();
+}
+
+/* ── Onglets plans ── */
+document.querySelectorAll('.onglets [role="tab"]').forEach(ong => {
+  ong.addEventListener('click', () => {
+    ong.closest('.onglets').querySelectorAll('[role="tab"]').forEach(o => o.setAttribute('aria-selected', o === ong));
+    document.querySelectorAll('.panneau').forEach(p => p.classList.toggle('ouvert', p.id === ong.getAttribute('aria-controls')));
+  });
+});
+
+/* ── Visite Matterport (chargée au clic pour une page légère) ── */
+const matterport = document.getElementById('matterport');
+if (matterport) matterport.querySelector('.lanceur').addEventListener('click', () => {
+  matterport.innerHTML = '<iframe src="https://my.matterport.com/show/?m=f2wHhtvooix" allow="fullscreen; xr-spatial-tracking" allowfullscreen title="Visite virtuelle de la maison"></iframe>';
+});
+
+/* Vidéo du bien : modale verticale (YouTube Short) */
+const videoBtn = document.getElementById('videoBtn');
+const videoModal = document.getElementById('videoModal');
+const videoCadre = document.getElementById('videoCadre');
+const videoFermer = document.getElementById('videoFermer');
+function ouvrirVideo() {
+  videoCadre.innerHTML = '<iframe src="https://www.youtube.com/embed/4gsj--KGChI?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo de présentation du bien"></iframe>';
+  videoModal.classList.add('ouvert');
+}
+function fermerVideo() {
+  videoModal.classList.remove('ouvert');
+  videoCadre.innerHTML = '';
+}
+if (videoBtn) videoBtn.addEventListener('click', ouvrirVideo);
+if (videoFermer) videoFermer.addEventListener('click', fermerVideo);
+if (videoModal) videoModal.addEventListener('click', e => { if (e.target === videoModal) fermerVideo(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && videoModal.classList.contains('ouvert')) fermerVideo(); });
+
+/* ── Quiz : Connaissez-vous Erdeven ? ── */
+const QUESTIONS = [
+  { q: "Combien de kilomètres de plages sauvages bordent Erdeven ?",
+    r: ["3 km", "8 km", "15 km"], juste: 1,
+    e: "8 km de plages sauvages, avec des dunes protégées et des sentiers côtiers." },
+  { q: "Quelle plage, immense et familiale, est réputée pour le kite et le char à voile ?",
+    r: ["Kerhillio", "Kerminihy", "Kerouriec"], juste: 0,
+    e: "Kerhillio — les plages de Kerminihy et Kerouriec, plus intimes, sont à deux pas." },
+  { q: "À combien de minutes se trouve la gare TGV d'Auray ?",
+    r: ["45 minutes", "30 minutes", "15 minutes"], juste: 2,
+    e: "15 minutes seulement : l'esprit village, avec l'ouverture sur le monde." },
+  { q: "Quels monuments rappellent que ce territoire est habité depuis des millénaires ?",
+    r: ["Des dolmens et des menhirs", "Des phares", "Des châteaux forts"], juste: 0,
+    e: "Dolmens, menhirs, chapelles et villages de pierre : un musée à ciel ouvert." },
+  { q: "En zone UB, l'emprise au sol peut atteindre jusqu'à…",
+    r: ["30 % de la parcelle", "50 % de la parcelle", "70 % de la parcelle"], juste: 2,
+    e: "70 %, soit environ 500 m² ici — un règlement favorable aux beaux projets." }
+];
+const VERDICTS = [
+  "Il est temps de venir découvrir Erdeven en vrai…",
+  "Un bon début — la visite fera le reste.",
+  "Pas mal du tout, futur voisin ?",
+  "Vous connaissez le coin — reste à y poser vos valises.",
+  "Impressionnant. Il ne vous manque que l'adresse.",
+  "Sans faute ! Vous avez l'étoffe d'un Erdevennois. Il ne manque que la maison."
+];
+const quiz = document.querySelector('#quiz .carte');
+if (quiz) {
+  const elQ = quiz.querySelector('.question'), elR = quiz.querySelector('.reponses'),
+        elE = quiz.querySelector('.explication'), elC = quiz.querySelector('.compteur'),
+        elC2 = quiz.querySelector('.compteur2'), btnS = quiz.querySelector('.suivante'),
+        elScore = quiz.querySelector('.score');
+  let i = 0, score = 0;
+  function poser() {
+    const q = QUESTIONS[i];
+    elC.textContent = 'Question ' + (i + 1) + ' / ' + QUESTIONS.length;
+    elC2.textContent = 'Score : ' + score;
+    elQ.textContent = q.q;
+    elE.style.display = 'none'; btnS.style.display = 'none';
+    elR.innerHTML = '';
+    q.r.forEach((txt, k) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = txt;
+      b.addEventListener('click', () => {
+        [...elR.children].forEach(x => x.disabled = true);
+        if (k === q.juste) { b.classList.add('juste'); score++; }
+        else { b.classList.add('faux'); elR.children[q.juste].classList.add('juste'); }
+        elE.textContent = q.e; elE.style.display = 'block';
+        elC2.textContent = 'Score : ' + score;
+        btnS.style.display = 'inline-block';
+        btnS.textContent = (i === QUESTIONS.length - 1) ? 'Voir mon score' : 'Question suivante';
+      });
+      elR.appendChild(b);
+    });
+  }
+  btnS.addEventListener('click', () => {
+    i++;
+    if (i < QUESTIONS.length) { poser(); return; }
+    elQ.style.display = elR.style.display = elE.style.display = 'none';
+    elC.style.display = elC2.style.display = btnS.style.display = 'none';
+    elScore.style.display = 'block';
+    elScore.querySelector('b').textContent = score + ' / ' + QUESTIONS.length;
+    elScore.querySelector('.verdict').textContent = VERDICTS[score];
+  });
+  quiz.querySelector('.rejouer').addEventListener('click', () => {
+    i = 0; score = 0;
+    elScore.style.display = 'none';
+    elQ.style.display = 'block'; elR.style.display = 'grid';
+    elC.style.display = elC2.style.display = 'block';
+    poser();
+  });
+  poser();
+}
+</script>
+</body>
+</html>
