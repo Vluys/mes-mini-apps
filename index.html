@@ -2,767 +2,353 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0f172a">
-<title>EisenhowerBox</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
-<link rel="manifest" href="manifest.json">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0f172a;--surface:#1e293b;--surface2:#334155;--border:#475569;
-  --text:#f8fafc;--text2:#94a3b8;--text3:#64748b;
-  --q1:#ef4444;--q1bg:#fef2f2;--q1border:#fca5a5;--q1text:#b91c1c;
-  --q2:#3b82f6;--q2bg:#eff6ff;--q2border:#93c5fd;--q2text:#1d4ed8;
-  --q3:#f59e0b;--q3bg:#fffbeb;--q3border:#fcd34d;--q3text:#b45309;
-  --q4:#64748b;--q4bg:#f8fafc;--q4border:#cbd5e1;--q4text:#475569;
-  --accent:#6366f1;--accent2:#8b5cf6;
-}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input,textarea{font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;width:100%;outline:none;transition:border .2s}
-input:focus,textarea:focus{border-color:var(--accent)}
-textarea{resize:none}
-
-/* Header */
-.header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--surface);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.header h1{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.header-left{display:flex;align-items:center;gap:8px;min-width:0}
-.header-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.btn-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--text2)}
-.btn-icon:hover{background:var(--surface)}
-.btn-lang{padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700;color:var(--text2);background:var(--surface);transition:background .2s;display:flex;align-items:center;gap:4px}
-.btn-lang:hover{background:var(--surface2)}
-
-/* Matrix grid */
-.matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.q-card{border-radius:16px;padding:16px;text-align:left;border:1px solid;transition:transform .15s;position:relative;overflow:hidden}
-.q-card:active{transform:scale(.97)}
-.q-card .q-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:#fff;font-size:20px}
-.q-card .q-name{font-size:15px;font-weight:700}
-.q-card .q-desc{font-size:11px;color:#64748b;margin-top:2px;line-height:1.3}
-.q-card .q-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
-.q-badge{padding:2px 10px;border-radius:20px;font-size:12px;font-weight:700;color:#fff}
-.q1-card{background:var(--q1bg);border-color:var(--q1border)}.q1-card .q-name{color:var(--q1text)}.q1-card .q-icon,.q1-card .q-badge{background:var(--q1)}
-.q2-card{background:var(--q2bg);border-color:var(--q2border)}.q2-card .q-name{color:var(--q2text)}.q2-card .q-icon,.q2-card .q-badge{background:var(--q2)}
-.q3-card{background:var(--q3bg);border-color:var(--q3border)}.q3-card .q-name{color:var(--q3text)}.q3-card .q-icon,.q3-card .q-badge{background:var(--q3)}
-.q4-card{background:var(--q4bg);border-color:var(--q4border)}.q4-card .q-name{color:var(--q4text)}.q4-card .q-icon,.q4-card .q-badge{background:var(--q4)}
-
-/* Total */
-.total{text-align:center;font-size:12px;color:var(--text3);padding:4px 0 80px}
-
-/* FAB */
-.fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(99,102,241,.35);z-index:20;transition:transform .15s;font-size:28px}
-.fab:active{transform:scale(.9)}
-
-/* List */
-.list{padding:12px;display:flex;flex-direction:column;gap:8px;padding-bottom:100px}
-.item-card{padding:14px;border-radius:16px;background:rgba(30,41,59,.8);border:1px solid var(--surface);text-align:left;transition:border .2s;display:flex;align-items:start;justify-content:space-between;gap:8px}
-.item-card:hover{border-color:var(--border)}
-.item-title{font-size:14px;font-weight:600;color:var(--text)}
-.item-notes{font-size:12px;color:var(--text3);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.item-meta{display:flex;gap:12px;margin-top:8px;font-size:11px;color:var(--text3)}
-.item-meta span{display:flex;align-items:center;gap:3px}
-
-/* Empty */
-.empty{text-align:center;padding:64px 20px;color:var(--text3)}
-.empty .empty-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;opacity:.4;font-size:28px;color:#fff}
-
-/* Detail */
-.detail{padding:16px;display:flex;flex-direction:column;gap:16px;padding-bottom:40px}
-.detail-card{padding:16px;border-radius:16px;border:1px solid}
-.detail-card .d-badge{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.detail-card .d-badge .dot{width:8px;height:8px;border-radius:50%}
-.detail-card h2{font-size:18px;font-weight:700;color:#1e293b}
-.detail-card .d-notes{font-size:14px;color:#475569;margin-top:8px;white-space:pre-wrap;line-height:1.6}
-.meta-tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{padding:6px 12px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:4px}
-.tag-date{background:var(--surface);color:var(--text2)}
-.tag-reminder{background:rgba(99,102,241,.1);color:var(--accent)}
-
-/* Attachments grid */
-.att-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-.att-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.att-item{border-radius:12px;overflow:hidden;border:1px solid var(--surface);background:var(--surface)}
-.att-item img{width:100%;height:120px;object-fit:cover;display:block}
-.att-audio{height:80px;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.1));color:var(--accent);cursor:pointer;font-size:13px;font-weight:500}
-.att-doc{height:80px;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--text2);font-size:12px}
-.att-bar{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:rgba(15,23,42,.4);font-size:11px;color:var(--text3)}
-.att-bar button{padding:4px;border-radius:6px;color:var(--text3);display:flex}
-.att-bar button:hover{background:var(--surface2)}
-.att-bar .del-att{color:var(--q1)}
-
-/* Buttons */
-.btn-action{width:100%;padding:14px;border-radius:14px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .2s}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 16px rgba(99,102,241,.25)}
-.btn-primary:disabled{opacity:.4;cursor:not-allowed}
-.btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--q1)}
-.btn-secondary{background:var(--surface);color:var(--text2)}
-.btn-cal{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);color:var(--accent)}
-
-/* Form */
-.form{padding:16px;display:flex;flex-direction:column;gap:20px;padding-bottom:40px}
-.form label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
-.q-selector{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.q-opt{padding:12px;border-radius:12px;border:2px solid var(--border);background:rgba(30,41,59,.5);text-align:left;display:flex;align-items:center;gap:8px;transition:all .15s;font-size:13px;font-weight:600;color:var(--text2)}
-.q-opt.sel-1{border-color:var(--q1border);background:var(--q1bg);color:var(--q1text)}
-.q-opt.sel-2{border-color:var(--q2border);background:var(--q2bg);color:var(--q2text)}
-.q-opt.sel-3{border-color:var(--q3border);background:var(--q3bg);color:var(--q3text)}
-.q-opt.sel-4{border-color:var(--q4border);background:var(--q4bg);color:var(--q4text)}
-.att-buttons{display:flex;gap:8px}
-.att-btn{flex:1;padding:12px 8px;border-radius:12px;border:1px solid;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500;transition:background .2s}
-.att-btn-img{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#10b981}
-.att-btn-doc{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.2);color:#3b82f6}
-.att-btn-mic{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.2);color:#8b5cf6}
-.att-btn-mic.recording{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:var(--q1);animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-
-/* Import modal */
-.import-modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:16px}
-.import-sheet{width:100%;max-width:400px;background:var(--surface);border-radius:20px;padding:24px;border:1px solid var(--border);max-height:92vh;overflow-y:auto}
-.import-sheet h2{font-size:16px;font-weight:700;margin-bottom:4px}
-.import-sheet p{font-size:12px;color:var(--text3);margin-bottom:16px;line-height:1.5}
-.import-drop{border:2px dashed var(--border);border-radius:14px;padding:20px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
-.import-drop:hover,.import-drop.dragover{border-color:var(--accent);background:rgba(99,102,241,.06)}
-.import-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.import-drop svg{display:block;margin:0 auto 10px;opacity:.5}
-.import-drop span{font-size:13px;color:var(--text3)}
-.import-drop strong{color:var(--accent)}
-.import-actions{display:flex;gap:8px;margin-top:16px}
-.import-actions button{flex:1;padding:12px;border-radius:12px;font-size:14px;font-weight:600}
-.import-cancel{background:var(--surface2);color:var(--text2)}
-.import-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:12px;color:var(--text);font-family:monospace;line-height:1.5;outline:none;resize:vertical;min-height:120px}
-.import-textarea:focus{border-color:var(--accent)}
-.import-divider{text-align:center;font-size:12px;color:var(--text3);margin:12px 0;display:flex;align-items:center;gap:8px}
-.import-divider::before,.import-divider::after{content:'';flex:1;height:1px;background:var(--surface2)}
-
-/* Search overlay */
-.search-overlay{position:fixed;inset:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);padding:16px}
-.search-bar{display:flex;gap:8px;margin-bottom:16px}
-.search-bar input{flex:1;padding-left:36px}
-.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)}
-.search-results{display:flex;flex-direction:column;gap:8px}
-.sr-item{padding:12px;border-radius:12px;background:rgba(30,41,59,.6);border:1px solid rgba(51,65,85,.5);text-align:left;transition:border .2s}
-.sr-item:hover{border-color:var(--border)}
-
-/* Modal */
-.modal-overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:16px}
-.modal{width:100%;max-width:400px;background:var(--surface);border-radius:16px;padding:24px;border:1px solid var(--border)}
-.modal p{text-align:center;font-weight:600;margin-bottom:16px}
-.modal-btns{display:flex;gap:8px}
-.modal-btns button{flex:1;padding:14px;border-radius:12px;font-weight:600;font-size:14px}
-.modal-cancel{background:var(--surface2);color:var(--text2)}
-.modal-confirm{background:var(--q1);color:#fff}
-
-/* Toast */
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:60;animation:fadeUp .3s ease;white-space:nowrap}
-.toast-ok{background:#10b981;color:#fff}
-.toast-err{background:var(--q1);color:#fff}
-@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-
-/* Responsive */
-@media(min-width:500px){.matrix,.att-grid{max-width:440px;margin:0 auto}.list,.detail,.form,.search-overlay{max-width:500px;margin:0 auto}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Une maison à réinventer — Erdeven · Dr House-Immo</title>
+<meta name="description" content="À Erdeven, entre plages et campagne, une maison de 102 m² sur 757 m² de terrain, avec 71 m² de combles aménageables. Book interactif présenté par Roger-Jacques Vluys, Dr House-Immo.">
+<meta property="og:title" content="Une maison à réinventer — Erdeven">
+<meta property="og:description" content="Un terrain généreux, des volumes existants, des combles aménageables. À vous d'écrire la suite.">
+<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 12 8 50h12v38h24V62h12v26h24V50h12z' fill='%23B3272D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="app"></div>
 
-<script>
-// ============ TRANSLATIONS ============
-const T={
-fr:{appName:"EisenhowerBox",q1:"Faire",q1d:"Urgent & Important",q2:"Planifier",q2d:"Important, Pas Urgent",q3:"Déléguer",q3d:"Urgent, Pas Important",q4:"Éliminer",q4d:"Ni Urgent, Ni Important",add:"Nouveau",title:"Titre",notes:"Notes / Description",reminder:"Rappel",save:"Enregistrer",delete:"Supprimer",download:"Télécharger",search:"Rechercher...",noItems:"Aucun élément ici",addFirst:"Appuyez sur + pour ajouter",attach:"Pièces jointes",photo:"Image",doc:"Document",voice:"Vocal",recording:"Stop",toCalendar:"📅 Ajouter au calendrier",items:"éléments",cancel:"Annuler",created:"Créé le",reminderOn:"Rappel",confirmDel:"Confirmer la suppression ?",yes:"Supprimer",no:"Annuler",results:"Résultats",noResults:"Aucun résultat",selectQ:"Quadrant",edit:"Modifier",play:"▶ Écouter",stop:"⏹ Stop",downloadAll:"Tout télécharger",
-importBtn:"Importer des tâches",importTitle:"Importer des tâches",importDesc:"Collez votre JSON ou choisissez un fichier. Format : tableau d'objets avec <strong>title</strong> (requis) et <strong>quadrant</strong> 1-4 (requis).",importDrop:"Choisir un fichier .json",importOk:"tâche(s) importée(s) !",importSkip:"ignorée(s) (champs manquants)",importErr:"JSON invalide ou format incorrect",importClose:"Fermer",importConfirm:"Importer",importPaste:"Coller du JSON :",importOrFile:"ou choisir un fichier",importPastePlaceholder:'[{"title":"Ma tâche","quadrant":1}]',importPreview:"Prévisualiser"},
-en:{appName:"EisenhowerBox",q1:"Do",q1d:"Urgent & Important",q2:"Schedule",q2d:"Important, Not Urgent",q3:"Delegate",q3d:"Urgent, Not Important",q4:"Eliminate",q4d:"Not Urgent, Not Important",add:"New",title:"Title",notes:"Notes / Description",reminder:"Reminder",save:"Save",delete:"Delete",download:"Download",search:"Search...",noItems:"Nothing here yet",addFirst:"Tap + to add",attach:"Attachments",photo:"Image",doc:"Document",voice:"Voice",recording:"Stop",toCalendar:"📅 Add to Calendar",items:"items",cancel:"Cancel",created:"Created",reminderOn:"Reminder",confirmDel:"Confirm delete?",yes:"Delete",no:"Cancel",results:"Results",noResults:"No results",selectQ:"Quadrant",edit:"Edit",play:"▶ Play",stop:"⏹ Stop",downloadAll:"Download all",
-importBtn:"Import tasks",importTitle:"Import tasks",importDesc:"Paste your JSON or choose a file. Format: array of objects with <strong>title</strong> (required) and <strong>quadrant</strong> 1-4 (required).",importDrop:"Choose a .json file",importOk:"task(s) imported!",importSkip:"skipped (missing fields)",importErr:"Invalid JSON or wrong format",importClose:"Close",importConfirm:"Import",importPaste:"Paste JSON:",importOrFile:"or choose a file",importPastePlaceholder:'[{"title":"My task","quadrant":1}]',importPreview:"Preview"}
-};
+<div id="progress" role="presentation"></div>
 
-// ============ ICONS (inline SVG) ============
-const I={
-flame:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
-target:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
-zap:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-inbox:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>',
-plus:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
-back:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
-search:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
-x:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
-chevron:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>',
-clock:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-clip:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
-trash:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
-download:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
-globe:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
-cam:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
-file:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
-mic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
-calendar:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
-vol:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
-edit:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
-upload:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>'
-};
+<nav class="chapitres" aria-label="Chapitres du book">
+  <div class="marque">D<em>r</em> House-Immo <small class="muted" style="font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;"> · ROGER-JACQUES VLUYS</small></div>
+  <ul>
+    <li><a href="#secteur">Le secteur</a></li>
+    <li><a href="#maison">La maison</a></li>
+    <li><a href="#potentiel">Potentiel</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#urbanisme">Urbanisme</a></li>
+    <li><a href="#visite">Visite</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-const QI=[null,'flame','target','zap','inbox'];
-const QC=[null,'q1','q2','q3','q4'];
+<!-- ══════════ COUVERTURE ══════════ -->
+<section id="couverture">
+  <div class="fond" style="background-image:url('assets/hero.jpg')"></div>
+  <div>
+    <p class="eyebrow rv">Erdeven · Morbihan · Bretagne Sud</p>
+    <h1 class="rv" style="--d:.15s">Bienvenue à Erdeven</h1>
+    <p class="sous rv" style="--d:.3s">Une maison à réinventer</p>
+    <p class="poetic rv" style="--d:.45s">Entre plages et campagne, découvrez une maison au potentiel unique.</p>
+    <p class="amorce rv" style="--d:.6s">Un terrain généreux, des volumes existants, des combles aménageables.
+      Un cadre calme, à deux pas des commerces et de l'océan.<br>
+      <span class="scribble">À vous d'écrire la suite.<svg viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T318,5"/></svg></span>
+    </p>
+  </div>
+  <a class="fleche" href="#secteur">Ouvrir le book <span aria-hidden="true">↓</span></a>
+</section>
 
-// ============ STATE ============
-let state={view:'matrix',lang:'fr',items:[],selQ:null,selItem:null,searchOpen:false,searchQ:'',showDel:false,
-  formTitle:'',formNotes:'',formQ:1,formReminder:'',formAtts:[],editId:null,isRec:false,toast:null,
-  showImport:false,importPending:null,showImportModal:false,importText:''};
-let mediaRec=null,audioChunks=[],audioEls={},playingId=null;
+<!-- ══════════ LE SECTEUR ══════════ -->
+<section id="secteur">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 1 — Le secteur</p>
+      <h2 class="rv">Entre terre et océan</h2>
+      <p class="rv">Nichée au cœur du littoral morbihannais, Erdeven est un village balnéaire où la
+        nature s'exprime en grand format. Ses 8&nbsp;km de plages sauvages, ses dunes protégées et
+        ses sentiers côtiers offrent un décor privilégié pour respirer, marcher, se ressourcer.</p>
+    </div>
 
-function t(k){return T[state.lang][k]||k}
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
-function fmt(d){return new Date(d).toLocaleDateString(state.lang==='fr'?'fr-FR':'en-US',{day:'numeric',month:'short',year:'numeric'})}
-function fmtFull(d){return new Date(d).toLocaleString(state.lang==='fr'?'fr-FR':'en-US',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}
-function qItems(qid){return state.items.filter(i=>i.quadrant===qid)}
+    <div class="mosaique">
+      <figure class="m-a rv"><img src="assets/plage.jpg" alt="Grande plage sauvage d'Erdeven" loading="lazy"><figcaption>Kerhillio, immense et familiale — kite et char à voile</figcaption></figure>
+      <figure class="m-b rv"><img src="assets/menhirs.jpg" alt="Alignements mégalithiques de Kerzerho" loading="lazy"><figcaption>Kerzerho — un musée à ciel ouvert, habité depuis des millénaires</figcaption></figure>
+      <figure class="m-c rv" style="--d:.1s"><img src="assets/fete.jpg" alt="Fête traditionnelle bretonne dans le bourg" loading="lazy"><figcaption>Un bourg animé, une vie locale dynamique</figcaption></figure>
+      <figure class="m-d rv"><img src="assets/keraveon.jpg" alt="Parc et porche de Keravéon" loading="lazy"><figcaption>Le parc de Keravéon</figcaption></figure>
+      <figure class="m-e rv" style="--d:.1s"><img src="assets/port.jpg" alt="Petit port de la ria d'Étel" loading="lazy"><figcaption>La ria d'Étel, à quelques minutes</figcaption></figure>
+    </div>
 
-// ============ STORAGE ============
-function load(){
-  try{
-    const l=localStorage.getItem('eis-lang');if(l)state.lang=l;
-    const d=localStorage.getItem('eis-items');
-    if(d){
-      state.items=JSON.parse(d);
-    }else{
-      const now=new Date().toISOString();
-      state.items=[
-        {id:uid(),title:"Créer le compte Instagram @immatch.app",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Tourner 3 Reels Score en direct",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Découper le Guide Acquéreur en 5 carrousels Instagram",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Calendrier éditorial 4 semaines",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Série Reels MargImmo en action",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Série Reels RenoVision",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Posts collaboratifs avec pros partenaires",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Créer une page TikTok IMMATCH",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Rédiger 10 scripts de Reels éducatifs",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Templates graphiques Canva aux couleurs IMMATCH",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Banque de hooks pour Reels",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"Veille hebdo DomeusAI + concurrents",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"NE PAS copier le produit DomeusAI",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now},
-        {id:uid(),title:"NE PAS acheter de followers",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now}
-      ];
-      saveItems();
-    }
-  }catch(e){console.error(e)}
-}
-function saveItems(){try{localStorage.setItem('eis-items',JSON.stringify(state.items))}catch(e){console.error(e)}}
-function saveLang(){try{localStorage.setItem('eis-lang',state.lang)}catch(e){console.error(e)}}
+    <div class="reperes">
+      <div class="rv"><b>8&nbsp;km</b><span>de plages sauvages et de dunes protégées</span></div>
+      <div class="rv" style="--d:.12s"><b>15&nbsp;min</b><span>de la gare TGV d'Auray — Paris direct</span></div>
+      <div class="rv" style="--d:.24s"><b>RN&nbsp;165</b><span>accès rapide à Lorient et Vannes</span></div>
+    </div>
+  </div>
+</section>
 
-// ============ FILE HELPERS ============
-function compressImg(file){
-  return new Promise(r=>{
-    const fr=new FileReader();
-    fr.onload=e=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');const ratio=Math.min(800/img.width,1);c.width=img.width*ratio;c.height=img.height*ratio;c.getContext('2d').drawImage(img,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.7))};img.src=e.target.result};
-    fr.readAsDataURL(file)})
-}
-function fileToB64(file){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(file)})}
-function downloadAtt(att){const a=document.createElement('a');a.href=att.data;a.download=att.name;document.body.appendChild(a);a.click();document.body.removeChild(a)}
+<!-- ══════════ INTERLUDE QUIZ ══════════ -->
+<section id="quiz" class="on-dark">
+  <div class="inner">
+    <div class="cadre rv">
+      <p class="eyebrow">Interlude — un peu de jeu</p>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">Connaissez-vous Erdeven&nbsp;?</h2>
+      <p class="muted">Quatre questions, aucune mauvaise conséquence — juste le plaisir de découvrir le secteur.</p>
+      <div id="quiz-questions"></div>
+      <div id="quiz-score" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
 
-// ============ TOAST ============
-function showToast(msg,type='ok'){
-  state.toast={msg,type};render();
-  setTimeout(()=>{state.toast=null;render()},2800);
-}
+<!-- ══════════ LA MAISON ══════════ -->
+<section id="maison">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 2 — La maison aujourd'hui</p>
+      <h2 class="rv">Une base saine, un lieu à écrire</h2>
+      <p class="rv">Construite dans les années 1970, cette maison de plain-pied bénéficie d'un emplacement
+        privilégié&nbsp;: le centre-bourg à pied, les plages à moins de 3&nbsp;km. Ses volumes existants et
+        ses combles sur plancher béton en font une opportunité rare de créer un lieu de vie sur mesure.</p>
+    </div>
+  </div>
 
-// ============ CALENDAR EXPORT ============
-function exportICS(item){
-  if(!item.reminder)return;
-  const d=new Date(item.reminder);
-  const pad=n=>String(n).padStart(2,'0');
-  const icsDate=`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
-  const end=new Date(d.getTime()+3600000);
-  const icsEnd=`${end.getFullYear()}${pad(end.getMonth()+1)}${pad(end.getDate())}T${pad(end.getHours())}${pad(end.getMinutes())}00`;
-  const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${icsDate}\nDTEND:${icsEnd}\nSUMMARY:${item.title}\nDESCRIPTION:${(item.notes||'').replace(/\n/g,'\\n')}\nBEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR`;
-  const blob=new Blob([ics],{type:'text/calendar'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${item.title.replace(/[^a-zA-Z0-9]/g,'_')}.ics`;
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  showToast(state.lang==='fr'?'Fichier .ics téléchargé !':'ICS file downloaded!');
-}
+  <figure class="pleine-image rv">
+    <img src="assets/aerienne.jpg" alt="Vue aérienne de la maison et de son terrain" loading="lazy">
+    <figcaption>La maison sur sa parcelle privative — exposition plein sud</figcaption>
+  </figure>
 
-// ============ JSON IMPORT ============
-function readJSONFile(file){
-  return new Promise((resolve,reject)=>{
-    const reader=new FileReader();
-    reader.onload=e=>{
-      try{resolve(JSON.parse(e.target.result))}
-      catch(err){reject(err)}
-    };
-    reader.onerror=()=>reject(new Error('read error'));
-    reader.readAsText(file);
-  });
-}
+  <div class="inner">
+    <div class="chiffres">
+      <div class="rv"><b>102 <small>m²</small></b><span>habitables de plain-pied</span></div>
+      <div class="rv" style="--d:.1s"><b>+71 <small>m²</small></b><span>de combles aménageables</span></div>
+      <div class="rv" style="--d:.2s"><b>757 <small>m²</small></b><span>de terrain privatif</span></div>
+      <div class="rv" style="--d:.3s"><b>UB</b><span>zone constructible favorable</span></div>
+    </div>
 
-function parseImportList(raw){
-  return Array.isArray(raw)?raw:Array.isArray(raw.tasks)?raw.tasks:Array.isArray(raw.items)?raw.items:null;
-}
-
-async function handleImportFile(file){
-  if(!file||!file.name.toLowerCase().endsWith('.json')){
-    showToast(t('importErr'),'err');
-    return;
-  }
-  try{
-    const raw=await readJSONFile(file);
-    const list=parseImportList(raw);
-    if(!list){showToast(t('importErr'),'err');return;}
-    state.importPending=list;
-    state.showImportModal=false;
-    state.importText='';
-    state.showImport=true;
-    render();
-  }catch(e){
-    showToast(t('importErr'),'err');
-  }
-}
-
-function handleImportText(text){
-  try{
-    const raw=JSON.parse(text.trim());
-    const list=parseImportList(raw);
-    if(!list){showToast(t('importErr'),'err');return;}
-    state.importPending=list;
-    state.showImportModal=false;
-    state.importText='';
-    state.showImport=true;
-    render();
-  }catch(e){
-    showToast(t('importErr'),'err');
-  }
-}
-
-function doImport(){
-  const list=state.importPending||[];
-  let imported=0,skipped=0;
-  list.forEach(item=>{
-    const q=parseInt(item.quadrant,10);
-    if(!item.title||![1,2,3,4].includes(q)){skipped++;return;}
-    state.items.push({
-      id:uid(),
-      title:String(item.title).trim(),
-      notes:item.notes?String(item.notes).trim():'',
-      quadrant:q,
-      reminder:item.reminder||null,
-      attachments:[],
-      createdAt:item.createdAt||new Date().toISOString()
-    });
-    imported++;
-  });
-  saveItems();
-  state.showImport=false;
-  state.importPending=null;
-  render();
-  let msg=`${imported} ${t('importOk')}`;
-  if(skipped)msg+=` — ${skipped} ${t('importSkip')}`;
-  showToast(msg);
-}
-
-// ============ RENDER ============
-function render(){
-  const app=document.getElementById('app');
-  let html='';
-
-  if(state.view==='matrix')html=renderMatrix();
-  else if(state.view==='list')html=renderList();
-  else if(state.view==='detail')html=renderDetail();
-  else if(state.view==='form')html=renderForm();
-
-  if(state.searchOpen)html+=renderSearch();
-  if(state.showDel)html+=renderDeleteModal();
-  if(state.showImportModal)html+=renderImportInputModal();
-  if(state.showImport)html+=renderImportModal();
-  if(state.toast)html+=`<div class="toast toast-${state.toast.type}">${state.toast.msg}</div>`;
-
-  app.innerHTML=html;
-  bind();
-}
-
-// ============ MATRIX ============
-function renderMatrix(){
-  const cards=QC.slice(1).map((c,i)=>{
-    const qid=i+1;const count=qItems(qid).length;
-    return `<button class="q-card ${c}-card" data-q="${qid}" data-action="openQ">
-      <div class="q-icon">${I[QI[qid]]}</div>
-      <div class="q-name">${t('q'+qid)}</div>
-      <div class="q-desc">${t('q'+qid+'d')}</div>
-      <div class="q-bottom"><span class="q-badge">${count}</span>${I.chevron}</div>
-    </button>`}).join('');
-
-  return `<div class="header"><div class="header-left"><h1>${t('appName')}</h1></div><div class="header-right">
-    <button class="btn-icon" title="${t('importBtn')}" data-action="openImport">${I.upload}</button>
-    <button class="btn-icon" data-action="openSearch">${I.search}</button>
-    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
-  </div></div>
-  <div class="matrix">${cards}</div>
-  <div class="total">${state.items.length} ${t('items')}</div>
-  <button class="fab" data-action="addNew">${I.plus}</button>`;
-}
-
-// ============ IMPORT INPUT MODAL (paste JSON or pick file) ============
-function renderImportInputModal(){
-  const hasText=state.importText.trim().length>0;
-  return `<div class="import-modal">
-    <div class="import-sheet">
-      <h2>${t('importTitle')}</h2>
-      <p>${t('importDesc')}</p>
-      <label style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px">${t('importPaste')}</label>
-      <textarea id="import-text" class="import-textarea" rows="6" placeholder="${t('importPastePlaceholder')}">${esc(state.importText)}</textarea>
-      <div class="import-divider">${t('importOrFile')}</div>
-      <label class="import-drop" style="display:block;cursor:pointer">
-        ${I.upload}
-        <span><strong>${t('importDrop')}</strong></span>
-        <input type="file" id="import-file-modal" accept=".json,application/json" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
-      </label>
-      <div class="import-actions">
-        <button class="import-cancel" data-action="closeImportInput">${t('cancel')}</button>
-        <button class="btn-primary btn-action" style="flex:1" id="btn-paste-import" data-action="pasteImport" ${!hasText?'disabled':''}>${t('importPreview')}</button>
+    <div class="deux-cols">
+      <div class="rv">
+        <h3>Ce que la maison offre déjà</h3>
+        <p>Rez-de-chaussée&nbsp;: entrée, cuisine indépendante, séjour lumineux avec insert,
+          quatre chambres, salle de bains, WC séparés et cellier.</p>
+        <p>Étage&nbsp;: combles bruts, facilement aménageables grâce au plancher béton et à la
+          charpente en excellent état — jusqu'à environ <strong>173&nbsp;m² habitables</strong> après aménagement.</p>
       </div>
+      <ul class="atouts rv" style="--d:.15s">
+        <li>Charpente en excellent état</li>
+        <li>Combles aménageables, plancher béton</li>
+        <li>Fort potentiel d'agrandissement</li>
+        <li>Exposition plein sud</li>
+        <li>Centre-bourg accessible à pied</li>
+        <li>Plages d'Erdeven à moins de 3&nbsp;km</li>
+      </ul>
     </div>
-  </div>`;
-}
 
-// ============ IMPORT PREVIEW MODAL ============
-function renderImportModal(){
-  const list=state.importPending||[];
-  const valid=list.filter(i=>i.title&&[1,2,3,4].includes(parseInt(i.quadrant,10)));
-  const skipped=list.length-valid.length;
-  const preview=valid.slice(0,5).map(i=>{
-    const q=parseInt(i.quadrant,10);const c=QC[q];
-    return `<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface2)">
-      <span style="width:8px;height:8px;border-radius:50%;background:var(--${c});flex-shrink:0"></span>
-      <span style="font-size:13px;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(String(i.title))}</span>
-      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${t('q'+q)}</span>
-    </div>`}).join('');
-  const moreCount=valid.length>5?valid.length-5:0;
-
-  return `<div class="import-modal">
-    <div class="import-sheet">
-      <h2>${t('importTitle')}</h2>
-      <p style="margin-bottom:12px">${valid.length} ${t('importOk')}${skipped?` &mdash; ${skipped} ${t('importSkip')}`:''}</p>
-      ${preview?`<div style="margin-bottom:${moreCount?'4px':'12px'}">${preview}</div>`:''}
-      ${moreCount?`<p style="font-size:11px;color:var(--text3);margin-bottom:12px">+ ${moreCount} ${state.lang==='fr'?'autre(s)':'more'}…</p>`:''}
-      <div class="import-actions">
-        <button class="import-cancel" data-action="closeImport">${t('importClose')}</button>
-        <button class="btn-primary btn-action" style="flex:1" data-action="confirmImport" ${!valid.length?'disabled':''}>${t('importConfirm')} (${valid.length})</button>
-      </div>
+    <div class="galerie-details">
+      <figure class="rv"><img src="assets/combles.jpg" alt="Combles avec charpente apparente et plancher béton" loading="lazy"><figcaption>71&nbsp;m² de combles sur plancher béton — la réserve d'espace de la maison</figcaption></figure>
+      <figure class="rv"><img src="assets/facade.jpg" alt="Façade de la maison" loading="lazy"><figcaption>Une maison individuelle de 1972, semi plain-pied</figcaption></figure>
+      <figure class="rv" style="--d:.1s"><img src="assets/porte.jpg" alt="Porte d'entrée en bois d'origine" loading="lazy"><figcaption>La porte d'origine — du caractère, à conserver ou moderniser</figcaption></figure>
     </div>
-  </div>`;
-}
+  </div>
+</section>
 
-// ============ LIST ============
-function renderList(){
-  const q=state.selQ;const list=qItems(q).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
-  const bg=['','q1','q2','q3','q4'][q];
-
-  let content='';
-  if(list.length===0){
-    content=`<div class="empty"><div class="empty-icon" style="background:var(--${bg})">${I[QI[q]]}</div>
-      <p style="font-size:14px">${t('noItems')}</p><p style="font-size:12px;margin-top:4px">${t('addFirst')}</p></div>`;
-  }else{
-    content=`<div class="list">${list.map(item=>{
-      const hasClock=item.reminder?`<span>${I.clock} ${fmt(item.reminder)}</span>`:'';
-      const hasClip=item.attachments?.length?`<span>${I.clip} ${item.attachments.length}</span>`:'';
-      return `<button class="item-card" data-action="openItem" data-id="${item.id}">
-        <div style="flex:1;min-width:0">
-          <div class="item-title">${esc(item.title)}</div>
-          ${item.notes?`<div class="item-notes">${esc(item.notes)}</div>`:''}
-          <div class="item-meta"><span>${fmt(item.createdAt)}</span>${hasClock}${hasClip}</div>
-        </div>${I.chevron}</button>`}).join('')}</div>`;
-  }
-
-  return `<div class="header"><div class="header-left">
-    <button class="btn-icon" data-action="backMatrix">${I.back}</button>
-    <h1>${t('q'+q)}</h1></div><div class="header-right">
-    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
-  </div></div>${content}
-  <button class="fab" data-action="addInQ">${I.plus}</button>`;
-}
-
-// ============ DETAIL ============
-function renderDetail(){
-  const item=state.selItem;if(!item)return'';
-  const q=item.quadrant;const c=QC[q];
-
-  let attsHtml='';
-  if(item.attachments?.length){
-    attsHtml=`<div><div class="att-label">${t('attach')}</div><div class="att-grid">
-      ${item.attachments.map(att=>{
-        let preview='';
-        if(att.type?.startsWith('image/'))preview=`<img src="${att.data}" alt="${esc(att.name)}">`;
-        else if(att.type?.startsWith('audio/'))preview=`<div class="att-audio" data-action="playAudio" data-att="${att.id}">${playingId===att.id?t('stop'):t('play')}</div>`;
-        else preview=`<div class="att-doc">${I.file} <span style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span></div>`;
-        return `<div class="att-item">${preview}<div class="att-bar">
-          <span style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span>
-          <button data-action="dlAtt" data-att="${att.id}">${I.download}</button></div></div>`}).join('')}
-    </div></div>`;
-  }
-
-  return `<div class="header"><div class="header-left">
-    <button class="btn-icon" data-action="backFromDetail">${I.back}</button>
-    <h1>${t('q'+q)}</h1></div><div class="header-right">
-    <button class="btn-icon" data-action="editItem" style="color:var(--accent)">${I.edit}</button>
-    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
-  </div></div>
-  <div class="detail">
-    <div class="detail-card ${c}-card" style="background:var(--${c}bg);border-color:var(--${c}border)">
-      <div class="d-badge" style="color:var(--${c}text)"><div class="dot" style="background:var(--${c})"></div>${t('q'+q)}</div>
-      <h2>${esc(item.title)}</h2>
-      ${item.notes?`<div class="d-notes">${esc(item.notes)}</div>`:''}
+<!-- ══════════ POTENTIEL ══════════ -->
+<section id="potentiel" class="band">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 3 — Révéler le potentiel</p>
+      <h2 class="rv">Glissez pour <span class="scribble">révéler<svg viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T318,5"/></svg></span></h2>
+      <p class="rv">Ces espaces, restés dans leur configuration d'origine, constituent une formidable base
+        de transformation&nbsp;: ouvrir la cuisine sur le salon, moderniser les finitions, prolonger
+        l'espace vers le jardin. Faites glisser le curseur pour passer de l'existant à la projection.</p>
     </div>
-    <div class="meta-tags">
-      <span class="tag tag-date">${t('created')} ${fmt(item.createdAt)}</span>
-      ${item.reminder?`<span class="tag tag-reminder">${I.clock} ${fmtFull(item.reminder)}</span>`:''}
-    </div>
-    ${item.reminder?`<button class="btn-action btn-cal" data-action="exportCal">${t('toCalendar')}</button>`:''}
-    ${attsHtml}
-    <div style="padding-top:16px;border-top:1px solid var(--surface);display:flex;flex-direction:column;gap:8px">
-      ${item.attachments?.length?`<button class="btn-action btn-secondary" data-action="dlAll">${I.download} ${t('downloadAll')} (${item.attachments.length})</button>`:''}
-      <button class="btn-action btn-danger" data-action="confirmDel">${I.trash} ${t('delete')}</button>
-    </div>
-  </div>`;
-}
 
-// ============ FORM ============
-function renderForm(){
-  const isEdit=!!state.editId;
-  const qOpts=QC.slice(1).map((c,i)=>{
-    const qid=i+1;const sel=state.formQ===qid?`sel-${qid}`:'';
-    return `<button class="q-opt ${sel}" data-action="setQ" data-qid="${qid}">
-      ${I[QI[qid]]} ${t('q'+qid)}</button>`}).join('');
-
-  const atts=state.formAtts.map(att=>{
-    let preview='';
-    if(att.type?.startsWith('image/'))preview=`<img src="${att.data}" alt="${esc(att.name)}">`;
-    else if(att.type?.startsWith('audio/'))preview=`<div class="att-audio" data-action="playAudio" data-att="${att.id}">${playingId===att.id?t('stop'):t('play')}</div>`;
-    else preview=`<div class="att-doc">${I.file} ${esc(att.name)}</div>`;
-    return `<div class="att-item">${preview}<div class="att-bar">
-      <span style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span>
-      <div style="display:flex;gap:2px">
-        <button data-action="dlFormAtt" data-att="${att.id}">${I.download}</button>
-        <button class="del-att" data-action="rmAtt" data-att="${att.id}">${I.x}</button>
-      </div></div></div>`}).join('');
-
-  return `<div class="header"><div class="header-left">
-    <button class="btn-icon" data-action="backFromForm">${I.back}</button>
-    <h1>${isEdit?t('edit'):t('add')}</h1></div><div class="header-right">
-    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
-  </div></div>
-  <div class="form">
-    <div><label>${t('title')}</label>
-      <input type="text" id="f-title" value="${esc(state.formTitle)}" placeholder="${state.lang==='fr'?'Ex: Idée de projet...':'Ex: Project idea...'}"></div>
-    <div><label>${t('notes')}</label>
-      <textarea id="f-notes" rows="4" placeholder="${state.lang==='fr'?'Détails, contexte, liens...':'Details, context, links...'}">${esc(state.formNotes)}</textarea></div>
-    <div><label>${t('selectQ')}</label><div class="q-selector">${qOpts}</div></div>
-    <div><label>${I.calendar} ${t('reminder')}</label>
-      <input type="datetime-local" id="f-reminder" value="${state.formReminder}"></div>
-    <div><label>${t('attach')}</label>
-      <div class="att-buttons">
-        <label class="att-btn att-btn-img"><input type="file" accept="image/*" capture="environment" id="f-img" style="display:none">${I.cam} ${t('photo')}</label>
-        <label class="att-btn att-btn-doc"><input type="file" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.csv" id="f-doc" style="display:none">${I.file} ${t('doc')}</label>
-        <button class="att-btn att-btn-mic${state.isRec?' recording':''}" data-action="toggleRec">${I.mic} ${state.isRec?t('recording'):t('voice')}</button>
-      </div>
-      ${atts?`<div class="att-grid" style="margin-top:12px">${atts}</div>`:''}
-    </div>
-    <button class="btn-action btn-primary" data-action="saveItem" ${!state.formTitle.trim()?'disabled':''}>${t('save')}</button>
-  </div>`;
-}
-
-// ============ SEARCH ============
-function renderSearch(){
-  const q=state.searchQ.toLowerCase();
-  const res=q?state.items.filter(i=>i.title.toLowerCase().includes(q)||(i.notes||'').toLowerCase().includes(q)):[];
-  return `<div class="search-overlay">
-    <div class="search-bar" style="display:flex;gap:8px;position:relative">
-      <div style="flex:1;position:relative"><span class="search-icon">${I.search}</span>
-        <input id="search-input" type="text" value="${esc(state.searchQ)}" placeholder="${t('search')}" style="padding-left:36px">
-      </div>
-      <button class="btn-icon" style="background:var(--surface);flex-shrink:0" data-action="closeSearch">${I.x}</button>
-    </div>
-    ${q?`<p style="font-size:12px;color:var(--text3);padding:0 4px;margin-bottom:8px">${t('results')}: ${res.length}</p>`:''}
-    ${q&&!res.length?`<p style="text-align:center;color:var(--text3);padding:40px 0">${t('noResults')}</p>`:''}
-    <div class="search-results">${res.map(item=>{
-      const dot=`background:var(--${QC[item.quadrant]})`;
-      return `<button class="sr-item" data-action="openSearchItem" data-id="${item.id}">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <span style="width:8px;height:8px;border-radius:50%;${dot};flex-shrink:0"></span>
-          <span style="font-size:14px;font-weight:600;color:var(--text)">${esc(item.title)}</span>
+    <div class="duo-compare">
+      <figure class="rv">
+        <div class="compare r32">
+          <div class="cmp-avant"><img src="assets/sejour-avant.jpg" alt="Séjour dans son état actuel"></div>
+          <div class="cmp-apres"><img src="assets/sejour-apres.jpg" alt="Séjour projeté après rénovation"></div>
+          <div class="cmp-trait" aria-hidden="true"></div>
+          <span class="cmp-tag avant">Avant</span><span class="cmp-tag apres">Projection</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Comparer le séjour avant et après projection">
         </div>
-        ${item.notes?`<p style="font-size:12px;color:var(--text3);padding-left:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(item.notes)}</p>`:''}
-      </button>`}).join('')}</div></div>`;
-}
+        <figcaption>Le séjour de 16,6&nbsp;m² avec insert bois — et sa projection en grande pièce de vie</figcaption>
+      </figure>
+      <figure class="rv" style="--d:.15s">
+        <div class="compare r11">
+          <div class="cmp-avant"><img src="assets/placard-avant.jpg" alt="Placard sous escalier dans son état actuel"></div>
+          <div class="cmp-apres"><img src="assets/placard-apres.jpg" alt="Placard sous escalier projeté"></div>
+          <div class="cmp-trait" aria-hidden="true"></div>
+          <span class="cmp-tag avant">Avant</span><span class="cmp-tag apres">Projection</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Comparer le placard sous escalier avant et après projection">
+        </div>
+        <figcaption>Sous l'escalier, un rangement intégré qui optimise les volumes</figcaption>
+      </figure>
+    </div>
 
-// ============ DELETE MODAL ============
-function renderDeleteModal(){
-  return `<div class="modal-overlay"><div class="modal">
-    <p>${t('confirmDel')}</p>
-    <div class="modal-btns">
-      <button class="modal-cancel" data-action="cancelDel">${t('no')}</button>
-      <button class="modal-confirm" data-action="doDelete">${t('yes')}</button>
-    </div></div></div>`;
-}
+    <p class="note-honnete rv"><strong>À prévoir&nbsp;:</strong> des travaux de rénovation (isolation, chauffage,
+      électricité, rafraîchissement intérieur) permettront de révéler tout le potentiel de la maison.
+      Projections d'aménagement non contractuelles.</p>
+  </div>
+</section>
 
-function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+<!-- ══════════ PLANS ══════════ -->
+<section id="plans">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 4 — Les plans</p>
+      <h2 class="rv">D'aujourd'hui à demain</h2>
+      <p class="rv">La maison offre une distribution simple et fonctionnelle. Un escalier intérieur mène
+        aux combles, réserve d'espace de la maison. L'étude d'aménagement propose une transformation
+        moderne&nbsp;: grand séjour de 34&nbsp;m² ouvert sur le jardin, suite parentale, bureau pour le
+        télétravail au rez-de-chaussée&nbsp;; quatre chambres, salle d'eau et espace polyvalent à l'étage.</p>
+    </div>
+    <div class="plans-grille">
+      <figure class="rv"><img src="assets/plan-rdc.jpg" alt="Plan actuel du rez-de-chaussée" loading="lazy"><figcaption>Aujourd'hui — rez-de-chaussée, 102&nbsp;m²</figcaption></figure>
+      <figure class="rv" style="--d:.1s"><img src="assets/plan-combles.jpg" alt="Plan actuel des combles" loading="lazy"><figcaption>Aujourd'hui — combles bruts, ≈&nbsp;71&nbsp;m²</figcaption></figure>
+      <figure class="rv"><img src="assets/plan3d-rdc.jpg" alt="Projection 3D du rez-de-chaussée réaménagé" loading="lazy"><figcaption>Projection — rez-de-chaussée réinventé</figcaption></figure>
+      <figure class="rv" style="--d:.1s"><img src="assets/plan3d-etage.jpg" alt="Projection 3D de l'étage aménagé" loading="lazy"><figcaption>Projection — étage aménagé, ≈&nbsp;173&nbsp;m² au total</figcaption></figure>
+    </div>
+    <p class="mention rv">Projections d'aménagement non contractuelles.</p>
+  </div>
+</section>
 
-// ============ EVENTS ============
-function bind(){
-  // Delegated click
-  document.getElementById('app').onclick=function(e){
-    const btn=e.target.closest('[data-action]');
-    if(!btn)return;
-    const action=btn.dataset.action;
+<!-- ══════════ OPPORTUNITÉ ══════════ -->
+<section id="opportunite" class="band">
+  <div class="inner">
+    <div class="opp">
+      <div>
+        <p class="eyebrow rv">Chapitre 5 — L'opportunité</p>
+        <h2 class="rv">Pourquoi cette maison, aujourd'hui</h2>
+        <p class="rv">Erdeven est une commune littorale particulièrement recherchée, où les maisons rénovées
+          se négocient autour de 3&nbsp;700 à 4&nbsp;000&nbsp;€/m² selon leur emplacement et leurs prestations.
+          Avec 102&nbsp;m² existants et jusqu'à 173&nbsp;m² après aménagement, la marge de création est réelle.</p>
+        <div class="carte-terrain rv" style="--d:.15s">
+          <b>Opportunité patrimoniale</b>
+          <p class="muted" style="margin-top:.4rem">Possibilité d'acquérir en complément un terrain à bâtir
+            attenant de <strong>456&nbsp;m²</strong>, déjà borné et issu d'une division parcellaire — pour un
+            projet familial, une construction indépendante ou une stratégie patrimoniale.</p>
+        </div>
+      </div>
+      <figure class="rv" style="--d:.1s">
+        <img src="assets/parcelle.jpg" alt="Plan de la parcelle et du terrain attenant de 456 m²" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
 
-    if(action==='openQ'){state.selQ=+btn.dataset.q;state.view='list';render()}
-    else if(action==='backMatrix'){state.selQ=null;state.view='matrix';render()}
-    else if(action==='openItem'){
-      const item=state.items.find(i=>i.id===btn.dataset.id);
-      if(item){state.selItem=item;state.view='detail';render()}
-    }
-    else if(action==='backFromDetail'){state.selItem=null;state.view=state.selQ?'list':'matrix';render()}
-    else if(action==='addNew'){resetForm();state.view='form';render()}
-    else if(action==='addInQ'){resetForm();state.formQ=state.selQ||1;state.view='form';render()}
-    else if(action==='editItem'){
-      const item=state.selItem;
-      state.formTitle=item.title;state.formNotes=item.notes||'';state.formQ=item.quadrant;
-      state.formReminder=item.reminder||'';state.formAtts=[...(item.attachments||[])];state.editId=item.id;
-      state.view='form';render();
-    }
-    else if(action==='backFromForm'){resetForm();state.view=state.selItem?'detail':state.selQ?'list':'matrix';render()}
-    else if(action==='setQ'){state.formQ=+btn.dataset.qid;render()}
-    else if(action==='toggleRec'){
-      if(state.isRec)stopRec();else startRec();
-    }
-    else if(action==='rmAtt'){state.formAtts=state.formAtts.filter(a=>a.id!==btn.dataset.att);render()}
-    else if(action==='saveItem'){doSave()}
-    else if(action==='confirmDel'){state.showDel=true;render()}
-    else if(action==='cancelDel'){state.showDel=false;render()}
-    else if(action==='doDelete'){doDelete()}
-    else if(action==='openSearch'){state.searchOpen=true;state.searchQ='';render();setTimeout(()=>{const el=document.getElementById('search-input');if(el)el.focus()},50)}
-    else if(action==='closeSearch'){state.searchOpen=false;state.searchQ='';render()}
-    else if(action==='openSearchItem'){
-      const item=state.items.find(i=>i.id===btn.dataset.id);
-      if(item){state.selItem=item;state.searchOpen=false;state.searchQ='';state.view='detail';render()}
-    }
-    else if(action==='toggleLang'){state.lang=state.lang==='fr'?'en':'fr';saveLang();render()}
-    else if(action==='exportCal'){exportICS(state.selItem)}
-    else if(action==='dlAtt'||action==='dlFormAtt'){
-      const atts=action==='dlAtt'?state.selItem.attachments:state.formAtts;
-      const att=atts.find(a=>a.id===btn.dataset.att);if(att)downloadAtt(att);
-    }
-    else if(action==='dlAll'){state.selItem.attachments.forEach(downloadAtt)}
-    else if(action==='playAudio'){
-      const atts=state.view==='form'?state.formAtts:state.selItem?.attachments||[];
-      const att=atts.find(a=>a.id===btn.dataset.att);
-      if(att)toggleAudio(att);
-    }
-    // Import JSON actions
-    else if(action==='openImport'){state.showImportModal=true;state.importText='';render();setTimeout(()=>{const el=document.getElementById('import-text');if(el)el.focus()},50)}
-    else if(action==='closeImportInput'){state.showImportModal=false;state.importText='';render()}
-    else if(action==='pasteImport'){if(state.importText.trim())handleImportText(state.importText)}
-    else if(action==='closeImport'){state.showImport=false;state.importPending=null;render()}
-    else if(action==='confirmImport'){doImport()}
-  };
+<!-- ══════════ URBANISME ══════════ -->
+<section id="urbanisme" class="on-dark">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 6 — Urbanisme</p>
+      <h2 class="rv">Zone UB — un règlement favorable</h2>
+      <p class="rv muted">Les règles concrètes qui dessinent ce que vous pourrez faire de la parcelle,
+        d'après le Plan Local d'Urbanisme en vigueur.</p>
+    </div>
+    <div class="regles">
+      <div class="rv"><b>70&nbsp;%</b><span>d'emprise au sol possible — soit environ 500&nbsp;m² sur la parcelle</span></div>
+      <div class="rv" style="--d:.1s"><b>6&nbsp;m / 9&nbsp;m</b><span>hauteur maximale à l'égout / au faîtage</span></div>
+      <div class="rv"><b>1,80 – 2&nbsp;m</b><span>clôtures, en harmonie avec l'environnement</span></div>
+      <div class="rv" style="--d:.1s"><b>Piscine</b><span>autorisée sous réserve d'une bonne intégration paysagère</span></div>
+    </div>
+    <div class="liens-officiels rv">
+      <a class="btn" href="https://data.geopf.fr/annexes/gpu/documents/DU_56054/cc30e2799f801c9652a228ca12f8ed1c/56054_reglement_20250708.pdf" target="_blank" rel="noopener">Règlement du PLU (officiel)</a>
+      <a class="btn" href="https://errial.georisques.gouv.fr/#/6FfNBk31" target="_blank" rel="noopener">État des risques — ERP</a>
+    </div>
+  </div>
+</section>
 
-  // Input bindings
-  const ti=document.getElementById('f-title');
-  if(ti)ti.oninput=()=>{state.formTitle=ti.value;const sb=document.querySelector('[data-action="saveItem"]');if(sb)sb.disabled=!ti.value.trim()};
-  const ni=document.getElementById('f-notes');
-  if(ni)ni.oninput=()=>{state.formNotes=ni.value};
-  const ri=document.getElementById('f-reminder');
-  if(ri)ri.onchange=()=>{state.formReminder=ri.value};
-  const si=document.getElementById('search-input');
-  if(si)si.oninput=()=>{state.searchQ=si.value;render();setTimeout(()=>{const el=document.getElementById('search-input');if(el){el.focus();el.selectionStart=el.selectionEnd=el.value.length}},10)};
+<!-- ══════════ DIAGNOSTICS ══════════ -->
+<section id="diagnostics" class="on-dark deep">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 7 — Transparence</p>
+      <h2 class="rv">Informations techniques &amp; diagnostics</h2>
+      <p class="rv muted">Nous préférons tout vous dire — c'est aussi comme ça qu'on écrit une belle suite.</p>
+    </div>
 
-  // Import textarea binding
-  const it=document.getElementById('import-text');
-  if(it)it.oninput=()=>{
-    state.importText=it.value;
-    const pb=document.getElementById('btn-paste-import');
-    if(pb)pb.disabled=!it.value.trim();
-  };
+    <div class="dpe rv" role="img" aria-label="Étiquette énergie : classe G actuellement">
+      <div class="d-a">A</div><div class="d-b">B</div><div class="d-c">C</div>
+      <div class="d-d">D</div><div class="d-e">E</div><div class="d-f">F</div>
+      <div class="d-g actif">G</div>
+    </div>
 
-  // File input in import modal
-  const jf=document.getElementById('import-file-modal');
-  if(jf)jf.onchange=(e)=>{
-    const file=e.target.files?.[0];
-    if(file)handleImportFile(file);
-    jf.value='';
-  };
+    <ul class="tech-liste rv">
+      <li>Tout-à-l'égout conforme</li>
+      <li>Alimentation actuelle par eau de source</li>
+      <li>Chauffage à recréer</li>
+      <li>Électricité à reprendre</li>
+      <li>Menuiseries PVC majoritaires</li>
+      <li>Travaux estimés — devis sur demande</li>
+    </ul>
 
-  // File inputs (attachments)
-  const fi=document.getElementById('f-img');
-  if(fi)fi.onchange=async(e)=>{
-    const file=e.target.files?.[0];if(!file)return;
-    const data=file.type.startsWith('image/')?await compressImg(file):await fileToB64(file);
-    state.formAtts.push({id:uid(),name:file.name,type:file.type,data});fi.value='';render();
-  };
-  const fd=document.getElementById('f-doc');
-  if(fd)fd.onchange=async(e)=>{
-    const file=e.target.files?.[0];if(!file)return;
-    const data=await fileToB64(file);
-    state.formAtts.push({id:uid(),name:file.name,type:file.type,data});fd.value='';render();
-  };
-}
+    <div class="analyse rv">
+      <p><strong>Notre analyse.</strong> Les travaux sont importants mais concernent principalement
+        l'amélioration énergétique et le confort. La structure, le plancher béton des combles et la
+        charpente constituent une excellente base pour un projet de rénovation durable.</p>
+    </div>
+  </div>
+</section>
 
-function resetForm(){
-  state.formTitle='';state.formNotes='';state.formQ=state.selQ||1;
-  state.formReminder='';state.formAtts=[];state.editId=null;state.isRec=false;
-}
+<!-- ══════════ VISITE VIRTUELLE ══════════ -->
+<section id="visite" class="on-dark">
+  <div class="inner">
+    <div class="chap-tete">
+      <p class="eyebrow rv">Chapitre 8 — La visite</p>
+      <h2 class="rv">Et si vous commenciez la visite dès maintenant&nbsp;?</h2>
+      <p class="rv muted">Explorez chaque pièce comme si vous y étiez. Découvrez les volumes, imaginez vos
+        aménagements et projetez-vous dans votre futur chez-vous, en toute liberté.</p>
+    </div>
 
-function doSave(){
-  if(!state.formTitle.trim())return;
-  const data={title:state.formTitle.trim(),notes:state.formNotes.trim(),quadrant:state.formQ,
-    reminder:state.formReminder||null,attachments:state.formAtts};
-  if(state.editId){
-    state.items=state.items.map(i=>i.id===state.editId?{...i,...data,updatedAt:new Date().toISOString()}:i);
-    const updated=state.items.find(i=>i.id===state.editId);
-    state.selItem=updated;state.view='detail';
-  }else{
-    const newItem={id:uid(),...data,createdAt:new Date().toISOString()};
-    state.items.push(newItem);state.view=state.selQ?'list':'matrix';
-  }
-  saveItems();resetForm();render();
-}
+    <div class="visite-cadre rv">
+      <iframe src="https://my.matterport.com/show/?m=f2wHhtvooix" title="Visite virtuelle Matterport de la maison" allow="fullscreen; xr-spatial-tracking" loading="lazy" allowfullscreen></iframe>
+    </div>
 
-function doDelete(){
-  state.items=state.items.filter(i=>i.id!==state.selItem.id);
-  saveItems();state.showDel=false;state.selItem=null;
-  state.view=state.selQ?'list':'matrix';render();
-}
+    <div class="projeter rv">
+      <img src="assets/homebyme.jpg" alt="Aperçu du projet d'aménagement 3D HomeByMe" loading="lazy">
+      <div>
+        <h3 style="margin-bottom:.2em">À vous de vous projeter</h3>
+        <p class="muted" style="font-size:.95rem">Ouvrez le plan 3D de la maison dans HomeByMe et testez
+          librement vos propres idées d'aménagement.</p>
+      </div>
+      <a class="btn" href="https://home.by.me/fr/project/c74b1c53471853ea47d4dda/maison-individuelle-56410-erdeven?open_planner=true" target="_blank" rel="noopener">Ouvrir le plan 3D</a>
+    </div>
 
-async function startRec(){
-  try{
-    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
-    const recorder=new MediaRecorder(stream);
-    audioChunks=[];
-    recorder.ondataavailable=e=>audioChunks.push(e.data);
-    recorder.onstop=()=>{
-      stream.getTracks().forEach(t=>t.stop());
-      const blob=new Blob(audioChunks,{type:'audio/webm'});
-      const reader=new FileReader();
-      reader.onload=()=>{
-        state.formAtts.push({id:uid(),name:`vocal-${new Date().toLocaleTimeString().replace(/:/g,'-')}.webm`,type:'audio/webm',data:reader.result});
-        render();
-      };reader.readAsDataURL(blob);
-    };
-    mediaRec=recorder;recorder.start();state.isRec=true;render();
-  }catch(e){console.error('Mic error:',e)}
-}
+    <div class="liens-officiels rv" style="margin-top:1.6rem">
+      <a class="btn" href="https://youtube.com/shorts/4gsj--KGChI" target="_blank" rel="noopener">Voir la vidéo du bien</a>
+      <a class="btn" href="https://www.canva.com/design/DAGvne56mqI/GrtwmKi8eqiVGsp_leZYYQ/view" target="_blank" rel="noopener">Feuilleter le magazine</a>
+    </div>
+  </div>
+</section>
 
-function stopRec(){
-  if(mediaRec?.state==='recording'){mediaRec.stop();state.isRec=false;render()}
-}
+<!-- ══════════ CLÔTURE / CONTACT ══════════ -->
+<section id="contact" class="on-dark deep">
+  <div class="fond" style="background-image:url('assets/hero.jpg')"></div>
+  <div class="voile"></div>
+  <div class="inner">
+    <p class="eyebrow rv">Épilogue</p>
+    <h2 class="rv">Entre plages et campagne,<br>une maison qui attend sa suite.</h2>
+    <p class="poetic rv" style="--d:.15s">Et si c'était <span class="scribble">la vôtre&nbsp;?<svg viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2,8 Q40,2 80,7 T160,6 T240,8 T318,5"/></svg></span></p>
 
-function toggleAudio(att){
-  if(playingId===att.id){audioEls[att.id]?.pause();playingId=null;render();return}
-  if(playingId&&audioEls[playingId])audioEls[playingId].pause();
-  if(!audioEls[att.id]){audioEls[att.id]=new Audio(att.data);audioEls[att.id].onended=()=>{playingId=null;render()}}
-  audioEls[att.id].play();playingId=att.id;render();
-}
+    <div class="carte-agent rv" style="--d:.2s">
+      <img src="assets/portrait.jpg" alt="Portrait de Roger-Jacques Vluys">
+      <div>
+        <span>Mandataire immobilier · Erdeven (56)</span>
+        <b>Roger-Jacques Vluys</b>
+        <span style="color:rgba(241,234,224,.6);text-transform:none;letter-spacing:.02em">6 ans d'expérience — Dr House-Immo</span>
+      </div>
+    </div>
 
-// ============ INIT ============
-load();
-render();
-</script>
+    <div class="cta-rangee rv" style="--d:.3s">
+      <a class="btn plein" href="tel:+33614204847">06 14 20 48 47</a>
+      <a class="btn" href="mailto:rj.vluys@drhouse.immo?subject=Maison%20%C3%A0%20Erdeven%20%E2%80%94%20demande%20de%20visite">Demander une visite</a>
+    </div>
+
+    <div class="reve rv">
+      <h3>Cette maison n'est pas la vôtre&nbsp;?</h3>
+      <p class="muted" style="font-size:.95rem">Alors dessinez-la avec des mots — architecture, jardin,
+        secteur, ambiance. Nous chercherons ensemble si elle existe déjà quelque part.</p>
+      <textarea id="texte-reve" placeholder="Ex. : une maison plus contemporaine, beaucoup de végétation, une piscine, à 20 minutes de la mer…"></textarea>
+      <button class="btn plein" id="btn-reve" type="button">Envoyer ma maison de rêve</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Nord-Sud Immo, SAS au capital de 20 760 € — RCS Aix-en-Provence 789 995 107. DR HOUSE IMMO est une marque déposée.<br>
+  Siège social : 3 AB Avenue des Belges, 13100 Aix-en-Provence — Tél. 09 72 40 71 68 — www.drhouse-immo.com<br>
+  Carte n° CPI 9201 2018 000 029 521 délivrée par la CCI Marseille Provence le 31/10/2023.<br>
+  Photos et projections non contractuelles. Book numérique généré depuis le dossier de présentation du bien.
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
