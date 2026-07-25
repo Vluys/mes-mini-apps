@@ -62,6 +62,11 @@ figcaption{font-family:var(--ui);font-size:.78rem;color:var(--lichen);margin-top
 .fondencre{background:var(--encre);color:var(--sable)}
 .fondencre .chapitre{color:#9DB9B4}.fondencre .chapitre::after{background:#3C4038}
 .fondencre .note,.fondencre figcaption{color:#A9A594}
+/* Boutons contour sur fond sombre : clairs pour rester lisibles */
+.fondencre .btn{border-color:var(--sable);color:var(--sable)}
+.fondencre .btn:hover,.fondencre .btn:focus-visible{background:var(--sable);color:var(--encre)}
+.fondencre .btn.plein{border-color:var(--ocean);color:var(--lin)}
+.fondencre .btn.contact,.fondencre .btn.video-btn{color:#fff}
 
 /* Apparition au défilement */
 .rev{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
@@ -446,7 +451,7 @@ footer a{color:#A9A594}
 
     <div class="visite rev" id="matterport">
       <button class="lanceur" type="button" aria-label="Lancer la visite virtuelle Matterport 360°">
-        <img src="assets/combles.jpg" alt="">
+        <img src="assets/mer-coucher.jpg" alt="">
         <span>▶&nbsp;&nbsp;Lancer la visite 360°</span>
       </button>
     </div>
