@@ -2,675 +2,767 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bienvenue à Erdeven — Une maison familiale à vivre</title>
-<meta name="description" content="Maison familiale de 2003 à Erdeven (56) : 99 m² habitables, 4 chambres, vie de plain-pied possible, terrain clos de 621 m², à moins de 3 km de l'océan.">
-<meta property="og:title" content="Bienvenue à Erdeven — Une maison familiale à vivre">
-<meta property="og:description" content="99 m² habitables · 4 chambres · vie de plain-pied possible · terrain clos de 621 m² · à moins de 3 km de l'océan.">
-<meta property="og:image" content="assets/hero-terrasse.jpg">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f172a">
+<title>EisenhowerBox</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="manifest" href="manifest.json">
 <style>
-/* ── Charte : le magazine IMMATCH transposé au web ─────────────────────── */
-:root{
-  --sable:#EDE6D8;        /* fond du magazine */
-  --lin:#F8F5EE;          /* fond clair alterné */
-  --encre:#22261F;        /* encre presque noire */
-  --ocean:#33605F;        /* accent : l'océan breton */
-  --lichen:#837F70;       /* texte secondaire */
-  --rouge:#A6342F;        /* DrHouse — réservé au contact */
-  --filet:#D8CFBC;        /* filets, bordures */
-  --display:'Cormorant Garamond', Georgia, serif;
-  --body:'Lora', Georgia, serif;
-  --ui:'Karla', system-ui, sans-serif;
-}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--sable);color:var(--encre);font-family:var(--body);font-size:1.05rem;line-height:1.75}
-img{display:block;max-width:100%}
-a{color:var(--ocean)}
-::selection{background:var(--ocean);color:var(--lin)}
-
-/* Fil d'horizon : progression de lecture */
-#horizon{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ocean);z-index:60;transition:width .15s linear}
-
-/* Rail de chapitres (ordinateur) */
-#rail{position:fixed;left:1.4rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:.55rem}
-#rail a{font-family:var(--ui);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--lichen);display:flex;align-items:center;gap:.5rem;transition:color .25s}
-#rail a::before{content:'';width:14px;height:1px;background:currentColor;transition:width .25s}
-#rail a.actif{color:var(--ocean)}
-#rail a.actif::before{width:26px}
-#rail a span{opacity:0;transform:translateX(-4px);transition:.25s}
-#rail a.actif span,#rail a:hover span,#rail a:focus-visible span{opacity:1;transform:none}
-@media(max-width:1120px){#rail{display:none}}
-
-/* Structure éditoriale */
-section{padding:6.5rem 1.5rem}
-.colonne{max-width:820px;margin:0 auto}
-.large{max-width:1060px;margin:0 auto}
-.chapitre{font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ocean);display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem}
-.chapitre::after{content:'';flex:1;height:1px;background:var(--filet)}
-h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.12;margin-bottom:1.4rem}
-h3{font-family:var(--display);font-weight:600;font-size:1.45rem;margin:2.2rem 0 .7rem}
-p{margin-bottom:1.1rem}
-p.chapo{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.5rem);line-height:1.5;color:var(--encre)}
-.note{font-family:var(--ui);font-size:.8rem;color:var(--lichen)}
-figcaption{font-family:var(--ui);font-size:.78rem;color:var(--lichen);margin-top:.55rem}
-.fondclair{background:var(--lin)}
-.fondencre{background:var(--encre);color:var(--sable)}
-.fondencre .chapitre{color:#9DB9B4}.fondencre .chapitre::after{background:#3C4038}
-.fondencre .note,.fondencre figcaption{color:#A9A594}
-/* Boutons contour sur fond sombre : clairs pour rester lisibles */
-.fondencre .btn{border-color:var(--sable);color:var(--sable)}
-.fondencre .btn:hover,.fondencre .btn:focus-visible{background:var(--sable);color:var(--encre)}
-.fondencre .btn.plein{border-color:var(--ocean);color:var(--lin)}
-.fondencre .btn.contact,.fondencre .btn.video-btn{background:var(--rouge);border-color:var(--rouge);color:#fff}
-.fondencre .btn.contact:hover,.fondencre .btn.video-btn:hover,.fondencre .btn.contact:focus-visible{background:#832722;border-color:#832722;color:#fff}
-
-/* Apparition au défilement */
-.rev{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-.rev.vu{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .rev{opacity:1;transform:none;transition:none}
-  #couv img{animation:none !important}
+:root{
+  --bg:#0f172a;--surface:#1e293b;--surface2:#334155;--border:#475569;
+  --text:#f8fafc;--text2:#94a3b8;--text3:#64748b;
+  --q1:#ef4444;--q1bg:#fef2f2;--q1border:#fca5a5;--q1text:#b91c1c;
+  --q2:#3b82f6;--q2bg:#eff6ff;--q2border:#93c5fd;--q2text:#1d4ed8;
+  --q3:#f59e0b;--q3bg:#fffbeb;--q3border:#fcd34d;--q3text:#b45309;
+  --q4:#64748b;--q4bg:#f8fafc;--q4border:#cbd5e1;--q4text:#475569;
+  --accent:#6366f1;--accent2:#8b5cf6;
 }
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:14px;width:100%;outline:none;transition:border .2s}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{resize:none}
 
-/* ── Couverture ── */
-#couv{position:relative;min-height:100svh;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding:0}
-#couv .visuel{position:absolute;inset:0}
-#couv .visuel img{width:100%;height:100%;object-fit:cover;object-position:center 70%;animation:respire 9s ease-out forwards}
-@keyframes respire{from{transform:scale(1.06)}to{transform:scale(1)}}
-#couv .visuel::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(237,230,216,.94) 0%,rgba(237,230,216,.82) 34%,rgba(237,230,216,0) 72%)}
-#couv .titre{position:relative;z-index:2;text-align:center;padding:15vh 1.5rem 0;max-width:760px}
-#couv .marque{font-family:var(--ui);font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--rouge);margin-bottom:2.2rem}
-#couv h1{font-family:var(--display);font-weight:500;font-size:clamp(2.6rem,8vw,5rem);line-height:1.05}
-#couv .soustitre{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.8rem);margin-top:1.2rem}
-#couv .accroche{font-family:var(--display);font-style:italic;font-size:clamp(1.05rem,2.2vw,1.3rem);margin-top:1.6rem;line-height:1.6}
-#couv .fleche{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--lin);font-family:var(--ui);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-#couv .fleche::after{content:'';display:block;width:1px;height:34px;background:var(--lin);margin:.6rem auto 0;animation:desc 1.8s ease-in-out infinite}
-@keyframes desc{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+/* Header */
+.header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--surface);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.header h1{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-left{display:flex;align-items:center;gap:8px;min-width:0}
+.header-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--text2)}
+.btn-icon:hover{background:var(--surface)}
+.btn-lang{padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700;color:var(--text2);background:var(--surface);transition:background .2s;display:flex;align-items:center;gap:4px}
+.btn-lang:hover{background:var(--surface2)}
 
-/* ── Grilles photos ── */
-.mosaique{display:grid;gap:.9rem;grid-template-columns:repeat(6,1fr);margin:2rem 0}
-.mosaique figure{overflow:hidden;border-radius:2px}
-.mosaique img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
-.mosaique figure:hover img{transform:scale(1.03)}
-.m-a{grid-column:span 4;aspect-ratio:16/9}
-.m-b{grid-column:span 2;aspect-ratio:4/5}
-.m-c{grid-column:span 2;aspect-ratio:4/3}
-@media(max-width:640px){.m-a,.m-b,.m-c{grid-column:span 6;aspect-ratio:16/10}}
+/* Matrix grid */
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.q-card{border-radius:16px;padding:16px;text-align:left;border:1px solid;transition:transform .15s;position:relative;overflow:hidden}
+.q-card:active{transform:scale(.97)}
+.q-card .q-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:#fff;font-size:20px}
+.q-card .q-name{font-size:15px;font-weight:700}
+.q-card .q-desc{font-size:11px;color:#64748b;margin-top:2px;line-height:1.3}
+.q-card .q-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.q-badge{padding:2px 10px;border-radius:20px;font-size:12px;font-weight:700;color:#fff}
+.q1-card{background:var(--q1bg);border-color:var(--q1border)}.q1-card .q-name{color:var(--q1text)}.q1-card .q-icon,.q1-card .q-badge{background:var(--q1)}
+.q2-card{background:var(--q2bg);border-color:var(--q2border)}.q2-card .q-name{color:var(--q2text)}.q2-card .q-icon,.q2-card .q-badge{background:var(--q2)}
+.q3-card{background:var(--q3bg);border-color:var(--q3border)}.q3-card .q-name{color:var(--q3text)}.q3-card .q-icon,.q3-card .q-badge{background:var(--q3)}
+.q4-card{background:var(--q4bg);border-color:var(--q4border)}.q4-card .q-name{color:var(--q4text)}.q4-card .q-icon,.q4-card .q-badge{background:var(--q4)}
 
-/* Repères de distances */
-.reperes{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.6rem 0}
-.reperes span{font-family:var(--ui);font-size:.8rem;letter-spacing:.04em;border:1px solid var(--filet);border-radius:999px;padding:.42rem .95rem;background:rgba(255,255,255,.35)}
+/* Total */
+.total{text-align:center;font-size:12px;color:var(--text3);padding:4px 0 80px}
 
-/* ── Chiffres clés ── */
-.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--filet);border:1px solid var(--filet);margin:2.4rem 0}
-.chiffres div{background:var(--lin);padding:1.5rem 1rem;text-align:center}
-.chiffres b{display:block;font-family:var(--display);font-weight:600;font-size:2.1rem;line-height:1.1}
-.chiffres small{font-family:var(--ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lichen)}
+/* FAB */
+.fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(99,102,241,.35);z-index:20;transition:transform .15s;font-size:28px}
+.fab:active{transform:scale(.9)}
 
-/* Atouts */
-.atouts{list-style:none;columns:2;column-gap:2.5rem;margin:1.4rem 0}
-.atouts li{break-inside:avoid;padding:.5rem 0 .5rem 1.6rem;position:relative;border-bottom:1px solid var(--filet)}
-.atouts li::before{content:'✓';position:absolute;left:0;color:var(--ocean);font-family:var(--ui);font-weight:700}
-@media(max-width:640px){.atouts{columns:1}}
+/* List */
+.list{padding:12px;display:flex;flex-direction:column;gap:8px;padding-bottom:100px}
+.item-card{padding:14px;border-radius:16px;background:rgba(30,41,59,.8);border:1px solid var(--surface);text-align:left;transition:border .2s;display:flex;align-items:start;justify-content:space-between;gap:8px}
+.item-card:hover{border-color:var(--border)}
+.item-title{font-size:14px;font-weight:600;color:var(--text)}
+.item-notes{font-size:12px;color:var(--text3);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item-meta{display:flex;gap:12px;margin-top:8px;font-size:11px;color:var(--text3)}
+.item-meta span{display:flex;align-items:center;gap:3px}
 
-/* Transparence travaux */
-.transparence{border:1px solid var(--filet);background:rgba(255,255,255,.4);padding:1.6rem 1.8rem;margin:2.2rem 0;border-left:3px solid var(--ocean)}
-.transparence h3{margin-top:0}
-.dpe{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--ui);font-size:.8rem;font-weight:700;margin-top:.4rem}
-.dpe i{font-style:normal;background:#C1272D;color:#fff;padding:.2rem .6rem;border-radius:2px}
+/* Empty */
+.empty{text-align:center;padding:64px 20px;color:var(--text3)}
+.empty .empty-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;opacity:.4;font-size:28px;color:#fff}
 
-/* ── Avant / Après (curseur) ── */
-.comparateur{position:relative;overflow:hidden;border-radius:2px;user-select:none;touch-action:pan-y;cursor:ew-resize;margin:2rem 0 .4rem}
-.comparateur img{width:100%;aspect-ratio:3/2;object-fit:cover;pointer-events:none}
-.comparateur .avant{position:absolute;inset:0;width:50%;overflow:hidden}
-.comparateur .avant img{width:calc(100% / var(--part,0.5));max-width:none;height:100%}
-.comparateur .poignee{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--lin);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
-.comparateur .poignee::after{content:'⟨ ⟩';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--lin);color:var(--encre);font-family:var(--ui);font-size:.75rem;letter-spacing:.05em;padding:.5rem .7rem;border-radius:999px;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-.comparateur .etiquette{position:absolute;top:.8rem;font-family:var(--ui);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(34,38,31,.72);color:var(--lin);padding:.3rem .7rem;border-radius:2px;pointer-events:none}
-.comparateur .etiquette.g{left:.8rem}.comparateur .etiquette.d{right:.8rem}
+/* Detail */
+.detail{padding:16px;display:flex;flex-direction:column;gap:16px;padding-bottom:40px}
+.detail-card{padding:16px;border-radius:16px;border:1px solid}
+.detail-card .d-badge{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.detail-card .d-badge .dot{width:8px;height:8px;border-radius:50%}
+.detail-card h2{font-size:18px;font-weight:700;color:#1e293b}
+.detail-card .d-notes{font-size:14px;color:#475569;margin-top:8px;white-space:pre-wrap;line-height:1.6}
+.meta-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:6px 12px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:4px}
+.tag-date{background:var(--surface);color:var(--text2)}
+.tag-reminder{background:rgba(99,102,241,.1);color:var(--accent)}
 
-.paires{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
-.paires figure{overflow:hidden;border-radius:2px}
-.paires img{width:100%;aspect-ratio:4/5;object-fit:cover}
-@media(max-width:640px){.paires{grid-template-columns:1fr}}
+/* Attachments grid */
+.att-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.att-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.att-item{border-radius:12px;overflow:hidden;border:1px solid var(--surface);background:var(--surface)}
+.att-item img{width:100%;height:120px;object-fit:cover;display:block}
+.att-audio{height:80px;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.1));color:var(--accent);cursor:pointer;font-size:13px;font-weight:500}
+.att-doc{height:80px;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--text2);font-size:12px}
+.att-bar{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:rgba(15,23,42,.4);font-size:11px;color:var(--text3)}
+.att-bar button{padding:4px;border-radius:6px;color:var(--text3);display:flex}
+.att-bar button:hover{background:var(--surface2)}
+.att-bar .del-att{color:var(--q1)}
 
-/* ── Onglets plans ── */
-.onglets{display:flex;gap:.5rem;margin:1.8rem 0 1.4rem;border-bottom:1px solid var(--filet)}
-.onglets button{font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;padding:.8rem 1rem;color:var(--lichen);cursor:pointer}
-.onglets button[aria-selected="true"]{color:var(--encre);border-color:var(--ocean)}
-.panneau{display:none}
-.panneau.ouvert{display:block}
-.deuxplans{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
-.deuxplans img{background:#fff;border:1px solid var(--filet);border-radius:2px}
-@media(max-width:760px){.deuxplans{grid-template-columns:1fr}}
+/* Buttons */
+.btn-action{width:100%;padding:14px;border-radius:14px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .2s}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 16px rgba(99,102,241,.25)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--q1)}
+.btn-secondary{background:var(--surface);color:var(--text2)}
+.btn-cal{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);color:var(--accent)}
 
-/* ── Urbanisme ── */
-.regles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
-.regles div{border:1px solid var(--filet);background:rgba(255,255,255,.4);padding:1.2rem 1.3rem}
-.regles b{display:block;font-family:var(--display);font-weight:600;font-size:1.3rem;margin-bottom:.2rem}
-.regles small{font-family:var(--ui);font-size:.75rem;color:var(--lichen);letter-spacing:.03em}
-.boutons{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.8rem 0}
-.btn{font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.4rem;border-radius:2px;border:1px solid var(--encre);color:var(--encre);transition:.25s;display:inline-block;background:none;cursor:pointer}
-.btn:hover,.btn:focus-visible{background:var(--encre);color:var(--sable)}
-.btn.plein{background:var(--ocean);border-color:var(--ocean);color:var(--lin)}
-.btn.plein:hover,.btn.plein:focus-visible{background:#264A49;border-color:#264A49}
-.btn.contact{background:var(--rouge);border-color:var(--rouge);color:#fff}
-.btn.contact:hover,.btn.contact:focus-visible{background:#832722;border-color:#832722}
-.opportunite{border:1px solid var(--ocean);padding:1.6rem 1.8rem;margin:2.2rem 0;background:rgba(51,96,95,.06)}
-.opportunite h3{margin-top:0;color:var(--ocean)}
+/* Form */
+.form{padding:16px;display:flex;flex-direction:column;gap:20px;padding-bottom:40px}
+.form label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+.q-selector{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q-opt{padding:12px;border-radius:12px;border:2px solid var(--border);background:rgba(30,41,59,.5);text-align:left;display:flex;align-items:center;gap:8px;transition:all .15s;font-size:13px;font-weight:600;color:var(--text2)}
+.q-opt.sel-1{border-color:var(--q1border);background:var(--q1bg);color:var(--q1text)}
+.q-opt.sel-2{border-color:var(--q2border);background:var(--q2bg);color:var(--q2text)}
+.q-opt.sel-3{border-color:var(--q3border);background:var(--q3bg);color:var(--q3text)}
+.q-opt.sel-4{border-color:var(--q4border);background:var(--q4bg);color:var(--q4text)}
+.att-buttons{display:flex;gap:8px}
+.att-btn{flex:1;padding:12px 8px;border-radius:12px;border:1px solid;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500;transition:background .2s}
+.att-btn-img{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#10b981}
+.att-btn-doc{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.2);color:#3b82f6}
+.att-btn-mic{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.2);color:#8b5cf6}
+.att-btn-mic.recording{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:var(--q1);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
 
-/* ── Technique ── */
-.technique{list-style:none;margin:1.4rem 0;border-top:1px solid var(--filet)}
-.technique li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem .2rem;border-bottom:1px solid var(--filet);font-size:.98rem}
-.technique li span:last-child{font-family:var(--ui);font-size:.8rem;color:var(--lichen);text-align:right}
+/* Import modal */
+.import-modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.import-sheet{width:100%;max-width:400px;background:var(--surface);border-radius:20px;padding:24px;border:1px solid var(--border);max-height:92vh;overflow-y:auto}
+.import-sheet h2{font-size:16px;font-weight:700;margin-bottom:4px}
+.import-sheet p{font-size:12px;color:var(--text3);margin-bottom:16px;line-height:1.5}
+.import-drop{border:2px dashed var(--border);border-radius:14px;padding:20px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.import-drop:hover,.import-drop.dragover{border-color:var(--accent);background:rgba(99,102,241,.06)}
+.import-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.import-drop svg{display:block;margin:0 auto 10px;opacity:.5}
+.import-drop span{font-size:13px;color:var(--text3)}
+.import-drop strong{color:var(--accent)}
+.import-actions{display:flex;gap:8px;margin-top:16px}
+.import-actions button{flex:1;padding:12px;border-radius:12px;font-size:14px;font-weight:600}
+.import-cancel{background:var(--surface2);color:var(--text2)}
+.import-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:12px;color:var(--text);font-family:monospace;line-height:1.5;outline:none;resize:vertical;min-height:120px}
+.import-textarea:focus{border-color:var(--accent)}
+.import-divider{text-align:center;font-size:12px;color:var(--text3);margin:12px 0;display:flex;align-items:center;gap:8px}
+.import-divider::before,.import-divider::after{content:'';flex:1;height:1px;background:var(--surface2)}
 
-/* ── Visite virtuelle ── */
-.visite{position:relative;aspect-ratio:16/9;background:var(--encre);border-radius:2px;overflow:hidden;margin:2rem 0 .4rem}
-.visite iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.visite .lanceur{position:absolute;inset:0;width:100%;border:0;cursor:pointer;background:none;padding:0}
-.visite .lanceur img{width:100%;height:100%;object-fit:cover;opacity:.85}
-.visite .lanceur span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--lin);color:var(--encre);font-family:var(--ui);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:1rem 1.6rem;border-radius:999px;box-shadow:0 4px 24px rgba(0,0,0,.35)}
+/* Search overlay */
+.search-overlay{position:fixed;inset:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);padding:16px}
+.search-bar{display:flex;gap:8px;margin-bottom:16px}
+.search-bar input{flex:1;padding-left:36px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.search-results{display:flex;flex-direction:column;gap:8px}
+.sr-item{padding:12px;border-radius:12px;background:rgba(30,41,59,.6);border:1px solid rgba(51,65,85,.5);text-align:left;transition:border .2s}
+.sr-item:hover{border-color:var(--border)}
 
-/* ── Quiz ── */
-#quiz .carte{background:var(--lin);border:1px solid var(--filet);padding:2rem;border-radius:2px;margin-top:2rem}
-#quiz .question{font-family:var(--display);font-weight:600;font-size:1.4rem;margin-bottom:1.2rem}
-#quiz .reponses{display:grid;gap:.7rem}
-#quiz .reponses button{font-family:var(--body);font-size:1rem;text-align:left;padding:.9rem 1.2rem;border:1px solid var(--filet);background:#fff;border-radius:2px;cursor:pointer;transition:.2s}
-#quiz .reponses button:hover:not(:disabled){border-color:var(--ocean)}
-#quiz .reponses button.juste{border-color:var(--ocean);background:rgba(51,96,95,.1)}
-#quiz .reponses button.faux{border-color:var(--rouge);background:rgba(166,52,47,.07);opacity:.7}
-#quiz .explication{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--filet);font-size:.95rem;display:none}
-#quiz .barre{display:flex;justify-content:space-between;align-items:center;margin-top:1.4rem}
-#quiz .compteur{font-family:var(--ui);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lichen)}
-#quiz .score b{font-family:var(--display);font-size:2.6rem;font-weight:600}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.modal{width:100%;max-width:400px;background:var(--surface);border-radius:16px;padding:24px;border:1px solid var(--border)}
+.modal p{text-align:center;font-weight:600;margin-bottom:16px}
+.modal-btns{display:flex;gap:8px}
+.modal-btns button{flex:1;padding:14px;border-radius:12px;font-weight:600;font-size:14px}
+.modal-cancel{background:var(--surface2);color:var(--text2)}
+.modal-confirm{background:var(--q1);color:#fff}
 
-/* Bloc "À vous de vous projeter" (HomeByme) */
-.projeter{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.6rem;border:1px solid #3C4038;background:rgba(255,255,255,.03);padding:1.4rem 1.6rem;border-radius:2px;margin:2rem 0 0}
-.projeter img{width:120px;height:90px;object-fit:cover;border-radius:2px;background:#fff}
-.projeter-txt h3{margin:0 0 .3rem;color:var(--sable)}
-.projeter-txt p{margin:0;font-size:.92rem;color:#B9B5A5}
-@media(max-width:720px){.projeter{grid-template-columns:1fr;text-align:center}.projeter img{width:100%;height:150px}.projeter .btn{justify-self:center}}
+/* Toast */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);padding:10px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:60;animation:fadeUp .3s ease;white-space:nowrap}
+.toast-ok{background:#10b981;color:#fff}
+.toast-err{background:var(--q1);color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
-.video-btn{background:var(--rouge);border-color:var(--rouge);color:#fff}
-.video-btn:hover,.video-btn:focus-visible{background:#832722;border-color:#832722}
-
-/* Modale vidéo verticale (YouTube Short) */
-.video-modal{position:fixed;inset:0;z-index:100;background:rgba(20,22,18,.92);display:none;align-items:center;justify-content:center;padding:1rem}
-.video-modal.ouvert{display:flex}
-.video-cadre{position:relative;width:min(94vw,420px);aspect-ratio:9/16;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.video-cadre iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video-fermer{position:absolute;top:1.2rem;right:1.4rem;z-index:101;background:var(--lin);color:var(--encre);border:none;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;font-family:var(--ui);box-shadow:0 2px 12px rgba(0,0,0,.3)}
-
-/* Encart "Cette maison n'est pas la vôtre ?" */
-#pas-la-votre{padding:5rem 1.5rem}
-.pas-votre{text-align:center;border:1px solid var(--ocean);background:rgba(51,96,95,.06);padding:2.6rem 2rem;border-radius:2px}
-.pas-votre h2{margin-bottom:1rem}
-.pas-votre p{max-width:560px;margin:0 auto 1.6rem;color:var(--lichen)}
-#contact{text-align:center;padding-bottom:3rem}
-#contact .portrait{width:112px;height:112px;border-radius:50%;object-fit:cover;margin:2rem auto 1rem;border:2px solid var(--sable)}
-#contact .nom{font-family:var(--display);font-size:1.5rem;font-weight:600}
-#contact .role{font-family:var(--ui);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#A9A594;margin-bottom:1.8rem}
-#contact .miroir{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.5;max-width:680px;margin:0 auto}
-#contact .miroir em{font-style:normal;border-bottom:1px solid var(--ocean)}
-footer{background:var(--encre);color:#8B877A;text-align:center;font-family:var(--ui);font-size:.68rem;line-height:1.7;padding:0 1.5rem 2.5rem}
-footer a{color:#A9A594}
+/* Responsive */
+@media(min-width:500px){.matrix,.att-grid{max-width:440px;margin:0 auto}.list,.detail,.form,.search-overlay{max-width:500px;margin:0 auto}}
 </style>
 </head>
 <body>
-
-<div id="horizon" aria-hidden="true"></div>
-
-<nav id="rail" aria-label="Chapitres">
-  <a href="#village"><span>Le village</span></a>
-  <a href="#maison"><span>La maison</span></a>
-  <a href="#transformation"><span>Avant / Après</span></a>
-  <a href="#plans"><span>Les plans</span></a>
-  <a href="#exterieurs"><span>Extérieurs</span></a>
-  <a href="#diagnostics"><span>Diagnostics</span></a>
-  <a href="#visite"><span>Visite</span></a>
-  <a href="#quiz"><span>Le quiz</span></a>
-  <a href="#contact"><span>Contact</span></a>
-</nav>
-
-<!-- ═══ COUVERTURE ═══ -->
-<section id="couv">
-  <div class="visuel"><img src="assets/hero-terrasse.jpg" alt="La maison et sa terrasse, côté jardin"></div>
-  <div class="titre">
-    <p class="marque">Magazine VIP · Édition confidentielle</p>
-    <h1>Bienvenue à Erdeven</h1>
-    <p class="soustitre">Une maison familiale à vivre</p>
-    <p class="accroche">Une construction saine de 2003, un séjour plein sud, quatre chambres.<br>
-    Un terrain clos, à deux pas des commerces et de l'océan.<br>
-    <strong>À vous d'écrire la suite.</strong></p>
-  </div>
-  <a class="fleche" href="#village">Ouvrir le book</a>
-</section>
-
-<!-- ═══ 01 LE VILLAGE ═══ -->
-<section id="village">
-  <div class="large">
-    <p class="chapitre rev">01 — Erdeven, entre terre et océan</p>
-    <div class="colonne" style="margin-left:0">
-      <h2 class="rev">La nature en grand format</h2>
-      <p class="chapo rev">Nichée au cœur du littoral morbihannais, Erdeven est un village balnéaire où la nature s'exprime en grand format : 8 km de plages sauvages, des dunes protégées et des sentiers côtiers pour respirer, marcher, se ressourcer.</p>
-    </div>
-    <div class="reperes rev">
-      <span>🌊 Océan à moins de 3 km</span>
-      <span>🚄 Gare TGV d'Auray à 15 min</span>
-      <span>🛣️ Lorient &amp; Vannes par la RN165</span>
-      <span>🏪 Commerces au bourg, à pied</span>
-    </div>
-    <div class="mosaique">
-      <figure class="m-a rev"><img src="assets/plage-kerhillio.jpg" alt="La plage de Kerhillio" loading="lazy"></figure>
-      <figure class="m-b rev"><img src="assets/menhirs.jpg" alt="Les alignements mégalithiques de Kerzerho" loading="lazy"></figure>
-      <figure class="m-c rev"><img src="assets/bourg-ecole.jpg" alt="Le bourg d'Erdeven" loading="lazy"></figure>
-      <figure class="m-c rev"><img src="assets/fete-bretonne.jpg" alt="Fête traditionnelle bretonne" loading="lazy"></figure>
-      <figure class="m-c rev"><img src="assets/bourg-marche.jpg" alt="Animation dans le bourg" loading="lazy"></figure>
-      <figure class="m-a rev" style="grid-column:span 6;aspect-ratio:21/9"><img src="assets/keraveon.jpg" alt="Le parc de Keravéon" loading="lazy"></figure>
-    </div>
-    <div class="colonne" style="margin-left:0">
-      <h3 class="rev">Plages et nature</h3>
-      <p class="rev">La plage de Kerhillio, immense et familiale, est un spot réputé pour le kite et le char à voile. Les plages plus intimes de Kerminihy ou Kerouriec invitent à la baignade tranquille. Un réseau de pistes cyclables et de chemins de randonnée relie la mer, les bois et les villages voisins.</p>
-      <h3 class="rev">Patrimoine et histoire</h3>
-      <p class="rev">Dolmens, menhirs, chapelles et villages de pierre rappellent que ce territoire est un véritable musée à ciel ouvert, habité depuis des millénaires. Les alignements de Kerzerho, à l'entrée du bourg, comptent parmi les plus impressionnants de Bretagne. À 15 minutes d'Auray, Erdeven combine l'esprit village et l'ouverture sur le monde.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 02 LA MAISON ═══ -->
-<section id="maison" class="fondclair">
-  <div class="large">
-    <p class="chapitre rev">02 — La maison aujourd'hui</p>
-    <h2 class="rev">Des fondamentaux solides</h2>
-    <figure class="rev"><img src="assets/facade-sud.jpg" alt="La façade sud de la maison et son grand jardin" style="border-radius:2px" loading="lazy">
-      <figcaption>La façade sud et son grand jardin plat, exposé plein soleil.</figcaption>
-    </figure>
-    <div class="chiffres rev">
-      <div><b>621&nbsp;m²</b><small>Terrain clos</small></div>
-      <div><b>99&nbsp;m²</b><small>Habitables</small></div>
-      <div><b>4</b><small>Chambres</small></div>
-      <div><b>Plain-pied</b><small>Vie possible de plain-pied</small></div>
-      <div><b>2003</b><small>Année de construction</small></div>
-    </div>
-    <div class="colonne" style="margin-left:0">
-      <p class="rev">Édifiée en 2003, cette maison individuelle développe près de 99 m² habitables avec une distribution cohérente et fonctionnelle. Le rez-de-chaussée permet une véritable <strong>vie de plain-pied</strong> — une chambre, un WC, un espace prévu pour créer une salle d'eau — tandis que l'étage abrite trois chambres, dont une avec dressing, et la salle de bains.</p>
-      <h3 class="rev">Points forts</h3>
-      <ul class="atouts rev">
-        <li>Vie de plain-pied possible — rare et recherchée sur le secteur</li>
-        <li>Séjour lumineux exposé plein sud, poêle à granulés</li>
-        <li>Construction saine : parpaings, toiture ardoise, double vitrage</li>
-        <li>Tout-à-l'égout, fibre possible</li>
-        <li>Terrain plat, entièrement clos</li>
-        <li>Très peu de vis-à-vis</li>
-        <li>Quatre chambres aux volumes francs</li>
-        <li>Océan à moins de 3 km, commerces à pied</li>
-      </ul>
-      <div class="transparence rev">
-        <h3>À prévoir — parlons vrai</h3>
-        <p>Des travaux de modernisation (cuisine, salle d'eau à finir, rafraîchissement des chambres) permettront de révéler tout le potentiel de la maison. C'est <strong>une mise au goût du jour, pas une remise en état</strong> : la structure est saine, les volumes sont là.</p>
-        <p class="dpe">Diagnostic énergétique&nbsp;: <i style="background:#8DB255">DPE D</i> · GES B — une maison déjà bien classée.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 03 AVANT / APRÈS ═══ -->
-<section id="transformation">
-  <div class="large">
-    <p class="chapitre rev">03 — La transformation</p>
-    <h2 class="rev">Je vous partage mes idées</h2>
-    <div class="colonne" style="margin-left:0">
-      <p class="chapo rev">Les visuels « après » sont des projections de home staging virtuel : rien n'est imposé, tout est possible. Faites glisser chaque curseur pour passer de l'existant à la projection.</p>
-    </div>
-
-    <h3 class="rev">La cuisine</h3>
-    <div class="comparateur rev" role="slider" aria-label="Comparer la cuisine avant et après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="assets/cuisine-apres.jpg" alt="Projection : la cuisine modernisée">
-      <div class="avant"><img src="assets/cuisine-avant.jpg" alt="La cuisine dans son état d'origine"></div>
-      <span class="etiquette g">Avant</span>
-      <span class="etiquette d">Projection</span>
-      <div class="poignee"></div>
-    </div>
-    <p class="note rev">Cuisine séparée de 8 m², prolongée d'un cellier-buanderie avec accès direct au jardin. La moderniser, ou l'ouvrir sur le séjour pour créer une grande pièce de vie.</p>
-
-    <h3 class="rev" style="margin-top:2.8rem">La salle d'eau du rez-de-chaussée</h3>
-    <figure class="rev"><img src="assets/sdeau-diptyque.jpg" alt="La salle d'eau : l'espace en attente et sa projection aménagée" style="border-radius:2px" loading="lazy">
-      <figcaption>À gauche l'espace en attente (arrivées et évacuations prêtes), à droite la projection aménagée. Il ne reste qu'à choisir la douche, le meuble, la lumière — et le plain-pied devient complet.</figcaption>
-    </figure>
-
-    <h3 class="rev" style="margin-top:2.8rem">La chambre du rez-de-chaussée</h3>
-    <div class="comparateur rev" role="slider" aria-label="Comparer la chambre du rez-de-chaussée avant et après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="assets/chambre1-apres.jpg" alt="Projection : la chambre du rez-de-chaussée en home staging">
-      <div class="avant"><img src="assets/chambre1-avant.jpg" alt="La chambre du rez-de-chaussée dans son état d'origine"></div>
-      <span class="etiquette g">Avant</span>
-      <span class="etiquette d">Projection</span>
-      <div class="poignee"></div>
-    </div>
-    <p class="note rev">Une chambre de plain-pied, atout rare sur le secteur. Un simple rafraîchissement suffit à révéler le volume. Projections d'aménagement non contractuelles.</p>
-
-  </div>
-</section>
-
-<!-- ═══ 04 LES PLANS ═══ -->
-<section id="plans" class="fondclair">
-  <div class="large">
-    <p class="chapitre rev">04 — Les plans</p>
-    <h2 class="rev">Une distribution claire et fonctionnelle</h2>
-
-    <h3 class="rev">Le rez-de-chaussée</h3>
-    <p class="chapo rev" style="margin-bottom:1.4rem">Un niveau de vie complet : entrée, séjour ouvert sur le jardin, cuisine séparée avec cellier-buanderie, une chambre, WC — et l'espace prévu pour la salle d'eau.</p>
-    <figure class="rev"><img src="assets/plan-rdc.jpg" alt="Plan du rez-de-chaussée" style="border-radius:2px;background:#fff;border:1px solid var(--filet)" loading="lazy"><figcaption>Rez-de-chaussée — plan HomeByMe, non contractuel.</figcaption></figure>
-
-    <h3 class="rev" style="margin-top:2.6rem">L'étage</h3>
-    <p class="chapo rev" style="margin-bottom:1.4rem">L'espace nuit : trois chambres, la salle de bains avec son Velux, un dressing et le palier distribuant l'ensemble.</p>
-    <figure class="rev"><img src="assets/plan-etage.jpg" alt="Plan de l'étage" style="border-radius:2px;background:#fff;border:1px solid var(--filet)" loading="lazy"><figcaption>Étage — plan HomeByMe, non contractuel.</figcaption></figure>
-  </div>
-</section>
-
-<!-- ═══ 05 EXTÉRIEURS ═══ -->
-<section id="exterieurs">
-  <div class="large">
-    <p class="chapitre rev">05 — Les extérieurs</p>
-    <h2 class="rev">621 m² de possibles</h2>
-    <div class="colonne" style="margin-left:0">
-      <p class="chapo rev">Le terrain plat et clos permet d'envisager une grande terrasse bois, un jardin paysager, un potager — le tout baigné de soleil, sans vis-à-vis ou presque.</p>
-    </div>
-
-    <h3 class="rev">L'entrée : de la dalle béton à la terrasse bois</h3>
-    <div class="comparateur rev" role="slider" aria-label="Comparer l'entrée béton et bois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="assets/entree-bois.jpg" alt="Projection : terrasse bois à l'entrée">
-      <div class="avant"><img src="assets/entree-beton.jpg" alt="La dalle béton actuelle à l'entrée"></div>
-      <span class="etiquette g">Avant</span>
-      <span class="etiquette d">Projection</span>
-      <div class="poignee"></div>
-    </div>
-    <p class="note rev">La dalle est déjà coulée&nbsp;: une terrasse bois transforme instantanément l'accueil.</p>
-
-    <h3 class="rev" style="margin-top:2.8rem">Côté sud : la terrasse à vivre</h3>
-    <div class="comparateur rev" role="slider" aria-label="Comparer la façade sud béton et bois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="assets/sud-bois.jpg" alt="Projection : terrasse bois côté sud">
-      <div class="avant"><img src="assets/sud-beton.jpg" alt="La dalle béton actuelle côté sud"></div>
-      <span class="etiquette g">Avant</span>
-      <span class="etiquette d">Projection</span>
-      <div class="poignee"></div>
-    </div>
-    <p class="note rev">Une terrasse de 25 m² côté séjour, plein sud&nbsp;: le prolongement naturel de la pièce de vie vers le jardin. Projections non contractuelles.</p>
-
-    <div class="mosaique" style="margin-top:2.4rem">
-      <figure class="m-a rev"><img src="assets/facade-nord-1.jpg" alt="La façade nord de la maison" loading="lazy"></figure>
-      <figure class="m-b rev"><img src="assets/entree-escalier.jpg" alt="L'entrée et son escalier en bois" loading="lazy"></figure>
-      <figure class="m-c rev"><img src="assets/facade-nord-2.jpg" alt="La maison côté cour" loading="lazy"></figure>
-      <figure class="m-c rev"><img src="assets/facade-nord-3.jpg" alt="La façade nord et le jardin" loading="lazy"></figure>
-    </div>
-    <p class="note rev">La façade nord et l'entrée, le pignon de pierre du pays, l'escalier en bois massif : l'authenticité en héritage.</p>
-  </div>
-</section>
-
-<!-- ═══ LA PIÈCE DE VIE ═══ -->
-<section id="vie" class="fondclair">
-  <div class="large">
-    <p class="chapitre rev">Le cœur de la maison</p>
-    <h2 class="rev">Un séjour lumineux, plein sud</h2>
-    <div class="colonne" style="margin-left:0">
-      <p class="chapo rev">28 m² carrelés, ouverts sur le jardin, chauffés par un poêle à granulés. Un espace généreux qui réunit salon et salle à manger, baigné de lumière du matin au soir.</p>
-    </div>
-    <div class="paires">
-      <figure class="rev"><img src="assets/sejour.jpg" alt="Le séjour avec poêle à granulés" loading="lazy"><figcaption>Le séjour et son poêle à granulés, ouvert sur la terrasse.</figcaption></figure>
-      <figure class="rev"><img src="assets/salon.jpg" alt="La partie salon" loading="lazy"><figcaption>La partie salon, côté jardin.</figcaption></figure>
-      <figure class="rev"><img src="assets/salle-manger.jpg" alt="La partie salle à manger" loading="lazy"><figcaption>La partie salle à manger, prolongée vers le jardin.</figcaption></figure>
-      <figure class="rev"><img src="assets/entree-escalier.jpg" alt="L'entrée et l'escalier bois" loading="lazy"><figcaption>L'entrée et son escalier en bois massif.</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 06 DIAGNOSTICS ═══ -->
-<section id="diagnostics">
-  <div class="colonne">
-    <p class="chapitre rev">06 — Diagnostics techniques</p>
-    <h2 class="rev">La transparence, noir sur blanc</h2>
-    <p class="rev">Le dossier de diagnostics techniques complet a été établi le 13 avril 2026, sur toutes les parties accessibles. En voici la synthèse — le rapport intégral est consultable sur demande.</p>
-    <ul class="technique rev">
-      <li><span>Performance énergétique</span><span>DPE D — 188 kWh/m²·an · GES B — 6 kg CO₂/m²·an</span></li>
-      <li><span>Coûts d'énergie estimés</span><span>1 700 € à 2 340 € / an</span></li>
-      <li><span>Amiante</span><span>Matériaux repérés — contrôle périodique, sans urgence</span></li>
-      <li><span>Électricité</span><span>Anomalies : mise en sécurité recommandée</span></li>
-      <li><span>État parasitaire</span><span>Aucun agent de dégradation biologique</span></li>
-      <li><span>ERP</span><span>Radon niveau 3 · sismicité niveau 2 · argile faible</span></li>
-      <li><span>Équipements</span><span>Tout-à-l'égout · double vitrage · fibre possible · chauffage électrique + bois</span></li>
-    </ul>
-    <h3 class="rev">Notre analyse</h3>
-    <p class="rev">Une maison saine dans sa structure — pas d'agent de dégradation, aucune parcelle concernée par un plan de prévention — dont les points d'attention (électricité, amiante) sont identifiés, chiffrables et s'inscrivent naturellement dans le projet de modernisation. <strong>Rapport complet sur demande.</strong></p>
-    <div class="boutons rev">
-      <a class="btn plein" href="https://data.geopf.fr/annexes/gpu/documents/DU_56054/cc30e2799f801c9652a228ca12f8ed1c/56054_reglement_20250708.pdf" target="_blank" rel="noopener">Règlement du PLU (Géoportail)</a>
-      <a class="btn" href="https://errial.georisques.gouv.fr/#/wkSlrpDv" target="_blank" rel="noopener">État des risques — ERP officiel</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 07 VISITE VIRTUELLE ═══ -->
-<section id="visite" class="fondencre">
-  <div class="large">
-    <p class="chapitre rev">07 — Visite virtuelle</p>
-    <h2 class="rev">Et si vous commenciez la visite maintenant&nbsp;?</h2>
-    <div class="colonne" style="margin-left:0">
-      <p class="rev">Explorez chaque pièce comme si vous y étiez. Découvrez les volumes, imaginez vos aménagements et projetez-vous dans votre futur chez-vous, en toute liberté.</p>
-    </div>
-
-    <div class="visite rev" id="matterport">
-      <button class="lanceur" type="button" aria-label="Lancer la visite virtuelle Matterport 360°">
-        <img src="assets/mer-coucher.jpg" alt="">
-        <span>▶&nbsp;&nbsp;Lancer la visite 360°</span>
-      </button>
-    </div>
-    <p class="note rev">Visite immersive Matterport — déplacez-vous de pièce en pièce, à la souris ou au doigt, plein écran disponible.</p>
-
-    <div class="projeter rev">
-      <img src="assets/plan-rdc.jpg" alt="Plan 3D de la maison">
-      <div class="projeter-txt">
-        <h3>À vous de vous projeter</h3>
-        <p>Ouvrez le plan 3D modélisé dans HomeByMe : déplacez une cloison, testez votre cuisine ouverte, essayez vos couleurs.</p>
-      </div>
-      <a class="btn plein" href="https://home.by.me/fr/project/c74b1c53471853ea47d4dda/copie-de-11-la-croix-cordier-56410-erdeven?open_planner=true" target="_blank" rel="noopener">Ouvrir le plan 3D</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 08 QUIZ ═══ -->
-<section id="quiz">
-  <div class="colonne">
-    <p class="chapitre rev">08 — L'interlude</p>
-    <h2 class="rev">Connaissez-vous Erdeven&nbsp;?</h2>
-    <p class="rev">Cinq questions pour vérifier si vous avez l'étoffe d'un Erdevennois. Tout est dans ce book… ou presque.</p>
-    <div class="carte rev">
-      <p class="compteur"></p>
-      <p class="question"></p>
-      <div class="reponses"></div>
-      <p class="explication"></p>
-      <div class="barre">
-        <span class="compteur2 compteur"></span>
-        <button class="btn suivante" style="display:none">Question suivante</button>
-      </div>
-      <div class="score" style="display:none;text-align:center">
-        <b></b>
-        <p class="verdict"></p>
-        <button class="btn rejouer">Rejouer</button>
-        <a class="btn contact" href="#contact" style="margin-left:.6rem">Organiser une vraie visite</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 09 CONTACT / CLÔTURE ═══ -->
-<section id="contact" class="fondencre">
-  <div class="colonne">
-    <p class="chapitre rev" style="justify-content:center">09 — Écrire la suite</p>
-    <p class="miroir rev">Une construction saine, un séjour plein sud, quatre chambres, la vie de plain-pied à portée de main.<br><em>Et si c'était vous qui l'écriviez&nbsp;?</em></p>
-    <img class="portrait rev" src="assets/roger.jpg" alt="Roger-Jacques Vluys">
-    <p class="nom rev">Roger-Jacques Vluys</p>
-    <p class="role rev">Mandataire immobilier · Erdeven (56)</p>
-    <div class="boutons rev" style="justify-content:center">
-      <a class="btn contact" href="tel:+33614204847">📞 06 14 20 48 47</a>
-      <a class="btn contact" href="mailto:rj.vluys@drhouse.immo?subject=Maison%20familiale%20%C3%A0%20Erdeven%20%E2%80%94%20demande%20de%20visite">✉️ rj.vluys@drhouse.immo</a>
-    </div>
-    <p class="note rev">ERDEVEN (56410) — Maison familiale de 2003 · 99 m² habitables · 4 chambres · vie de plain-pied possible · terrain clos de 621 m². Magazine VIP · Publication filtrée.</p>
-  </div>
-</section>
-<footer>
-  <p>Nord-Sud Immo, SAS au capital de 20 760 € — RCS Aix-en-Provence 789 995 107. DR HOUSE IMMO est une marque déposée.<br>
-  Siège social : 3 AB Avenue des Belges, 13100 Aix-en-Provence — Tél. 09 72 40 71 68 — <a href="https://www.drhouse-immo.com" target="_blank" rel="noopener">www.drhouse-immo.com</a><br>
-  Les visuels « après » sont des projections de home staging virtuel, non contractuelles. Chaque information a été validée avant publication. Informations sur les risques : georisques.gouv.fr.</p>
-</footer>
+<div id="app"></div>
 
 <script>
-/* ── Fil d'horizon + chapitre actif ── */
-const horizon = document.getElementById('horizon');
-const liens = [...document.querySelectorAll('#rail a')];
-const cibles = liens.map(a => document.querySelector(a.getAttribute('href')));
-addEventListener('scroll', () => {
-  const h = document.documentElement;
-  horizon.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-  const y = h.scrollTop + innerHeight * 0.4;
-  let actif = -1;
-  cibles.forEach((s, i) => { if (s && s.offsetTop <= y) actif = i; });
-  liens.forEach((a, i) => a.classList.toggle('actif', i === actif));
-}, { passive: true });
+// ============ TRANSLATIONS ============
+const T={
+fr:{appName:"EisenhowerBox",q1:"Faire",q1d:"Urgent & Important",q2:"Planifier",q2d:"Important, Pas Urgent",q3:"Déléguer",q3d:"Urgent, Pas Important",q4:"Éliminer",q4d:"Ni Urgent, Ni Important",add:"Nouveau",title:"Titre",notes:"Notes / Description",reminder:"Rappel",save:"Enregistrer",delete:"Supprimer",download:"Télécharger",search:"Rechercher...",noItems:"Aucun élément ici",addFirst:"Appuyez sur + pour ajouter",attach:"Pièces jointes",photo:"Image",doc:"Document",voice:"Vocal",recording:"Stop",toCalendar:"📅 Ajouter au calendrier",items:"éléments",cancel:"Annuler",created:"Créé le",reminderOn:"Rappel",confirmDel:"Confirmer la suppression ?",yes:"Supprimer",no:"Annuler",results:"Résultats",noResults:"Aucun résultat",selectQ:"Quadrant",edit:"Modifier",play:"▶ Écouter",stop:"⏹ Stop",downloadAll:"Tout télécharger",
+importBtn:"Importer des tâches",importTitle:"Importer des tâches",importDesc:"Collez votre JSON ou choisissez un fichier. Format : tableau d'objets avec <strong>title</strong> (requis) et <strong>quadrant</strong> 1-4 (requis).",importDrop:"Choisir un fichier .json",importOk:"tâche(s) importée(s) !",importSkip:"ignorée(s) (champs manquants)",importErr:"JSON invalide ou format incorrect",importClose:"Fermer",importConfirm:"Importer",importPaste:"Coller du JSON :",importOrFile:"ou choisir un fichier",importPastePlaceholder:'[{"title":"Ma tâche","quadrant":1}]',importPreview:"Prévisualiser"},
+en:{appName:"EisenhowerBox",q1:"Do",q1d:"Urgent & Important",q2:"Schedule",q2d:"Important, Not Urgent",q3:"Delegate",q3d:"Urgent, Not Important",q4:"Eliminate",q4d:"Not Urgent, Not Important",add:"New",title:"Title",notes:"Notes / Description",reminder:"Reminder",save:"Save",delete:"Delete",download:"Download",search:"Search...",noItems:"Nothing here yet",addFirst:"Tap + to add",attach:"Attachments",photo:"Image",doc:"Document",voice:"Voice",recording:"Stop",toCalendar:"📅 Add to Calendar",items:"items",cancel:"Cancel",created:"Created",reminderOn:"Reminder",confirmDel:"Confirm delete?",yes:"Delete",no:"Cancel",results:"Results",noResults:"No results",selectQ:"Quadrant",edit:"Edit",play:"▶ Play",stop:"⏹ Stop",downloadAll:"Download all",
+importBtn:"Import tasks",importTitle:"Import tasks",importDesc:"Paste your JSON or choose a file. Format: array of objects with <strong>title</strong> (required) and <strong>quadrant</strong> 1-4 (required).",importDrop:"Choose a .json file",importOk:"task(s) imported!",importSkip:"skipped (missing fields)",importErr:"Invalid JSON or wrong format",importClose:"Close",importConfirm:"Import",importPaste:"Paste JSON:",importOrFile:"or choose a file",importPastePlaceholder:'[{"title":"My task","quadrant":1}]',importPreview:"Preview"}
+};
 
-/* ── Apparitions au défilement ── */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('vu'); io.unobserve(e.target); }
-}), { threshold: 0.12 });
-document.querySelectorAll('.rev').forEach(el => io.observe(el));
+// ============ ICONS (inline SVG) ============
+const I={
+flame:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+target:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+zap:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+inbox:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>',
+plus:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+back:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+search:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+x:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+chevron:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>',
+clock:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+clip:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
+trash:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+download:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+globe:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+cam:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+file:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+mic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
+calendar:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+vol:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
+edit:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+upload:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>'
+};
 
-/* ── Comparateurs avant / après (plusieurs sur la page) ── */
-document.querySelectorAll('.comparateur').forEach(comp => {
-  const avant = comp.querySelector('.avant');
-  const poignee = comp.querySelector('.poignee');
-  let part = 0.5;
-  const rendre = () => {
-    avant.style.width = (part * 100) + '%';
-    avant.style.setProperty('--part', part || 0.0001);
-    poignee.style.left = (part * 100) + '%';
-    comp.setAttribute('aria-valuenow', Math.round(part * 100));
-  };
-  const depuis = x => {
-    const r = comp.getBoundingClientRect();
-    part = Math.min(0.97, Math.max(0.03, (x - r.left) / r.width));
-    rendre();
-  };
-  let glisse = false;
-  comp.addEventListener('pointerdown', e => { glisse = true; comp.setPointerCapture(e.pointerId); depuis(e.clientX); });
-  comp.addEventListener('pointermove', e => glisse && depuis(e.clientX));
-  comp.addEventListener('pointerup', () => glisse = false);
-  comp.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') { part = Math.max(0.03, part - 0.05); rendre(); e.preventDefault(); }
-    if (e.key === 'ArrowRight') { part = Math.min(0.97, part + 0.05); rendre(); e.preventDefault(); }
+const QI=[null,'flame','target','zap','inbox'];
+const QC=[null,'q1','q2','q3','q4'];
+
+// ============ STATE ============
+let state={view:'matrix',lang:'fr',items:[],selQ:null,selItem:null,searchOpen:false,searchQ:'',showDel:false,
+  formTitle:'',formNotes:'',formQ:1,formReminder:'',formAtts:[],editId:null,isRec:false,toast:null,
+  showImport:false,importPending:null,showImportModal:false,importText:''};
+let mediaRec=null,audioChunks=[],audioEls={},playingId=null;
+
+function t(k){return T[state.lang][k]||k}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function fmt(d){return new Date(d).toLocaleDateString(state.lang==='fr'?'fr-FR':'en-US',{day:'numeric',month:'short',year:'numeric'})}
+function fmtFull(d){return new Date(d).toLocaleString(state.lang==='fr'?'fr-FR':'en-US',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+function qItems(qid){return state.items.filter(i=>i.quadrant===qid)}
+
+// ============ STORAGE ============
+function load(){
+  try{
+    const l=localStorage.getItem('eis-lang');if(l)state.lang=l;
+    const d=localStorage.getItem('eis-items');
+    if(d){
+      state.items=JSON.parse(d);
+    }else{
+      const now=new Date().toISOString();
+      state.items=[
+        {id:uid(),title:"Créer le compte Instagram @immatch.app",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Tourner 3 Reels Score en direct",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Découper le Guide Acquéreur en 5 carrousels Instagram",notes:'',quadrant:1,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Calendrier éditorial 4 semaines",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Série Reels MargImmo en action",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Série Reels RenoVision",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Posts collaboratifs avec pros partenaires",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Créer une page TikTok IMMATCH",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Rédiger 10 scripts de Reels éducatifs",notes:'',quadrant:2,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Templates graphiques Canva aux couleurs IMMATCH",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Banque de hooks pour Reels",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"Veille hebdo DomeusAI + concurrents",notes:'',quadrant:3,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"NE PAS copier le produit DomeusAI",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now},
+        {id:uid(),title:"NE PAS acheter de followers",notes:'',quadrant:4,reminder:null,attachments:[],createdAt:now}
+      ];
+      saveItems();
+    }
+  }catch(e){console.error(e)}
+}
+function saveItems(){try{localStorage.setItem('eis-items',JSON.stringify(state.items))}catch(e){console.error(e)}}
+function saveLang(){try{localStorage.setItem('eis-lang',state.lang)}catch(e){console.error(e)}}
+
+// ============ FILE HELPERS ============
+function compressImg(file){
+  return new Promise(r=>{
+    const fr=new FileReader();
+    fr.onload=e=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');const ratio=Math.min(800/img.width,1);c.width=img.width*ratio;c.height=img.height*ratio;c.getContext('2d').drawImage(img,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.7))};img.src=e.target.result};
+    fr.readAsDataURL(file)})
+}
+function fileToB64(file){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(file)})}
+function downloadAtt(att){const a=document.createElement('a');a.href=att.data;a.download=att.name;document.body.appendChild(a);a.click();document.body.removeChild(a)}
+
+// ============ TOAST ============
+function showToast(msg,type='ok'){
+  state.toast={msg,type};render();
+  setTimeout(()=>{state.toast=null;render()},2800);
+}
+
+// ============ CALENDAR EXPORT ============
+function exportICS(item){
+  if(!item.reminder)return;
+  const d=new Date(item.reminder);
+  const pad=n=>String(n).padStart(2,'0');
+  const icsDate=`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  const end=new Date(d.getTime()+3600000);
+  const icsEnd=`${end.getFullYear()}${pad(end.getMonth()+1)}${pad(end.getDate())}T${pad(end.getHours())}${pad(end.getMinutes())}00`;
+  const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${icsDate}\nDTEND:${icsEnd}\nSUMMARY:${item.title}\nDESCRIPTION:${(item.notes||'').replace(/\n/g,'\\n')}\nBEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR`;
+  const blob=new Blob([ics],{type:'text/calendar'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${item.title.replace(/[^a-zA-Z0-9]/g,'_')}.ics`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  showToast(state.lang==='fr'?'Fichier .ics téléchargé !':'ICS file downloaded!');
+}
+
+// ============ JSON IMPORT ============
+function readJSONFile(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      try{resolve(JSON.parse(e.target.result))}
+      catch(err){reject(err)}
+    };
+    reader.onerror=()=>reject(new Error('read error'));
+    reader.readAsText(file);
   });
-  rendre();
-});
-
-/* ── Visite Matterport (chargée au clic pour une page légère) ── */
-const matterport = document.getElementById('matterport');
-if (matterport) matterport.querySelector('.lanceur').addEventListener('click', () => {
-  matterport.innerHTML = '<iframe src="https://my.matterport.com/show/?m=98VQhEhQL1Q" allow="fullscreen; xr-spatial-tracking" allowfullscreen title="Visite virtuelle de la maison"></iframe>';
-});
-
-/* Vidéo du bien : modale verticale (YouTube Short) */
-const videoBtn = document.getElementById('videoBtn');
-const videoModal = document.getElementById('videoModal');
-const videoCadre = document.getElementById('videoCadre');
-const videoFermer = document.getElementById('videoFermer');
-function ouvrirVideo() {
-  videoCadre.innerHTML = '<iframe src="https://www.youtube.com/embed/4gsj--KGChI?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo de présentation du bien"></iframe>';
-  videoModal.classList.add('ouvert');
 }
-function fermerVideo() {
-  videoModal.classList.remove('ouvert');
-  videoCadre.innerHTML = '';
-}
-if (videoBtn) videoBtn.addEventListener('click', ouvrirVideo);
-if (videoFermer) videoFermer.addEventListener('click', fermerVideo);
-if (videoModal) videoModal.addEventListener('click', e => { if (e.target === videoModal) fermerVideo(); });
-addEventListener('keydown', e => { if (e.key === 'Escape' && videoModal.classList.contains('ouvert')) fermerVideo(); });
 
-/* ── Quiz : Connaissez-vous Erdeven ? ── */
-const QUESTIONS = [
-  { q: "Combien de kilomètres de plages sauvages bordent Erdeven ?",
-    r: ["3 km", "8 km", "15 km"], juste: 1,
-    e: "8 km de plages sauvages, avec des dunes protégées et des sentiers côtiers." },
-  { q: "Quelle plage, immense et familiale, est réputée pour le kite et le char à voile ?",
-    r: ["Kerhillio", "Kerminihy", "Kerouriec"], juste: 0,
-    e: "Kerhillio — les plages de Kerminihy et Kerouriec, plus intimes, sont à deux pas." },
-  { q: "À combien de minutes se trouve la gare TGV d'Auray ?",
-    r: ["45 minutes", "30 minutes", "15 minutes"], juste: 2,
-    e: "15 minutes seulement : l'esprit village, avec l'ouverture sur le monde." },
-  { q: "Quels monuments rappellent que ce territoire est habité depuis des millénaires ?",
-    r: ["Des dolmens et des menhirs", "Des phares", "Des châteaux forts"], juste: 0,
-    e: "Dolmens, menhirs, chapelles et villages de pierre : un musée à ciel ouvert." },
-  { q: "En zone UB, l'emprise au sol peut atteindre jusqu'à…",
-    r: ["30 % de la parcelle", "50 % de la parcelle", "70 % de la parcelle"], juste: 2,
-    e: "70 % de l'unité foncière en emprise au sol maximale théorique — sous réserve de l'existant et des autres règles du PLU." }
-];
-const VERDICTS = [
-  "Il est temps de venir découvrir Erdeven en vrai…",
-  "Un bon début — la visite fera le reste.",
-  "Pas mal du tout, futur voisin ?",
-  "Vous connaissez le coin — reste à y poser vos valises.",
-  "Impressionnant. Il ne vous manque que l'adresse.",
-  "Sans faute ! Vous avez l'étoffe d'un Erdevennois. Il ne manque que la maison."
-];
-const quiz = document.querySelector('#quiz .carte');
-if (quiz) {
-  const elQ = quiz.querySelector('.question'), elR = quiz.querySelector('.reponses'),
-        elE = quiz.querySelector('.explication'), elC = quiz.querySelector('.compteur'),
-        elC2 = quiz.querySelector('.compteur2'), btnS = quiz.querySelector('.suivante'),
-        elScore = quiz.querySelector('.score');
-  let i = 0, score = 0;
-  function poser() {
-    const q = QUESTIONS[i];
-    elC.textContent = 'Question ' + (i + 1) + ' / ' + QUESTIONS.length;
-    elC2.textContent = 'Score : ' + score;
-    elQ.textContent = q.q;
-    elE.style.display = 'none'; btnS.style.display = 'none';
-    elR.innerHTML = '';
-    q.r.forEach((txt, k) => {
-      const b = document.createElement('button');
-      b.type = 'button'; b.textContent = txt;
-      b.addEventListener('click', () => {
-        [...elR.children].forEach(x => x.disabled = true);
-        if (k === q.juste) { b.classList.add('juste'); score++; }
-        else { b.classList.add('faux'); elR.children[q.juste].classList.add('juste'); }
-        elE.textContent = q.e; elE.style.display = 'block';
-        elC2.textContent = 'Score : ' + score;
-        btnS.style.display = 'inline-block';
-        btnS.textContent = (i === QUESTIONS.length - 1) ? 'Voir mon score' : 'Question suivante';
-      });
-      elR.appendChild(b);
-    });
+function parseImportList(raw){
+  return Array.isArray(raw)?raw:Array.isArray(raw.tasks)?raw.tasks:Array.isArray(raw.items)?raw.items:null;
+}
+
+async function handleImportFile(file){
+  if(!file||!file.name.toLowerCase().endsWith('.json')){
+    showToast(t('importErr'),'err');
+    return;
   }
-  btnS.addEventListener('click', () => {
-    i++;
-    if (i < QUESTIONS.length) { poser(); return; }
-    elQ.style.display = elR.style.display = elE.style.display = 'none';
-    elC.style.display = elC2.style.display = btnS.style.display = 'none';
-    elScore.style.display = 'block';
-    elScore.querySelector('b').textContent = score + ' / ' + QUESTIONS.length;
-    elScore.querySelector('.verdict').textContent = VERDICTS[score];
-  });
-  quiz.querySelector('.rejouer').addEventListener('click', () => {
-    i = 0; score = 0;
-    elScore.style.display = 'none';
-    elQ.style.display = 'block'; elR.style.display = 'grid';
-    elC.style.display = elC2.style.display = 'block';
-    poser();
-  });
-  poser();
+  try{
+    const raw=await readJSONFile(file);
+    const list=parseImportList(raw);
+    if(!list){showToast(t('importErr'),'err');return;}
+    state.importPending=list;
+    state.showImportModal=false;
+    state.importText='';
+    state.showImport=true;
+    render();
+  }catch(e){
+    showToast(t('importErr'),'err');
+  }
 }
+
+function handleImportText(text){
+  try{
+    const raw=JSON.parse(text.trim());
+    const list=parseImportList(raw);
+    if(!list){showToast(t('importErr'),'err');return;}
+    state.importPending=list;
+    state.showImportModal=false;
+    state.importText='';
+    state.showImport=true;
+    render();
+  }catch(e){
+    showToast(t('importErr'),'err');
+  }
+}
+
+function doImport(){
+  const list=state.importPending||[];
+  let imported=0,skipped=0;
+  list.forEach(item=>{
+    const q=parseInt(item.quadrant,10);
+    if(!item.title||![1,2,3,4].includes(q)){skipped++;return;}
+    state.items.push({
+      id:uid(),
+      title:String(item.title).trim(),
+      notes:item.notes?String(item.notes).trim():'',
+      quadrant:q,
+      reminder:item.reminder||null,
+      attachments:[],
+      createdAt:item.createdAt||new Date().toISOString()
+    });
+    imported++;
+  });
+  saveItems();
+  state.showImport=false;
+  state.importPending=null;
+  render();
+  let msg=`${imported} ${t('importOk')}`;
+  if(skipped)msg+=` — ${skipped} ${t('importSkip')}`;
+  showToast(msg);
+}
+
+// ============ RENDER ============
+function render(){
+  const app=document.getElementById('app');
+  let html='';
+
+  if(state.view==='matrix')html=renderMatrix();
+  else if(state.view==='list')html=renderList();
+  else if(state.view==='detail')html=renderDetail();
+  else if(state.view==='form')html=renderForm();
+
+  if(state.searchOpen)html+=renderSearch();
+  if(state.showDel)html+=renderDeleteModal();
+  if(state.showImportModal)html+=renderImportInputModal();
+  if(state.showImport)html+=renderImportModal();
+  if(state.toast)html+=`<div class="toast toast-${state.toast.type}">${state.toast.msg}</div>`;
+
+  app.innerHTML=html;
+  bind();
+}
+
+// ============ MATRIX ============
+function renderMatrix(){
+  const cards=QC.slice(1).map((c,i)=>{
+    const qid=i+1;const count=qItems(qid).length;
+    return `<button class="q-card ${c}-card" data-q="${qid}" data-action="openQ">
+      <div class="q-icon">${I[QI[qid]]}</div>
+      <div class="q-name">${t('q'+qid)}</div>
+      <div class="q-desc">${t('q'+qid+'d')}</div>
+      <div class="q-bottom"><span class="q-badge">${count}</span>${I.chevron}</div>
+    </button>`}).join('');
+
+  return `<div class="header"><div class="header-left"><h1>${t('appName')}</h1></div><div class="header-right">
+    <button class="btn-icon" title="${t('importBtn')}" data-action="openImport">${I.upload}</button>
+    <button class="btn-icon" data-action="openSearch">${I.search}</button>
+    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
+  </div></div>
+  <div class="matrix">${cards}</div>
+  <div class="total">${state.items.length} ${t('items')}</div>
+  <button class="fab" data-action="addNew">${I.plus}</button>`;
+}
+
+// ============ IMPORT INPUT MODAL (paste JSON or pick file) ============
+function renderImportInputModal(){
+  const hasText=state.importText.trim().length>0;
+  return `<div class="import-modal">
+    <div class="import-sheet">
+      <h2>${t('importTitle')}</h2>
+      <p>${t('importDesc')}</p>
+      <label style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px">${t('importPaste')}</label>
+      <textarea id="import-text" class="import-textarea" rows="6" placeholder="${t('importPastePlaceholder')}">${esc(state.importText)}</textarea>
+      <div class="import-divider">${t('importOrFile')}</div>
+      <label class="import-drop" style="display:block;cursor:pointer">
+        ${I.upload}
+        <span><strong>${t('importDrop')}</strong></span>
+        <input type="file" id="import-file-modal" accept=".json,application/json" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+      </label>
+      <div class="import-actions">
+        <button class="import-cancel" data-action="closeImportInput">${t('cancel')}</button>
+        <button class="btn-primary btn-action" style="flex:1" id="btn-paste-import" data-action="pasteImport" ${!hasText?'disabled':''}>${t('importPreview')}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ============ IMPORT PREVIEW MODAL ============
+function renderImportModal(){
+  const list=state.importPending||[];
+  const valid=list.filter(i=>i.title&&[1,2,3,4].includes(parseInt(i.quadrant,10)));
+  const skipped=list.length-valid.length;
+  const preview=valid.slice(0,5).map(i=>{
+    const q=parseInt(i.quadrant,10);const c=QC[q];
+    return `<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface2)">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--${c});flex-shrink:0"></span>
+      <span style="font-size:13px;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(String(i.title))}</span>
+      <span style="font-size:11px;color:var(--text3);flex-shrink:0">${t('q'+q)}</span>
+    </div>`}).join('');
+  const moreCount=valid.length>5?valid.length-5:0;
+
+  return `<div class="import-modal">
+    <div class="import-sheet">
+      <h2>${t('importTitle')}</h2>
+      <p style="margin-bottom:12px">${valid.length} ${t('importOk')}${skipped?` &mdash; ${skipped} ${t('importSkip')}`:''}</p>
+      ${preview?`<div style="margin-bottom:${moreCount?'4px':'12px'}">${preview}</div>`:''}
+      ${moreCount?`<p style="font-size:11px;color:var(--text3);margin-bottom:12px">+ ${moreCount} ${state.lang==='fr'?'autre(s)':'more'}…</p>`:''}
+      <div class="import-actions">
+        <button class="import-cancel" data-action="closeImport">${t('importClose')}</button>
+        <button class="btn-primary btn-action" style="flex:1" data-action="confirmImport" ${!valid.length?'disabled':''}>${t('importConfirm')} (${valid.length})</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ============ LIST ============
+function renderList(){
+  const q=state.selQ;const list=qItems(q).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  const bg=['','q1','q2','q3','q4'][q];
+
+  let content='';
+  if(list.length===0){
+    content=`<div class="empty"><div class="empty-icon" style="background:var(--${bg})">${I[QI[q]]}</div>
+      <p style="font-size:14px">${t('noItems')}</p><p style="font-size:12px;margin-top:4px">${t('addFirst')}</p></div>`;
+  }else{
+    content=`<div class="list">${list.map(item=>{
+      const hasClock=item.reminder?`<span>${I.clock} ${fmt(item.reminder)}</span>`:'';
+      const hasClip=item.attachments?.length?`<span>${I.clip} ${item.attachments.length}</span>`:'';
+      return `<button class="item-card" data-action="openItem" data-id="${item.id}">
+        <div style="flex:1;min-width:0">
+          <div class="item-title">${esc(item.title)}</div>
+          ${item.notes?`<div class="item-notes">${esc(item.notes)}</div>`:''}
+          <div class="item-meta"><span>${fmt(item.createdAt)}</span>${hasClock}${hasClip}</div>
+        </div>${I.chevron}</button>`}).join('')}</div>`;
+  }
+
+  return `<div class="header"><div class="header-left">
+    <button class="btn-icon" data-action="backMatrix">${I.back}</button>
+    <h1>${t('q'+q)}</h1></div><div class="header-right">
+    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
+  </div></div>${content}
+  <button class="fab" data-action="addInQ">${I.plus}</button>`;
+}
+
+// ============ DETAIL ============
+function renderDetail(){
+  const item=state.selItem;if(!item)return'';
+  const q=item.quadrant;const c=QC[q];
+
+  let attsHtml='';
+  if(item.attachments?.length){
+    attsHtml=`<div><div class="att-label">${t('attach')}</div><div class="att-grid">
+      ${item.attachments.map(att=>{
+        let preview='';
+        if(att.type?.startsWith('image/'))preview=`<img src="${att.data}" alt="${esc(att.name)}">`;
+        else if(att.type?.startsWith('audio/'))preview=`<div class="att-audio" data-action="playAudio" data-att="${att.id}">${playingId===att.id?t('stop'):t('play')}</div>`;
+        else preview=`<div class="att-doc">${I.file} <span style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span></div>`;
+        return `<div class="att-item">${preview}<div class="att-bar">
+          <span style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span>
+          <button data-action="dlAtt" data-att="${att.id}">${I.download}</button></div></div>`}).join('')}
+    </div></div>`;
+  }
+
+  return `<div class="header"><div class="header-left">
+    <button class="btn-icon" data-action="backFromDetail">${I.back}</button>
+    <h1>${t('q'+q)}</h1></div><div class="header-right">
+    <button class="btn-icon" data-action="editItem" style="color:var(--accent)">${I.edit}</button>
+    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
+  </div></div>
+  <div class="detail">
+    <div class="detail-card ${c}-card" style="background:var(--${c}bg);border-color:var(--${c}border)">
+      <div class="d-badge" style="color:var(--${c}text)"><div class="dot" style="background:var(--${c})"></div>${t('q'+q)}</div>
+      <h2>${esc(item.title)}</h2>
+      ${item.notes?`<div class="d-notes">${esc(item.notes)}</div>`:''}
+    </div>
+    <div class="meta-tags">
+      <span class="tag tag-date">${t('created')} ${fmt(item.createdAt)}</span>
+      ${item.reminder?`<span class="tag tag-reminder">${I.clock} ${fmtFull(item.reminder)}</span>`:''}
+    </div>
+    ${item.reminder?`<button class="btn-action btn-cal" data-action="exportCal">${t('toCalendar')}</button>`:''}
+    ${attsHtml}
+    <div style="padding-top:16px;border-top:1px solid var(--surface);display:flex;flex-direction:column;gap:8px">
+      ${item.attachments?.length?`<button class="btn-action btn-secondary" data-action="dlAll">${I.download} ${t('downloadAll')} (${item.attachments.length})</button>`:''}
+      <button class="btn-action btn-danger" data-action="confirmDel">${I.trash} ${t('delete')}</button>
+    </div>
+  </div>`;
+}
+
+// ============ FORM ============
+function renderForm(){
+  const isEdit=!!state.editId;
+  const qOpts=QC.slice(1).map((c,i)=>{
+    const qid=i+1;const sel=state.formQ===qid?`sel-${qid}`:'';
+    return `<button class="q-opt ${sel}" data-action="setQ" data-qid="${qid}">
+      ${I[QI[qid]]} ${t('q'+qid)}</button>`}).join('');
+
+  const atts=state.formAtts.map(att=>{
+    let preview='';
+    if(att.type?.startsWith('image/'))preview=`<img src="${att.data}" alt="${esc(att.name)}">`;
+    else if(att.type?.startsWith('audio/'))preview=`<div class="att-audio" data-action="playAudio" data-att="${att.id}">${playingId===att.id?t('stop'):t('play')}</div>`;
+    else preview=`<div class="att-doc">${I.file} ${esc(att.name)}</div>`;
+    return `<div class="att-item">${preview}<div class="att-bar">
+      <span style="max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(att.name)}</span>
+      <div style="display:flex;gap:2px">
+        <button data-action="dlFormAtt" data-att="${att.id}">${I.download}</button>
+        <button class="del-att" data-action="rmAtt" data-att="${att.id}">${I.x}</button>
+      </div></div></div>`}).join('');
+
+  return `<div class="header"><div class="header-left">
+    <button class="btn-icon" data-action="backFromForm">${I.back}</button>
+    <h1>${isEdit?t('edit'):t('add')}</h1></div><div class="header-right">
+    <button class="btn-lang" data-action="toggleLang">${I.globe} ${state.lang==='fr'?'EN':'FR'}</button>
+  </div></div>
+  <div class="form">
+    <div><label>${t('title')}</label>
+      <input type="text" id="f-title" value="${esc(state.formTitle)}" placeholder="${state.lang==='fr'?'Ex: Idée de projet...':'Ex: Project idea...'}"></div>
+    <div><label>${t('notes')}</label>
+      <textarea id="f-notes" rows="4" placeholder="${state.lang==='fr'?'Détails, contexte, liens...':'Details, context, links...'}">${esc(state.formNotes)}</textarea></div>
+    <div><label>${t('selectQ')}</label><div class="q-selector">${qOpts}</div></div>
+    <div><label>${I.calendar} ${t('reminder')}</label>
+      <input type="datetime-local" id="f-reminder" value="${state.formReminder}"></div>
+    <div><label>${t('attach')}</label>
+      <div class="att-buttons">
+        <label class="att-btn att-btn-img"><input type="file" accept="image/*" capture="environment" id="f-img" style="display:none">${I.cam} ${t('photo')}</label>
+        <label class="att-btn att-btn-doc"><input type="file" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.csv" id="f-doc" style="display:none">${I.file} ${t('doc')}</label>
+        <button class="att-btn att-btn-mic${state.isRec?' recording':''}" data-action="toggleRec">${I.mic} ${state.isRec?t('recording'):t('voice')}</button>
+      </div>
+      ${atts?`<div class="att-grid" style="margin-top:12px">${atts}</div>`:''}
+    </div>
+    <button class="btn-action btn-primary" data-action="saveItem" ${!state.formTitle.trim()?'disabled':''}>${t('save')}</button>
+  </div>`;
+}
+
+// ============ SEARCH ============
+function renderSearch(){
+  const q=state.searchQ.toLowerCase();
+  const res=q?state.items.filter(i=>i.title.toLowerCase().includes(q)||(i.notes||'').toLowerCase().includes(q)):[];
+  return `<div class="search-overlay">
+    <div class="search-bar" style="display:flex;gap:8px;position:relative">
+      <div style="flex:1;position:relative"><span class="search-icon">${I.search}</span>
+        <input id="search-input" type="text" value="${esc(state.searchQ)}" placeholder="${t('search')}" style="padding-left:36px">
+      </div>
+      <button class="btn-icon" style="background:var(--surface);flex-shrink:0" data-action="closeSearch">${I.x}</button>
+    </div>
+    ${q?`<p style="font-size:12px;color:var(--text3);padding:0 4px;margin-bottom:8px">${t('results')}: ${res.length}</p>`:''}
+    ${q&&!res.length?`<p style="text-align:center;color:var(--text3);padding:40px 0">${t('noResults')}</p>`:''}
+    <div class="search-results">${res.map(item=>{
+      const dot=`background:var(--${QC[item.quadrant]})`;
+      return `<button class="sr-item" data-action="openSearchItem" data-id="${item.id}">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="width:8px;height:8px;border-radius:50%;${dot};flex-shrink:0"></span>
+          <span style="font-size:14px;font-weight:600;color:var(--text)">${esc(item.title)}</span>
+        </div>
+        ${item.notes?`<p style="font-size:12px;color:var(--text3);padding-left:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(item.notes)}</p>`:''}
+      </button>`}).join('')}</div></div>`;
+}
+
+// ============ DELETE MODAL ============
+function renderDeleteModal(){
+  return `<div class="modal-overlay"><div class="modal">
+    <p>${t('confirmDel')}</p>
+    <div class="modal-btns">
+      <button class="modal-cancel" data-action="cancelDel">${t('no')}</button>
+      <button class="modal-confirm" data-action="doDelete">${t('yes')}</button>
+    </div></div></div>`;
+}
+
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// ============ EVENTS ============
+function bind(){
+  // Delegated click
+  document.getElementById('app').onclick=function(e){
+    const btn=e.target.closest('[data-action]');
+    if(!btn)return;
+    const action=btn.dataset.action;
+
+    if(action==='openQ'){state.selQ=+btn.dataset.q;state.view='list';render()}
+    else if(action==='backMatrix'){state.selQ=null;state.view='matrix';render()}
+    else if(action==='openItem'){
+      const item=state.items.find(i=>i.id===btn.dataset.id);
+      if(item){state.selItem=item;state.view='detail';render()}
+    }
+    else if(action==='backFromDetail'){state.selItem=null;state.view=state.selQ?'list':'matrix';render()}
+    else if(action==='addNew'){resetForm();state.view='form';render()}
+    else if(action==='addInQ'){resetForm();state.formQ=state.selQ||1;state.view='form';render()}
+    else if(action==='editItem'){
+      const item=state.selItem;
+      state.formTitle=item.title;state.formNotes=item.notes||'';state.formQ=item.quadrant;
+      state.formReminder=item.reminder||'';state.formAtts=[...(item.attachments||[])];state.editId=item.id;
+      state.view='form';render();
+    }
+    else if(action==='backFromForm'){resetForm();state.view=state.selItem?'detail':state.selQ?'list':'matrix';render()}
+    else if(action==='setQ'){state.formQ=+btn.dataset.qid;render()}
+    else if(action==='toggleRec'){
+      if(state.isRec)stopRec();else startRec();
+    }
+    else if(action==='rmAtt'){state.formAtts=state.formAtts.filter(a=>a.id!==btn.dataset.att);render()}
+    else if(action==='saveItem'){doSave()}
+    else if(action==='confirmDel'){state.showDel=true;render()}
+    else if(action==='cancelDel'){state.showDel=false;render()}
+    else if(action==='doDelete'){doDelete()}
+    else if(action==='openSearch'){state.searchOpen=true;state.searchQ='';render();setTimeout(()=>{const el=document.getElementById('search-input');if(el)el.focus()},50)}
+    else if(action==='closeSearch'){state.searchOpen=false;state.searchQ='';render()}
+    else if(action==='openSearchItem'){
+      const item=state.items.find(i=>i.id===btn.dataset.id);
+      if(item){state.selItem=item;state.searchOpen=false;state.searchQ='';state.view='detail';render()}
+    }
+    else if(action==='toggleLang'){state.lang=state.lang==='fr'?'en':'fr';saveLang();render()}
+    else if(action==='exportCal'){exportICS(state.selItem)}
+    else if(action==='dlAtt'||action==='dlFormAtt'){
+      const atts=action==='dlAtt'?state.selItem.attachments:state.formAtts;
+      const att=atts.find(a=>a.id===btn.dataset.att);if(att)downloadAtt(att);
+    }
+    else if(action==='dlAll'){state.selItem.attachments.forEach(downloadAtt)}
+    else if(action==='playAudio'){
+      const atts=state.view==='form'?state.formAtts:state.selItem?.attachments||[];
+      const att=atts.find(a=>a.id===btn.dataset.att);
+      if(att)toggleAudio(att);
+    }
+    // Import JSON actions
+    else if(action==='openImport'){state.showImportModal=true;state.importText='';render();setTimeout(()=>{const el=document.getElementById('import-text');if(el)el.focus()},50)}
+    else if(action==='closeImportInput'){state.showImportModal=false;state.importText='';render()}
+    else if(action==='pasteImport'){if(state.importText.trim())handleImportText(state.importText)}
+    else if(action==='closeImport'){state.showImport=false;state.importPending=null;render()}
+    else if(action==='confirmImport'){doImport()}
+  };
+
+  // Input bindings
+  const ti=document.getElementById('f-title');
+  if(ti)ti.oninput=()=>{state.formTitle=ti.value;const sb=document.querySelector('[data-action="saveItem"]');if(sb)sb.disabled=!ti.value.trim()};
+  const ni=document.getElementById('f-notes');
+  if(ni)ni.oninput=()=>{state.formNotes=ni.value};
+  const ri=document.getElementById('f-reminder');
+  if(ri)ri.onchange=()=>{state.formReminder=ri.value};
+  const si=document.getElementById('search-input');
+  if(si)si.oninput=()=>{state.searchQ=si.value;render();setTimeout(()=>{const el=document.getElementById('search-input');if(el){el.focus();el.selectionStart=el.selectionEnd=el.value.length}},10)};
+
+  // Import textarea binding
+  const it=document.getElementById('import-text');
+  if(it)it.oninput=()=>{
+    state.importText=it.value;
+    const pb=document.getElementById('btn-paste-import');
+    if(pb)pb.disabled=!it.value.trim();
+  };
+
+  // File input in import modal
+  const jf=document.getElementById('import-file-modal');
+  if(jf)jf.onchange=(e)=>{
+    const file=e.target.files?.[0];
+    if(file)handleImportFile(file);
+    jf.value='';
+  };
+
+  // File inputs (attachments)
+  const fi=document.getElementById('f-img');
+  if(fi)fi.onchange=async(e)=>{
+    const file=e.target.files?.[0];if(!file)return;
+    const data=file.type.startsWith('image/')?await compressImg(file):await fileToB64(file);
+    state.formAtts.push({id:uid(),name:file.name,type:file.type,data});fi.value='';render();
+  };
+  const fd=document.getElementById('f-doc');
+  if(fd)fd.onchange=async(e)=>{
+    const file=e.target.files?.[0];if(!file)return;
+    const data=await fileToB64(file);
+    state.formAtts.push({id:uid(),name:file.name,type:file.type,data});fd.value='';render();
+  };
+}
+
+function resetForm(){
+  state.formTitle='';state.formNotes='';state.formQ=state.selQ||1;
+  state.formReminder='';state.formAtts=[];state.editId=null;state.isRec=false;
+}
+
+function doSave(){
+  if(!state.formTitle.trim())return;
+  const data={title:state.formTitle.trim(),notes:state.formNotes.trim(),quadrant:state.formQ,
+    reminder:state.formReminder||null,attachments:state.formAtts};
+  if(state.editId){
+    state.items=state.items.map(i=>i.id===state.editId?{...i,...data,updatedAt:new Date().toISOString()}:i);
+    const updated=state.items.find(i=>i.id===state.editId);
+    state.selItem=updated;state.view='detail';
+  }else{
+    const newItem={id:uid(),...data,createdAt:new Date().toISOString()};
+    state.items.push(newItem);state.view=state.selQ?'list':'matrix';
+  }
+  saveItems();resetForm();render();
+}
+
+function doDelete(){
+  state.items=state.items.filter(i=>i.id!==state.selItem.id);
+  saveItems();state.showDel=false;state.selItem=null;
+  state.view=state.selQ?'list':'matrix';render();
+}
+
+async function startRec(){
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    const recorder=new MediaRecorder(stream);
+    audioChunks=[];
+    recorder.ondataavailable=e=>audioChunks.push(e.data);
+    recorder.onstop=()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      const blob=new Blob(audioChunks,{type:'audio/webm'});
+      const reader=new FileReader();
+      reader.onload=()=>{
+        state.formAtts.push({id:uid(),name:`vocal-${new Date().toLocaleTimeString().replace(/:/g,'-')}.webm`,type:'audio/webm',data:reader.result});
+        render();
+      };reader.readAsDataURL(blob);
+    };
+    mediaRec=recorder;recorder.start();state.isRec=true;render();
+  }catch(e){console.error('Mic error:',e)}
+}
+
+function stopRec(){
+  if(mediaRec?.state==='recording'){mediaRec.stop();state.isRec=false;render()}
+}
+
+function toggleAudio(att){
+  if(playingId===att.id){audioEls[att.id]?.pause();playingId=null;render();return}
+  if(playingId&&audioEls[playingId])audioEls[playingId].pause();
+  if(!audioEls[att.id]){audioEls[att.id]=new Audio(att.data);audioEls[att.id].onended=()=>{playingId=null;render()}}
+  audioEls[att.id].play();playingId=att.id;render();
+}
+
+// ============ INIT ============
+load();
+render();
 </script>
 </body>
 </html>
