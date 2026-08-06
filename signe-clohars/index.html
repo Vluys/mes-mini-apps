@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGNÉ — 8 cité de Quillien, Clohars-Carnoët</title>
+<meta name="description" content="Maison individuelle à Clohars-Carnoët (29) — 70 m² habitables, potentiel 85 m², terrain clos. Présentation vérifiée SIGNÉ Cadre Estate Solutions.">
+<meta property="og:title" content="SIGNÉ — Clohars-Carnoët, entre terre et océan">
+<meta property="og:description" content="70 m² habitables · Potentiel 85 m² · Terrain clos · Véranda Gustave Rideau · Clohars-Carnoët (29).">
+<meta property="og:image" content="facade-jardin.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--nuit:#0A0A0A;--ardoise:#1A1D21;--pierre:#E8E2D6;--lin:#F5F2EB;--blanc:#FEFDFB;--ocean:#2B5B5C;--or:#C4A265;--lichen:#7A776C;--rouge:#A6342F;--filet:#D4CBBA;--vert:#4A8B5C;--jaune:#D4A72C;--bleu:#3B7DD8;--display:'Cormorant Garamond',Georgia,serif;--body:'Lora',Georgia,serif;--ui:'Karla',system-ui,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--pierre);color:var(--ardoise);font-family:var(--body);font-size:1.05rem;line-height:1.75;overflow-x:hidden}img{display:block;max-width:100%}a{color:var(--ocean)}::selection{background:var(--ocean);color:var(--lin)}
+#horizon{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--ocean),var(--or));z-index:60;transition:width .15s linear}
+#rail{position:fixed;left:1.2rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:.5rem}#rail a{font-family:var(--ui);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--lichen);display:flex;align-items:center;gap:.45rem;transition:color .25s}#rail a::before{content:'';width:12px;height:1px;background:currentColor;transition:width .25s}#rail a.actif{color:var(--or)}#rail a.actif::before{width:24px}#rail a span{opacity:0;transform:translateX(-4px);transition:.25s;white-space:nowrap}#rail a.actif span,#rail a:hover span,#rail a:focus-visible span{opacity:1;transform:none}@media(max-width:1120px){#rail{display:none}}
+section{padding:6rem 1.5rem}.colonne{max-width:780px;margin:0 auto}.large{max-width:1020px;margin:0 auto}.chapitre{font-family:var(--ui);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--or);display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem}.chapitre::after{content:'';flex:1;height:1px;background:var(--filet)}h2{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;margin-bottom:1.3rem}h3{font-family:var(--display);font-weight:600;font-size:1.35rem;margin:2rem 0 .6rem}p{margin-bottom:1rem}p.chapo{font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.55}.note{font-family:var(--ui);font-size:.78rem;color:var(--lichen)}figcaption{font-family:var(--ui);font-size:.76rem;color:var(--lichen);margin-top:.5rem}
+.fond-lin{background:var(--lin)}.fond-encre{background:var(--ardoise);color:var(--pierre)}.fond-encre .chapitre{color:var(--or)}.fond-encre .chapitre::after{background:#333}.fond-encre .note,.fond-encre figcaption{color:#9A978C}.fond-encre a{color:var(--or)}.fond-nuit{background:var(--nuit);color:var(--pierre)}
+.rev{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}.rev.vu{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rev{opacity:1;transform:none;transition:none}#prologue .mot{opacity:1!important}}
+#prologue{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;background:var(--nuit);padding:2rem;overflow:hidden}#prologue .contenu{text-align:center;max-width:640px}#prologue .mot{font-family:var(--display);font-weight:300;font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.5;color:var(--pierre);opacity:0;transition:opacity .8s ease;display:inline}#prologue .mot.visible{opacity:1}#prologue .pause{display:block;height:1.2em}#prologue .sceau-intro{margin-top:3rem;opacity:0;transition:opacity 1.2s ease .5s}#prologue .sceau-intro.visible{opacity:1}#prologue .fleche{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--or);font-family:var(--ui);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}#prologue .fleche::after{content:'';display:block;width:1px;height:32px;background:var(--or);margin:.5rem auto 0;animation:desc 1.8s ease-in-out infinite}@keyframes desc{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+#hero{position:relative;min-height:85svh;display:flex;align-items:flex-end;overflow:hidden;padding:0}#hero .visuel{position:absolute;inset:0}#hero .visuel img{width:100%;height:100%;object-fit:cover;object-position:center 60%}#hero .visuel::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,29,33,.88) 0%,rgba(26,29,33,.4) 40%,transparent 70%)}#hero .titre{position:relative;z-index:2;padding:0 1.5rem 4rem;max-width:780px}#hero .marque{font-family:var(--ui);font-size:.65rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:1rem}#hero h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;color:var(--pierre);margin-bottom:.6rem}#hero .lieu{font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--pierre);opacity:.85}
+.reperes{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0}.reperes span{font-family:var(--ui);font-size:.78rem;letter-spacing:.04em;border:1px solid var(--filet);border-radius:999px;padding:.38rem .85rem;background:rgba(255,255,255,.3)}
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--filet);border:1px solid var(--filet);margin:2rem 0}.chiffres div{background:var(--lin);padding:1.3rem .8rem;text-align:center}.chiffres b{display:block;font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.1}.chiffres small{font-family:var(--ui);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lichen)}
+.passeport{margin:2.5rem 0}.passeport-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--filet)}.passeport-item:last-child{border-bottom:none}.passeport-picto{font-size:1.4rem;flex-shrink:0;width:2.2rem;text-align:center;line-height:1;padding-top:.15rem}.passeport-txt{flex:1}.passeport-txt strong{font-family:var(--ui);font-size:.88rem;font-weight:600;display:block;margin-bottom:.15rem}.passeport-txt p{font-size:.92rem;margin-bottom:0;color:var(--lichen)}
+.cartes-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:2rem 0}.carte-diag{background:var(--blanc);border:1px solid var(--filet);padding:1.4rem 1.5rem;border-radius:3px;transition:box-shadow .3s}.carte-diag:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}.carte-diag .picto{font-size:1.6rem;margin-bottom:.6rem}.carte-diag h4{font-family:var(--ui);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem}.carte-diag p{font-size:.9rem;margin-bottom:.3rem}.carte-diag .verdict{font-family:var(--ui);font-size:.78rem;font-weight:600;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--filet)}.carte-diag .verdict.ok{color:var(--vert)}.carte-diag .verdict.prevoir{color:var(--jaune)}.carte-diag .verdict.info{color:var(--ocean)}
+.comparateur{position:relative;overflow:hidden;border-radius:3px;user-select:none;touch-action:pan-y;cursor:ew-resize;margin:2rem 0 .4rem}.comparateur img{width:100%;aspect-ratio:16/9;object-fit:cover;pointer-events:none}.comparateur .avant{position:absolute;inset:0;width:50%;overflow:hidden}.comparateur .avant img{width:calc(100% / var(--part,0.5));max-width:none;height:100%}.comparateur .poignee{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--blanc);box-shadow:0 0 0 1px rgba(0,0,0,.15)}.comparateur .poignee::after{content:'⟨ ⟩';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--blanc);color:var(--ardoise);font-family:var(--ui);font-size:.72rem;padding:.45rem .65rem;border-radius:999px;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.2)}.comparateur .etiquette{position:absolute;top:.7rem;font-family:var(--ui);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(26,29,33,.72);color:var(--pierre);padding:.25rem .6rem;border-radius:2px;pointer-events:none}.comparateur .etiquette.g{left:.7rem}.comparateur .etiquette.d{right:.7rem}
+.budget-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}.budget-poste{border:1px solid var(--filet);padding:1.2rem 1.3rem;background:rgba(255,255,255,.4);border-radius:3px}.budget-poste h4{font-family:var(--ui);font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.3rem}.budget-poste .montant{font-family:var(--display);font-weight:600;font-size:1.4rem;color:var(--ocean)}.budget-poste p{font-size:.85rem;color:var(--lichen);margin-top:.3rem;margin-bottom:0}
+.visite{position:relative;aspect-ratio:16/9;background:var(--nuit);border-radius:3px;overflow:hidden;margin:2rem 0 .4rem}.visite iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.visite .lanceur{position:absolute;inset:0;width:100%;border:0;cursor:pointer;background:var(--ardoise);padding:0;display:flex;align-items:center;justify-content:center}.visite .lanceur span{background:var(--blanc);color:var(--ardoise);font-family:var(--ui);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 1.5rem;border-radius:999px;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+#quiz .carte{background:var(--blanc);border:1px solid var(--filet);padding:2rem;border-radius:3px;margin-top:2rem}#quiz .question{font-family:var(--display);font-weight:600;font-size:1.3rem;margin-bottom:1.1rem}#quiz .reponses{display:grid;gap:.6rem}#quiz .reponses button{font-family:var(--body);font-size:.95rem;text-align:left;padding:.8rem 1.1rem;border:1px solid var(--filet);background:var(--blanc);border-radius:3px;cursor:pointer;transition:.2s}#quiz .reponses button:hover:not(:disabled){border-color:var(--ocean)}#quiz .reponses button.juste{border-color:var(--vert);background:rgba(74,139,92,.1)}#quiz .reponses button.faux{border-color:var(--rouge);background:rgba(166,52,47,.07);opacity:.7}#quiz .explication{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--filet);font-size:.9rem;display:none}#quiz .barre{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem}#quiz .compteur{font-family:var(--ui);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lichen)}#quiz .score b{font-family:var(--display);font-size:2.4rem;font-weight:600}
+.emotion{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:4rem 1.5rem;text-align:center}.emotion .texte{max-width:580px}.emotion .texte p{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2.8vw,1.7rem);line-height:1.6;color:var(--pierre);margin-bottom:1.2rem}.emotion .texte p:last-child{color:var(--or);font-style:normal;font-weight:500}
+.boutons{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.6rem 0}.btn{font-family:var(--ui);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.3rem;border-radius:3px;border:1px solid var(--ardoise);color:var(--ardoise);transition:.25s;display:inline-block;background:none;cursor:pointer}.btn:hover,.btn:focus-visible{background:var(--ardoise);color:var(--pierre)}.btn.plein{background:var(--ocean);border-color:var(--ocean);color:var(--lin)}.btn.plein:hover,.btn.plein:focus-visible{background:#1F4647}.btn.contact{background:var(--rouge);border-color:var(--rouge);color:#fff}.btn.contact:hover,.btn.contact:focus-visible{background:#832722;border-color:#832722}.fond-encre .btn{border-color:var(--pierre);color:var(--pierre)}.fond-encre .btn:hover{background:var(--pierre);color:var(--ardoise)}.fond-encre .btn.plein{border-color:var(--ocean);color:var(--lin)}.fond-encre .btn.contact{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.technique{list-style:none;margin:1.2rem 0;border-top:1px solid var(--filet)}.technique li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem .2rem;border-bottom:1px solid var(--filet);font-size:.92rem}.technique li span:last-child{font-family:var(--ui);font-size:.78rem;color:var(--lichen);text-align:right}
+.avertissement{font-family:var(--ui);font-size:.75rem;color:var(--lichen);border:1px solid var(--filet);padding:1rem 1.2rem;margin:1.5rem 0;border-left:3px solid var(--or);background:rgba(255,255,255,.3)}.avertissement strong{color:var(--ardoise)}
+.methode-etapes{margin:2rem 0}.methode-etape{display:flex;gap:1.2rem;padding:1rem 0}.methode-num{font-family:var(--display);font-weight:600;font-size:1.8rem;color:var(--or);flex-shrink:0;width:2.4rem;text-align:right;line-height:1.1}.methode-txt{flex:1;border-left:1px solid var(--filet);padding-left:1.2rem}.methode-txt strong{font-family:var(--ui);font-size:.88rem;display:block;margin-bottom:.2rem}.methode-txt p{font-size:.9rem;color:var(--lichen);margin-bottom:0}
+.paires{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}.paires figure{overflow:hidden;border-radius:3px}.paires img{width:100%;aspect-ratio:16/9;object-fit:cover}@media(max-width:640px){.paires{grid-template-columns:1fr}}
+.photo-pleine{margin:2rem 0;border-radius:3px;overflow:hidden}.photo-pleine img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.miroir{font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.5;max-width:640px;margin:0 auto 2rem}.miroir em{font-style:normal;border-bottom:1px solid var(--or)}
+#contact .nom{font-family:var(--display);font-size:1.4rem;font-weight:500}#contact .role{font-family:var(--ui);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:1.5rem}
+footer{background:var(--nuit);color:#706D64;text-align:center;font-family:var(--ui);font-size:.65rem;line-height:1.7;padding:2rem 1.5rem}footer a{color:#9A978C}
+@media(max-width:640px){section{padding:4rem 1.2rem}.chiffres{grid-template-columns:repeat(2,1fr)}.cartes-diag{grid-template-columns:1fr}.budget-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="horizon" aria-hidden="true"></div>
+<nav id="rail" aria-label="Chapitres"><a href="#hero"><span>La maison</span></a><a href="#territoire"><span>Le territoire</span></a><a href="#maison"><span>Volumes</span></a><a href="#methode"><span>La méthode</span></a><a href="#passeport"><span>Passeport</span></a><a href="#savons"><span>Ce que nous savons</span></a><a href="#verifier"><span>À vérifier</span></a><a href="#projeter"><span>Se projeter</span></a><a href="#budget"><span>Budget</span></a><a href="#preuves"><span>Les preuves</span></a><a href="#visite"><span>Visite 360°</span></a><a href="#contact"><span>Contact</span></a></nav>
+
+<!-- ═══ 1. PROLOGUE ═══ -->
+<section id="prologue">
+  <div class="contenu">
+    <div id="texte-prologue">
+      <span class="mot">Certaines maisons </span><span class="mot">se montrent. </span><span class="pause"></span>
+      <span class="mot">D'autres </span><span class="mot">se cachent. </span><span class="pause"></span>
+      <span class="mot">Celle-ci </span><span class="mot">a tout </span><span class="mot">montré.</span>
+    </div>
+    <div class="sceau-intro">
+      <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="width:180px" aria-label="Sceau SIGNÉ Cadre Estate Solutions">
+        <rect x="1" y="1" width="198" height="88" rx="3" fill="none" stroke="#C4A265" stroke-width="1.5"/><rect x="5" y="5" width="190" height="80" rx="2" fill="none" stroke="#C4A265" stroke-width=".5" opacity=".5"/>
+        <text x="100" y="36" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="22" fill="#C4A265" letter-spacing="6">SIGNÉ</text>
+        <line x1="40" y1="45" x2="160" y2="45" stroke="#C4A265" stroke-width=".5" opacity=".6"/>
+        <text x="100" y="60" text-anchor="middle" font-family="'Karla',sans-serif" font-size="7.5" fill="#E8E2D6" letter-spacing="2.5">CADRE ESTATE SOLUTIONS</text>
+        <text x="100" y="74" text-anchor="middle" font-family="'Karla',sans-serif" font-size="6" fill="#7A776C" letter-spacing="1.5">PRÉSENTATION VÉRIFIÉE</text>
+      </svg>
+    </div>
+  </div>
+  <a class="fleche" href="#hero">Découvrir</a>
+</section>
+
+<!-- ═══ 2. HERO ═══ -->
+<section id="hero">
+  <div class="visuel"><img src="falaises-toul-douar.jpg" alt="Les falaises de Toul Douar, Clohars-Carnoët"></div>
+  <div class="titre">
+    <p class="marque">SIGNÉ · Cadre Estate Solutions</p>
+    <h1>Clohars-Carnoët</h1>
+    <p class="lieu">Une maison entre terre et océan, prête à devenir la vôtre.</p>
+  </div>
+</section>
+
+<!-- ═══ 2. TERRITOIRE ═══ -->
+<section id="territoire">
+  <div class="large">
+    <p class="chapitre rev">Le territoire</p>
+    <div class="colonne" style="margin-left:0">
+      <h2 class="rev">Clohars-Carnoët, Le Pouldu, Doëlan</h2>
+      <p class="chapo rev">Terre des peintres depuis que Gauguin y a posé son chevalet à l'automne 1889, Clohars-Carnoët est une commune du Finistère où la forêt de Carnoët descend jusqu'aux falaises, où la Laïta trace la frontière avec le Morbihan, et où deux ports — Le Pouldu et Doëlan — racontent encore la Bretagne d'avant le tourisme de masse.</p>
+    </div>
+    <div class="reperes rev"><span>🌊 Plages du Kérou et Bellangenet</span><span>🎨 Maison-Musée Gauguin au Pouldu</span><span>⛵ Port de Doëlan à 5 min</span><span>🚉 Gare de Quimperlé à 10 min</span><span>🏪 Commerces au bourg</span><span>🌲 Forêt de Carnoët</span></div>
+    <div class="colonne" style="margin-left:0">
+      <h3 class="rev">Un littoral de 11 kilomètres</h3>
+      <p class="rev">Les plages de Bellangenet et du Kérou, au Pouldu, alternent sable fin et criques. Les falaises de Toul Douar offrent un panorama brut sur l'Atlantique. Le port de Doëlan, niché au fond d'une ria étroite, garde ses deux phares — un vert, un rouge — et l'atmosphère d'un village de pêcheurs où les maisons blanches aux toits d'ardoise veillent sur les bateaux.</p>
+      <h3 class="rev">Gauguin et les peintres du Pouldu</h3>
+      <p class="rev">À l'automne 1889, Gauguin, Meyer de Haan et Sérusier s'installent à la Buvette de la Plage, chez Marie Henry. Ils y peignent les murs, le plafond, les fenêtres. Le synthétisme naît ici, entre la lumière de l'estuaire et les champs. Le centre d'interprétation « Gauguin, l'atelier du Pouldu » retrace cette épopée.</p>
+      <h3 class="rev">Vivre ici</h3>
+      <p class="rev">Quimperlé, ville d'art et d'histoire, est à dix minutes. Lorient à vingt-cinq. Le bourg de Clohars offre les services du quotidien. Les sentiers côtiers relient les plages à la forêt. L'hiver est doux, l'été est lumineux.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. LA MAISON ═══ -->
+<section id="maison" class="fond-lin">
+  <div class="large">
+    <p class="chapitre rev">La maison</p>
+    <h2 class="rev">Les volumes, la lumière, la sensation</h2>
+    <div class="colonne" style="margin-left:0"><p class="chapo rev">On pousse la porte, on entre dans le séjour de 31 m², on voit la véranda qui prolonge l'espace vers le jardin. On sent que cette maison a été pensée pour vivre dedans.</p></div>
+    <div class="photo-pleine rev"><img src="facade-jardin.jpg" alt="La maison vue depuis le jardin" loading="lazy"><figcaption>Façade côté jardin. Murs enduits, toiture ardoise, véranda Gustave Rideau (2019). Terrain clos.</figcaption></div>
+    <div class="chiffres rev"><div><b>70&nbsp;m²</b><small>Habitables</small></div><div><b>85&nbsp;m²</b><small>Potentiel</small></div><div><b>21,6&nbsp;m²</b><small>Véranda (2019)</small></div><div><b>2+2</b><small>Chambres</small></div></div>
+    <div class="colonne" style="margin-left:0">
+      <p class="rev">Construite entre 1948 et 1974, la maison développe 70 m² habitables sur un niveau, avec un potentiel de 85 m² après aménagement des combles. Le séjour de 31,7 m², une cuisine séparée, deux chambres, une salle d'eau et un WC composent le rez-de-chaussée. La véranda Gustave Rideau (2019) ajoute 21,6 m² de lumière.</p>
+    </div>
+    <div class="paires rev">
+      <figure><img src="sejour-avant.jpg" alt="Le séjour et l'escalier vers les combles" loading="lazy"><figcaption>Le séjour, 31,7 m², et l'escalier bois vers les combles.</figcaption></figure>
+      <figure><img src="veranda-avant.jpg" alt="La véranda Gustave Rideau" loading="lazy"><figcaption>La véranda (21,6 m²), stores à lamelles, accès jardin.</figcaption></figure>
+    </div>
+    <div class="paires rev">
+      <figure><img src="chambre-rdc.jpg" alt="Chambre 1 RDC" loading="lazy"><figcaption>Chambre 1, rez-de-chaussée (8,8 m²).</figcaption></figure>
+      <figure><img src="cuisine-avant.jpg" alt="La cuisine actuelle" loading="lazy"><figcaption>La cuisine séparée (7,8 m²).</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. POURQUOI CETTE MAISON EST PRÉSENTÉE AINSI ═══ -->
+<section id="methode">
+  <div class="colonne">
+    <p class="chapitre rev">La méthode</p>
+    <h2 class="rev">Pourquoi cette maison est présentée ainsi</h2>
+    <p class="chapo rev">Nous aurions pu présenter cette maison comme beaucoup d'autres. Nous avons fait un choix différent.</p>
+    <div class="methode-etapes rev">
+      <div class="methode-etape"><span class="methode-num">1</span><div class="methode-txt"><strong>Identifier</strong><p>Chaque diagnostic a été lu. Chaque mètre carré mesuré. Ce qui est sûr est séparé de ce qui reste à vérifier.</p></div></div>
+      <div class="methode-etape"><span class="methode-num">2</span><div class="methode-txt"><strong>Montrer</strong><p>Les combles sont ouverts. La charpente est visible. Les travaux sont nommés. Vous achetez en connaissance de cause.</p></div></div>
+      <div class="methode-etape"><span class="methode-num">3</span><div class="methode-txt"><strong>Projeter</strong><p>Des projections visuelles montrent ce que cette maison peut devenir. Rien n'est imposé.</p></div></div>
+      <div class="methode-etape"><span class="methode-num">4</span><div class="methode-txt"><strong>Documenter</strong><p>Chaque affirmation est traçable. Chaque document téléchargeable.</p></div></div>
+    </div>
+    <p class="rev">L'acquéreur ne pense plus : <em>« Il y a eu un problème. »</em> Il pense : <em>« Le professionnel est transparent. »</em></p>
+  </div>
+</section>
+
+<!-- ═══ 5. PASSEPORT TRANSPARENCE ═══ -->
+<section id="passeport" class="fond-lin">
+  <div class="colonne">
+    <p class="chapitre rev">Passeport Transparence</p>
+    <h2 class="rev">L'état objectif, sans notation</h2>
+    <div class="passeport rev">
+      <div class="passeport-item"><span class="passeport-picto">🟢</span><div class="passeport-txt"><strong>Structure — Vérifié</strong><p>Murs porteurs sains, toiture ardoise, charpente traditionnelle.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🟢</span><div class="passeport-txt"><strong>Véranda — Vérifié</strong><p>Gustave Rideau, 21,6 m², installée en 2019.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🟢</span><div class="passeport-txt"><strong>Assainissement — Vérifié</strong><p>Tout-à-l'égout, raccordement conforme.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🟡</span><div class="passeport-txt"><strong>Énergie — À prévoir</strong><p>DPE en cours de réactualisation. Chauffage électrique. Isolation à revoir.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🟡</span><div class="passeport-txt"><strong>Électricité — À prévoir</strong><p>Mise en conformité recommandée.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🟡</span><div class="passeport-txt"><strong>Couverture — À prévoir</strong><p>Toiture ardoise d'origine. Étanchéité à chiffrer.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">🔵</span><div class="passeport-txt"><strong>Combles — Potentiel</strong><p>~28 m² utiles, deux chambres potentielles. Aménagement sous réserve de hauteur.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">📄</span><div class="passeport-txt"><strong>Diagnostics — Documents</strong><p>Dossier technique complet consultable.</p></div></div>
+      <div class="passeport-item"><span class="passeport-picto">👁</span><div class="passeport-txt"><strong>Visite 360° — Visible</strong><p>Matterport disponible. Chaque pièce explorable à distance.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. CE QUE NOUS SAVONS ═══ -->
+<section id="savons">
+  <div class="colonne">
+    <p class="chapitre rev">Ce que nous savons</p>
+    <h2 class="rev">Voici tout ce que nous pouvons affirmer avec certitude aujourd'hui</h2>
+    <ul class="technique rev"><li><span>Surface habitable</span><span>70 m²</span></li><li><span>Surface utile totale</span><span>~118 m² (incl. combles + véranda)</span></li><li><span>Parcelle</span><span>AC 71 — terrain clos</span></li><li><span>Construction</span><span>1948–1974</span></li><li><span>Véranda</span><span>Gustave Rideau, 21,6 m² (2019)</span></li><li><span>Assainissement</span><span>Tout-à-l'égout</span></li><li><span>Séjour</span><span>31,7 m²</span></li><li><span>Cuisine</span><span>7,8 m², séparée</span></li><li><span>Chambres RDC</span><span>2 (8,8 m² et 9,2 m²)</span></li><li><span>Salle d'eau</span><span>4,5 m²</span></li><li><span>Combles</span><span>2 chambres potentielles</span></li></ul>
+  </div>
+</section>
+
+<!-- ═══ 7. CE QU'IL RESTE À VÉRIFIER ═══ -->
+<section id="verifier" class="fond-encre">
+  <div class="colonne">
+    <p class="chapitre rev">Ce qu'il reste à vérifier</p>
+    <h2 class="rev">L'honnêteté n'a pas de prix</h2>
+    <p class="chapo rev">Nous aurions pu ne pas écrire ce chapitre.</p>
+    <ul class="technique rev"><li><span>DPE</span><span>En cours de réactualisation</span></li><li><span>Couverture</span><span>État à chiffrer par un couvreur</span></li><li><span>Électricité</span><span>Mise aux normes probable</span></li><li><span>Isolation</span><span>Performance à mesurer</span></li><li><span>Charpente combles</span><span>Aménageabilité à confirmer</span></li><li><span>Menuiseries</span><span>Étanchéité à évaluer</span></li></ul>
+    <p class="rev" style="margin-top:1.5rem">Chacun de ces points est identifié, pas ignoré. Ce sont vos choix, votre budget, votre calendrier.</p>
+  </div>
+</section>
+
+<!-- ═══ ÉMOTION ═══ -->
+<section class="emotion fond-nuit"><div class="texte rev"><p>Cette maison n'est peut-être pas faite pour tout le monde.</p><p>Mais elle mérite d'être présentée avec honnêteté.</p><p>C'est précisément ce que nous avons choisi de faire.</p></div></section>
+
+<!-- ═══ 8. SE PROJETER ═══ -->
+<section id="projeter" class="fond-lin">
+  <div class="large">
+    <p class="chapitre rev">Se projeter</p>
+    <h2 class="rev">Aujourd'hui. Demain. Et après&nbsp;?</h2>
+    <div class="colonne" style="margin-left:0"><p class="chapo rev">On n'achète pas une cuisine. On achète une vie. Faites glisser chaque curseur pour voir la transformation.</p></div>
+
+    <h3 class="rev">Le séjour</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer le séjour" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="sejour-apres.jpg" alt="Projection : le séjour rénové"><div class="avant"><img src="sejour-avant.jpg" alt="Le séjour actuel"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">Séjour 31,7 m². Poêle à bois, parquet, nouvel escalier. Projections non contractuelles.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La cuisine ouverte</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la cuisine" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="cuisine-apres-2.jpg" alt="Projection : cuisine ouverte sur le séjour"><div class="avant"><img src="cuisine-avant-2.jpg" alt="La cuisine actuelle vue depuis le passe-plat"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">L'option cuisine ouverte : un îlot, une vue dégagée vers le séjour et le jardin. Projection non contractuelle.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La cuisine (angle évier)</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la cuisine angle évier" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="cuisine-apres.jpg" alt="Projection : cuisine modernisée"><div class="avant"><img src="cuisine-avant.jpg" alt="La cuisine actuelle"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">Cuisine de 7,8 m² : même espace, entièrement repensé.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La véranda</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la véranda" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="veranda-apres.jpg" alt="Projection : véranda aménagée"><div class="avant"><img src="veranda-avant.jpg" alt="La véranda actuelle"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">21,6 m² de véranda Gustave Rideau (2019). Le prolongement naturel de la vie vers le jardin.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La chambre 2 (RDC)</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la chambre 2" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="chambre2-apres.jpg" alt="Projection : chambre 2 rénovée"><div class="avant"><img src="chambre2-avant.jpg" alt="La chambre 2 actuelle"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">Chambre 2, 9,2 m². Un rafraîchissement suffit à révéler le volume.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La chambre 1 → Bureau</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la chambre 1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="chambre1-apres.jpg" alt="Projection : bureau"><div class="avant"><img src="chambre1-avant.jpg" alt="La chambre 1 actuelle"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">Chambre 1 (8,8 m²), ici projetée en bureau. Une pièce, mille possibilités.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">La salle d'eau</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer la salle d'eau" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="sdb-apres.jpg" alt="Projection : salle d'eau rénovée"><div class="avant"><img src="sdb-avant.jpg" alt="La salle d'eau actuelle"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">4,5 m² — douche italienne, meuble vasque, sèche-serviettes. Même espace, un autre confort.</p>
+
+    <h3 class="rev" style="margin-top:2.8rem">Les combles</h3>
+    <div class="comparateur rev" role="slider" aria-label="Comparer les combles" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img src="combles-apres.jpg" alt="Projection : chambre dans les combles"><div class="avant"><img src="combles-avant.jpg" alt="Les combles actuels, charpente visible"></div>
+      <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
+    </div>
+    <p class="note rev">Les combles aujourd'hui : charpente ouverte, Velux existant, placo en cours. Demain : une chambre, un bureau, un coin lecture — à vous de choisir. Aménagement sous réserve de faisabilité.</p>
+  </div>
+</section>
+
+<!-- ═══ 9. VOTRE PROJET ═══ -->
+<section id="projet"><div class="colonne"><p class="chapitre rev">Votre projet</p><h2 class="rev">Les travaux, ce sont vos choix</h2><p class="chapo rev">Pas de contrainte. Une base saine, un terrain clos, des volumes généreux — et toute la liberté de créer l'espace qui vous ressemble.</p><p class="rev">Vous pouvez <strong>choisir</strong> d'ouvrir la cuisine sur le séjour. <strong>Imaginer</strong> les combles comme un espace nuit. <strong>Créer</strong> une terrasse en prolongement de la véranda.</p><p class="rev">Les mots qui comptent ici ne sont pas « à refaire ». Ce sont : <em>choisir</em>, <em>créer</em>, <em>imaginer</em>.</p></div></section>
+
+<!-- ═══ PLANS ═══ -->
+<section id="plans" class="fond-lin">
+  <div class="large">
+    <p class="chapitre rev">Les plans</p>
+    <h2 class="rev">Une distribution claire</h2>
+    <h3 class="rev">Le rez-de-chaussée</h3>
+    <figure class="rev"><img src="plan-rdc.jpg" alt="Plan du rez-de-chaussée" style="border-radius:3px;background:#fff;border:1px solid var(--filet)" loading="lazy"><figcaption>Rez-de-chaussée — données non contractuelles.</figcaption></figure>
+    <h3 class="rev" style="margin-top:2.4rem">L'étage (combles)</h3>
+    <figure class="rev"><img src="plan-etage.jpg" alt="Plan de l'étage" style="border-radius:3px;background:#fff;border:1px solid var(--filet)" loading="lazy"><figcaption>Étage — surfaces habitables vs utiles : voir note au chapitre « Ce que nous savons ».</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══ 10. BUDGET ═══ -->
+<section id="budget"><div class="colonne"><p class="chapitre rev">Budget prévisionnel</p><h2 class="rev">Des ordres de grandeur, pas des promesses</h2>
+  <div class="avertissement rev"><strong>Important :</strong> Ces montants sont des ordres de grandeur. Ils devront être confirmés par des devis d'entreprises locales.</div>
+  <div class="budget-grid rev">
+    <div class="budget-poste"><h4>Isolation + énergie</h4><span class="montant">25 à 35 k€</span><p>Combles, murs, menuiseries, chauffage.</p></div>
+    <div class="budget-poste"><h4>Électricité</h4><span class="montant">8 à 12 k€</span><p>Mise aux normes complète.</p></div>
+    <div class="budget-poste"><h4>Cuisine + salle d'eau</h4><span class="montant">15 à 25 k€</span><p>Aménagement complet.</p></div>
+    <div class="budget-poste"><h4>Combles</h4><span class="montant">15 à 20 k€</span><p>Deux chambres (si faisable).</p></div>
+    <div class="budget-poste"><h4>Rafraîchissement</h4><span class="montant">8 à 12 k€</span><p>Peintures, sols, finitions.</p></div>
+    <div class="budget-poste"><h4>Couverture</h4><span class="montant">À chiffrer</span><p>Selon diagnostic couvreur.</p></div>
+  </div>
+  <p class="rev"><strong>Enveloppe globale indicative : 80 000 à 100 000 €</strong>, hors couverture.</p>
+</div></section>
+
+<!-- ═══ 11. LES PREUVES ═══ -->
+<section id="preuves" class="fond-lin"><div class="large"><p class="chapitre rev">Les preuves</p><h2 class="rev">Chaque information a une source</h2>
+  <div class="cartes-diag rev">
+    <div class="carte-diag"><div class="picto">🏠</div><h4>Mesurage</h4><p>Habitable : 70 m² · Véranda : 21,6 m²</p><div class="verdict info">📄 Document disponible</div></div>
+    <div class="carte-diag"><div class="picto">⚡</div><h4>Énergie</h4><p>DPE en réactualisation</p><div class="verdict prevoir">🟡 Classe à confirmer</div></div>
+    <div class="carte-diag"><div class="picto">🔌</div><h4>Électricité</h4><p>Mise en sécurité recommandée</p><div class="verdict prevoir">🟡 À prévoir</div></div>
+    <div class="carte-diag"><div class="picto">🏗️</div><h4>Structure</h4><p>Murs porteurs sains, charpente traditionnelle</p><div class="verdict ok">🟢 Vérifié</div></div>
+    <div class="carte-diag"><div class="picto">💧</div><h4>Assainissement</h4><p>Tout-à-l'égout conforme</p><div class="verdict ok">🟢 Vérifié</div></div>
+    <div class="carte-diag"><div class="picto">🌍</div><h4>Risques</h4><p>Voir rapport ERP officiel</p><div class="verdict info">📄 Consulter</div></div>
+  </div>
+  <div class="boutons rev"><a class="btn plein" href="https://data.geopf.fr/annexes/gpu/documents/DU_242900694/1b4fcc8d05ccf3550fd1a4c053ede9bf/242900694_reglement_20240604.pdf" target="_blank" rel="noopener">Règlement du PLU</a><a class="btn" href="https://errial.georisques.gouv.fr/#/krpGtgWt" target="_blank" rel="noopener">ERP officiel</a></div>
+  <div class="avertissement rev">Seul le règlement officiel fait foi.</div>
+</div></section>
+
+<!-- ═══ 12. VISITE 360° ═══ -->
+<section id="visite" class="fond-encre"><div class="large"><p class="chapitre rev">Visite virtuelle</p><h2 class="rev">Entrez. Explorez. Imaginez.</h2>
+  <div class="visite rev" id="matterport"><button class="lanceur" type="button" aria-label="Lancer la visite Matterport"><span>▶&nbsp;&nbsp;Lancer la visite 360°</span></button></div>
+  <p class="note rev">Visite immersive Matterport — plein écran disponible.</p>
+  <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;border:1px solid #333;background:rgba(255,255,255,.03);padding:1.2rem 1.4rem;border-radius:3px;margin:2rem 0 0" class="rev">
+    <div style="flex:1;min-width:200px"><h3 style="margin:0 0 .3rem;color:var(--pierre);font-size:1.1rem">À vous de vous projeter</h3><p style="margin:0;font-size:.85rem;color:#9A978C">Plan 3D HomeByMe : déplacez une cloison, testez votre cuisine ouverte.</p></div>
+    <a class="btn plein" href="https://home.by.me/fr/project/copie-de-clohars-burnouf-leconte" target="_blank" rel="noopener" style="white-space:nowrap">Ouvrir le plan 3D</a>
+  </div>
+</div></section>
+
+<!-- ═══ QUIZ ═══ -->
+<section id="quiz"><div class="colonne"><p class="chapitre rev">L'interlude</p><h2 class="rev">Connaissez-vous Clohars-Carnoët&nbsp;?</h2><p class="rev">Cinq questions pour vérifier si vous avez l'étoffe d'un Cloharsien.</p>
+  <div class="carte rev"><p class="compteur"></p><p class="question"></p><div class="reponses"></div><p class="explication"></p><div class="barre"><span class="compteur2 compteur"></span><button class="btn suivante" style="display:none">Suivante</button></div><div class="score" style="display:none;text-align:center"><b></b><p class="verdict"></p><button class="btn rejouer">Rejouer</button><a class="btn contact" href="#contact" style="margin-left:.5rem">Organiser une visite</a></div></div>
+</div></section>
+
+<!-- ═══ 13a. CONTACT ═══ -->
+<section id="contact" class="fond-encre" style="text-align:center"><div class="colonne">
+  <p class="chapitre rev" style="justify-content:center">Contact</p>
+  <p class="miroir rev">Une maison entre terre et océan, qui a tout montré.<br><em>Et si c'était vous qui écriviez la suite&nbsp;?</em></p>
+  <img class="rev" src="roger.jpg" alt="Roger-Jacques Vluys" style="width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:center 20%;margin:1.5rem auto .8rem;border:2px solid var(--or)">
+  <p class="nom rev">Roger-Jacques Vluys</p>
+  <p class="role rev">Mandataire immobilier · Cadre Estate Solutions</p>
+  <div class="boutons rev" style="justify-content:center"><a class="btn contact" href="tel:+33614204847">📞 06 14 20 48 47</a><a class="btn contact" href="mailto:rj.vluys@drhouse.immo?subject=Clohars-Carno%C3%ABt%20%E2%80%94%20demande%20de%20visite">✉️ rj.vluys@drhouse.immo</a></div>
+  <p class="note rev" style="margin-top:1.5rem">CLOHARS-CARNOËT (29360) · 8 cité de Quillien · Réf. 79161 · 70 m² hab. · Potentiel 85 m² · Terrain clos · AC 71.</p>
+</div></section>
+
+<!-- ═══ 13b. POURQUOI SIGNÉ ═══ -->
+<section id="signe" class="fond-nuit" style="text-align:center"><div class="colonne">
+  <div class="rev" style="margin-bottom:2.5rem"><svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" style="width:160px;margin:0 auto"><rect x="1" y="1" width="198" height="88" rx="3" fill="none" stroke="#C4A265" stroke-width="1.5"/><rect x="5" y="5" width="190" height="80" rx="2" fill="none" stroke="#C4A265" stroke-width=".5" opacity=".5"/><text x="100" y="36" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="22" fill="#C4A265" letter-spacing="6">SIGNÉ</text><line x1="40" y1="45" x2="160" y2="45" stroke="#C4A265" stroke-width=".5" opacity=".6"/><text x="100" y="60" text-anchor="middle" font-family="'Karla',sans-serif" font-size="7.5" fill="#E8E2D6" letter-spacing="2.5">CADRE ESTATE SOLUTIONS</text><text x="100" y="74" text-anchor="middle" font-family="'Karla',sans-serif" font-size="6" fill="#7A776C" letter-spacing="1.5">PRÉSENTATION VÉRIFIÉE</text></svg></div>
+  <h2 class="rev" style="color:var(--pierre)">Pourquoi SIGNÉ</h2>
+  <p class="rev" style="color:#9A978C;max-width:560px;margin:0 auto 1.5rem">SIGNÉ n'est pas un book immobilier. C'est une méthode de présentation qui aide un acquéreur à prendre une décision en parfaite connaissance de cause.</p>
+  <p class="rev" style="color:var(--pierre);font-family:var(--display);font-style:italic;font-size:clamp(1.1rem,2.4vw,1.5rem);max-width:520px;margin:0 auto 1.5rem;line-height:1.6">« Si Roger présente ma maison de cette façon, mes acquéreurs auront moins de doutes, poseront de meilleures questions et visiteront avec une vision plus claire. »</p>
+  <p class="rev" style="color:var(--or);font-family:var(--ui);font-size:.82rem;letter-spacing:.15em;text-transform:uppercase">Voilà pourquoi Cadre Estate Solutions travaille différemment.</p>
+</div></section>
+
+<footer><p>Nord-Sud Immo, SAS au capital de 20 760 € — RCS Aix-en-Provence 789 995 107. DR HOUSE IMMO est une marque déposée.<br>Siège social : 3 AB Avenue des Belges, 13100 Aix-en-Provence — <a href="https://www.drhouse-immo.com" target="_blank" rel="noopener">www.drhouse-immo.com</a><br>Les visuels « après » sont des projections de home staging virtuel, non contractuelles. Présentation vérifiée SIGNÉ · Cadre Estate Solutions.</p></footer>
+
+<script>
+const horizon=document.getElementById('horizon'),liens=[...document.querySelectorAll('#rail a')],cibles=liens.map(a=>document.querySelector(a.getAttribute('href')));addEventListener('scroll',()=>{const h=document.documentElement;horizon.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';const y=h.scrollTop+innerHeight*.4;let actif=-1;cibles.forEach((s,i)=>{if(s&&s.offsetTop<=y)actif=i});liens.forEach((a,i)=>a.classList.toggle('actif',i===actif))},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+(function(){const m=document.querySelectorAll('#prologue .mot'),s=document.querySelector('#prologue .sceau-intro');let d=600;m.forEach(w=>{if(w.classList.contains('pause')){d+=800;return}setTimeout(()=>w.classList.add('visible'),d);d+=350});setTimeout(()=>s.classList.add('visible'),d+400)})();
+document.querySelectorAll('.comparateur').forEach(c=>{const a=c.querySelector('.avant'),p=c.querySelector('.poignee');let v=.5;const r=()=>{a.style.width=(v*100)+'%';a.style.setProperty('--part',v||.0001);p.style.left=(v*100)+'%';c.setAttribute('aria-valuenow',Math.round(v*100))},d=x=>{const b=c.getBoundingClientRect();v=Math.min(.97,Math.max(.03,(x-b.left)/b.width));r()};let g=false;c.addEventListener('pointerdown',e=>{g=true;c.setPointerCapture(e.pointerId);d(e.clientX)});c.addEventListener('pointermove',e=>g&&d(e.clientX));c.addEventListener('pointerup',()=>g=false);c.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){v=Math.max(.03,v-.05);r();e.preventDefault()}if(e.key==='ArrowRight'){v=Math.min(.97,v+.05);r();e.preventDefault()}});r()});
+const mp=document.getElementById('matterport');if(mp)mp.querySelector('.lanceur').addEventListener('click',()=>{mp.innerHTML='<iframe src="https://my.matterport.com/show/?m=nzcNJ4gxZtQ" allow="fullscreen; xr-spatial-tracking" allowfullscreen title="Visite virtuelle"></iframe>'});
+const Q=[{q:"Quel peintre célèbre a séjourné au Pouldu à l'automne 1889 ?",r:["Claude Monet","Paul Gauguin","Paul Cézanne"],j:1,e:"Paul Gauguin s'installe à la Buvette de la Plage, chez Marie Henry. Le synthétisme naît ici."},{q:"Combien de kilomètres de littoral compte la commune ?",r:["5 km","11 km","18 km"],j:1,e:"11 kilomètres de façade littorale, entre falaises, plages et ports."},{q:"Quel fleuve-ria sépare Clohars-Carnoët du Morbihan ?",r:["L'Odet","La Laïta","Le Blavet"],j:1,e:"La Laïta marque la frontière est de la commune."},{q:"Quel port est célèbre pour ses deux phares, un vert et un rouge ?",r:["Le Pouldu","Doëlan","Guidel-Plages"],j:1,e:"Doëlan, niché au fond d'une ria étroite."},{q:"À quelle distance se trouve la gare de Quimperlé ?",r:["30 minutes","10 minutes","45 minutes"],j:1,e:"Environ 10 minutes en voiture."}];
+const V=["Il est temps de venir découvrir Clohars-Carnoët…","Un bon début — le Finistère vous attend.","Pas mal du tout — futur Cloharsien ?","Vous connaissez le coin. Reste à y poser vos valises.","Impressionnant. Il ne vous manque que l'adresse.","Sans faute ! Vous avez l'étoffe d'un vrai Cloharsien."];
+const qz=document.querySelector('#quiz .carte');if(qz){const eQ=qz.querySelector('.question'),eR=qz.querySelector('.reponses'),eE=qz.querySelector('.explication'),eC=qz.querySelector('.compteur'),eC2=qz.querySelector('.compteur2'),bS=qz.querySelector('.suivante'),eS=qz.querySelector('.score');let i=0,s=0;function poser(){const q=Q[i];eC.textContent='Question '+(i+1)+' / '+Q.length;eC2.textContent='Score : '+s;eQ.textContent=q.q;eE.style.display='none';bS.style.display='none';eR.innerHTML='';q.r.forEach((t,k)=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.addEventListener('click',()=>{[...eR.children].forEach(x=>x.disabled=true);if(k===q.j){b.classList.add('juste');s++}else{b.classList.add('faux');eR.children[q.j].classList.add('juste')}eE.textContent=q.e;eE.style.display='block';eC2.textContent='Score : '+s;bS.style.display='inline-block';bS.textContent=(i===Q.length-1)?'Voir mon score':'Question suivante'});eR.appendChild(b)})}bS.addEventListener('click',()=>{i++;if(i<Q.length){poser();return}eQ.style.display=eR.style.display=eE.style.display='none';eC.style.display=eC2.style.display=bS.style.display='none';eS.style.display='block';eS.querySelector('b').textContent=s+' / '+Q.length;eS.querySelector('.verdict').textContent=V[s]});qz.querySelector('.rejouer').addEventListener('click',()=>{i=0;s=0;eS.style.display='none';eQ.style.display='block';eR.style.display='grid';eC.style.display=eC2.style.display='block';poser()});poser()}
+</script>
+</body>
+</html>
