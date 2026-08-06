@@ -187,7 +187,7 @@ footer{background:var(--nuit);color:#706D64;text-align:center;font-family:var(--
 
     <h3 class="rev">Le séjour</h3>
     <div class="comparateur rev" role="slider" aria-label="Comparer le séjour" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="sejour-apres.jpg" alt="Projection : le séjour rénové"><div class="avant"><img src="sejour-avant.jpg" alt="Le séjour actuel"></div>
+      <img src="sejour-apres-2.jpg" alt="Projection : le séjour rénové"><div class="avant"><img src="sejour-avant.jpg" alt="Le séjour actuel"></div>
       <span class="etiquette g">Aujourd'hui</span><span class="etiquette d">Demain</span><div class="poignee"></div>
     </div>
     <p class="note rev">Séjour 31,7 m². Poêle à bois, parquet, nouvel escalier. Projections non contractuelles.</p>
@@ -264,12 +264,12 @@ footer{background:var(--nuit);color:#706D64;text-align:center;font-family:var(--
   <div class="budget-grid rev">
     <div class="budget-poste"><h4>Isolation + énergie</h4><span class="montant">25 à 35 k€</span><p>Combles, murs, menuiseries, chauffage.</p></div>
     <div class="budget-poste"><h4>Électricité</h4><span class="montant">8 à 12 k€</span><p>Mise aux normes complète.</p></div>
-    <div class="budget-poste"><h4>Cuisine + salle d'eau</h4><span class="montant">15 à 25 k€</span><p>Aménagement complet.</p></div>
-    <div class="budget-poste"><h4>Combles</h4><span class="montant">15 à 20 k€</span><p>Deux chambres (si faisable).</p></div>
+    <div class="budget-poste"><h4>Cuisine + salle d'eau</h4><span class="montant">10 à 15 k€</span><p>Aménagement complet.</p></div>
+    <div class="budget-poste"><h4>Aménagement des combles</h4><span class="montant">15 à 20 k€</span><p>Création de deux chambres à l'étage.</p></div>
     <div class="budget-poste"><h4>Rafraîchissement</h4><span class="montant">8 à 12 k€</span><p>Peintures, sols, finitions.</p></div>
     <div class="budget-poste"><h4>Couverture</h4><span class="montant">À chiffrer</span><p>Selon diagnostic couvreur.</p></div>
   </div>
-  <p class="rev"><strong>Enveloppe globale indicative : 80 000 à 100 000 €</strong>, hors couverture.</p>
+  <p class="rev"><strong>Enveloppe globale indicative : 70 000 à 100 000 €</strong>.</p>
 </div></section>
 
 <!-- ═══ 11. LES PREUVES ═══ -->
@@ -307,7 +307,7 @@ footer{background:var(--nuit);color:#706D64;text-align:center;font-family:var(--
   <p class="miroir rev">Une maison entre terre et océan, qui a tout montré.<br><em>Et si c'était vous qui écriviez la suite&nbsp;?</em></p>
   <img class="rev" src="roger.jpg" alt="Roger-Jacques Vluys" style="width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:center 20%;margin:1.5rem auto .8rem;border:2px solid var(--or)">
   <p class="nom rev">Roger-Jacques Vluys</p>
-  <p class="role rev">Mandataire immobilier · Cadre Estate Solutions</p>
+  <p class="role rev">Mandataire immobilier · Dr House Immo</p>
   <div class="boutons rev" style="justify-content:center"><a class="btn contact" href="tel:+33614204847">📞 06 14 20 48 47</a><a class="btn contact" href="mailto:rj.vluys@drhouse.immo?subject=Clohars-Carno%C3%ABt%20%E2%80%94%20demande%20de%20visite">✉️ rj.vluys@drhouse.immo</a></div>
   <p class="note rev" style="margin-top:1.5rem">CLOHARS-CARNOËT (29360) · 8 cité de Quillien · Réf. 79161 · 70 m² hab. · Potentiel 85 m² · Terrain clos · AC 71.</p>
 </div></section>
@@ -321,7 +321,7 @@ footer{background:var(--nuit);color:#706D64;text-align:center;font-family:var(--
   <p class="rev" style="color:var(--or);font-family:var(--ui);font-size:.82rem;letter-spacing:.15em;text-transform:uppercase">Voilà pourquoi Cadre Estate Solutions travaille différemment.</p>
 </div></section>
 
-<footer><p>Nord-Sud Immo, SAS au capital de 20 760 € — RCS Aix-en-Provence 789 995 107. DR HOUSE IMMO est une marque déposée.<br>Siège social : 3 AB Avenue des Belges, 13100 Aix-en-Provence — <a href="https://www.drhouse-immo.com" target="_blank" rel="noopener">www.drhouse-immo.com</a><br>Les visuels « après » sont des projections de home staging virtuel, non contractuelles. Présentation vérifiée SIGNÉ · Cadre Estate Solutions.</p></footer>
+<footer><p>Présentation réalisée par SIGNÉ · Cadre Estate Solutions — 47 rue Vivienne, 75002 Paris · SIRET 103 586 327 00019 · TVA FR 93103586327.<br>Assurance RC Pro : Hiscox SA — Police n° PL-FR-PSC000081106/00 — Juridiction monde entier hors USA/Canada.<br>Les visuels « après » sont des projections de home staging virtuel, non contractuelles.</p></footer>
 
 <script>
 const horizon=document.getElementById('horizon'),liens=[...document.querySelectorAll('#rail a')],cibles=liens.map(a=>document.querySelector(a.getAttribute('href')));addEventListener('scroll',()=>{const h=document.documentElement;horizon.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';const y=h.scrollTop+innerHeight*.4;let actif=-1;cibles.forEach((s,i)=>{if(s&&s.offsetTop<=y)actif=i});liens.forEach((a,i)=>a.classList.toggle('actif',i===actif))},{passive:true});
