@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Terrain constructible 456 m² à Erdeven (56) — Parcelle AD 165, zone Ub, libre de constructeur. Présentation vérifiée SIGNÉ Cadre Estate Solutions.">
+<title>SIGNÉ — Erdeven, 16 rue du Manémeur · Terrain constructible 456 m²</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --navy: #1B3A4B;
+  --dark: #0F1A20;
+  --sage: #6B8F71;
+  --sand: #F5F0EB;
+  --gold: #C9A84C;
+  --white: #FFFFFF;
+  --light: #E8E4DF;
+  --muted: #8A9199;
+  --accent: #2E6F40;
+  --bg: #FAFAF8;
+  --text: #2C2C2C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(15,26,32,0.92);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  padding: 0 2rem;
+  height: 52px;
+  display: flex; align-items: center;
+  overflow-x: auto;
+  gap: 0.3rem;
+}
+nav a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+nav a:hover { background: rgba(255,255,255,0.1); }
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,26,32,0.85) 0%, rgba(15,26,32,0.3) 50%, rgba(15,26,32,0.15) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 3rem 2.5rem 4rem;
+  max-width: 700px;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+.hero .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.hero .price-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: var(--light);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  opacity: 0.7;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* SECTIONS */
+section {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+section.full-width {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+section.dark {
+  background: var(--dark);
+  color: var(--white);
+}
+section.sand-bg {
+  background: var(--sand);
+}
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1.2rem;
+  line-height: 1.25;
+}
+section.dark h2 { color: var(--white); }
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 650px;
+  margin-bottom: 2rem;
+}
+
+/* ESSENTIEL GRID */
+.key-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+.key-card {
+  text-align: center;
+  padding: 1.5rem 0.8rem;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.key-card .value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.key-card .label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* INFO LIST */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.92rem;
+}
+.info-row .info-label { color: var(--muted); }
+.info-row .info-value { font-weight: 600; color: var(--text); }
+section.dark .info-row { border-color: rgba(255,255,255,0.1); }
+section.dark .info-row .info-label { color: var(--muted); }
+section.dark .info-row .info-value { color: var(--light); }
+
+/* PHOTO GRID */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.photo-grid .wide {
+  grid-column: span 2;
+}
+.photo-caption {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+/* PASSPORT */
+.passport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.passport-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.passport-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.passport-dot.green { background: #4CAF50; }
+.passport-dot.yellow { background: #FFC107; }
+.passport-dot.blue { background: #2196F3; }
+.passport-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.passport-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* PLU TABLE */
+.plu-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+.plu-table th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.plu-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.plu-table tr:nth-child(even) td { background: var(--sand); }
+.plu-table .val { font-weight: 600; color: var(--accent); }
+
+/* BIG NUMBER */
+.big-number {
+  text-align: center;
+  padding: 2rem;
+  background: var(--sand);
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+.big-number .num {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.big-number .desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* MARKET */
+.market-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.market-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+.market-card.highlight {
+  background: var(--accent);
+  color: var(--white);
+}
+.market-card.normal {
+  background: var(--white);
+  border: 1px solid var(--light);
+}
+.market-card .m-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.market-card .m-pm2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+.market-card .m-label {
+  font-size: 0.75rem;
+  color: inherit;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+/* B2B SECTION */
+.b2b-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.b2b-services li {
+  list-style: none;
+  padding: 0.5rem 0;
+  font-size: 0.92rem;
+}
+.b2b-services li::before {
+  content: "\2713";
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 0.6rem;
+}
+.b2b-docs {
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+}
+.b2b-docs h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.b2b-docs li {
+  list-style: none;
+  padding: 0.35rem 0;
+  font-size: 0.88rem;
+  color: var(--light);
+}
+.b2b-docs li::before {
+  content: "\25CF";
+  color: var(--gold);
+  margin-right: 0.6rem;
+  font-size: 0.6rem;
+}
+
+/* CONTACT */
+.contact-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.contact-info .role {
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.contact-link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+}
+.contact-link:hover { background: var(--accent); }
+.contact-link.gold {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+/* PRICING */
+.price-breakdown {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+.price-item {
+  padding: 0.8rem 1.5rem;
+  background: var(--sand);
+  border-radius: 6px;
+  text-align: center;
+}
+.price-item .p-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.price-item .p-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* WARNING */
+.warning {
+  background: rgba(201,168,76,0.1);
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 1.5rem 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: var(--muted);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.72rem;
+  line-height: 1.8;
+}
+footer .signe-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.3rem 1rem;
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  section { padding: 3rem 1.2rem; }
+  h2 { font-size: 1.5rem; }
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid .wide { grid-column: span 1; }
+  .b2b-grid { grid-template-columns: 1fr; }
+  nav { gap: 0.1rem; padding: 0 0.5rem; }
+  nav a { font-size: 0.65rem; padding: 0.3rem 0.5rem; }
+}
+
+img { max-width: 100%; }
+.img-full {
+  width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+.intro-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero">Le terrain</a>
+  <a href="#essentiel">Essentiel</a>
+  <a href="#territoire">Territoire</a>
+  <a href="#parcelle">Parcelle</a>
+  <a href="#division">Division</a>
+  <a href="#urbanisme">Urbanisme</a>
+  <a href="#reseaux">Réseaux</a>
+  <a href="#passeport">Passeport</a>
+  <a href="#marche">Marché</a>
+  <a href="#constructeurs">Constructeurs</a>
+  <a href="#documents">Documents</a>
+  <a href="#preuves">Preuves</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero full-width" id="hero">
+  <img class="hero-img" src="parcelle-profondeur.jpg" alt="Terrain constructible, 16 rue du Manémeur, Erdeven">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">SIGNÉ · CADRE ESTATE SOLUTIONS · PRÉSENTATION VÉRIFIÉE</div>
+    <h1>Erdeven</h1>
+    <p class="subtitle">Terrain constructible · 456 m² · 16 rue du Manémeur</p>
+    <span class="price-tag">156 450 € FAI</span>
+  </div>
+  <a href="#essentiel" class="hero-scroll">▼ DÉCOUVRIR</a>
+</section>
+
+<!-- ESSENTIEL -->
+<section id="essentiel">
+  <div class="section-label">L'essentiel en 30 secondes</div>
+  <h2>Ce terrain en un coup d'œil</h2>
+
+  <div class="key-grid">
+    <div class="key-card"><div class="value">456 m²</div><div class="label">Surface cadastrale</div></div>
+    <div class="key-card"><div class="value">AD 165</div><div class="label">Parcelle</div></div>
+    <div class="key-card"><div class="value">Zone Ub</div><div class="label">PLU d'Erdeven</div></div>
+    <div class="key-card"><div class="value">Sud</div><div class="label">Orientation</div></div>
+    <div class="key-card"><div class="value">Borné</div><div class="label">Limites matérialisées</div></div>
+    <div class="key-card"><div class="value">Libre</div><div class="label">De constructeur</div></div>
+  </div>
+
+  <div class="info-row"><span class="info-label">Adresse</span><span class="info-value">16 rue du Manémeur, 56410 Erdeven</span></div>
+  <div class="info-row"><span class="info-label">Parcelle cadastrale</span><span class="info-value">Section AD n° 165</span></div>
+  <div class="info-row"><span class="info-label">Division foncière</span><span class="info-value">DMPC n° 2831N du 30/04/2026</span></div>
+  <div class="info-row"><span class="info-label">Accès</span><span class="info-value">Direct depuis la rue — sans servitude privée</span></div>
+  <div class="info-row"><span class="info-label">Étude G1</span><span class="info-value">En cours</span></div>
+  <div class="info-row"><span class="info-label">Viabilisation</span><span class="info-value">Non viabilisé — réseaux accessibles</span></div>
+</section>
+
+<!-- TERRITOIRE -->
+<section id="territoire" class="sand-bg">
+  <div class="section-label">Le territoire</div>
+  <h2>Erdeven, entre terre et mer</h2>
+
+  <p class="lead">Commune littorale du Morbihan, Erdeven offre un cadre de vie entre plages, mégalithes et bourg animé. À mi-chemin entre Lorient et Auray, le terrain se situe dans l'agglomération, à proximité immédiate des commerces et services.</p>
+
+  <div class="key-grid">
+    <div class="key-card"><div class="value">🏖️</div><div class="label">7 km de plages</div></div>
+    <div class="key-card"><div class="value">🏪</div><div class="label">Commerces au bourg</div></div>
+    <div class="key-card"><div class="value">🚗</div><div class="label">Auray 15 min</div></div>
+    <div class="key-card"><div class="value">🏥</div><div class="label">Lorient 25 min</div></div>
+    <div class="key-card"><div class="value">🚉</div><div class="label">Gare Auray TGV</div></div>
+    <div class="key-card"><div class="value">🪨</div><div class="label">Alignements de Kerzerho</div></div>
+  </div>
+</section>
+
+<!-- LA PARCELLE -->
+<section id="parcelle">
+  <div class="section-label">La parcelle</div>
+  <h2>456 m² pour imaginer votre projet</h2>
+
+  <p class="intro-italic">Certaines parcelles se devinent. Celle-ci se documente.</p>
+
+  <p>Située au 16 rue du Manémeur, dans l'agglomération d'Erdeven, cette parcelle est issue d'une division foncière réalisée en 2026. Elle correspond au lot A du document d'arpentage n° 2831N, vérifié et numéroté le 30 avril 2026 par le géomètre-expert Renaud de Miniac (AG2M, Auray).</p>
+
+  <p style="margin-top:1rem;">Le terrain bénéficie d'un accès direct depuis la rue, sans nécessité de passage sur la propriété voisine. Sa largeur évolue approximativement de 6 m à 4 m. Le terrain est borné, orienté sud, et libre de tout constructeur imposé.</p>
+
+  <div class="photo-grid">
+    <img class="wide" src="parcelle-profondeur.jpg" alt="Vue de la parcelle en profondeur">
+    <img src="acces-rue.jpg" alt="Accès depuis la rue">
+    <img src="acces-cloture.jpg" alt="Accès clôturé">
+    <img src="interieur-sud.jpg" alt="Intérieur de la parcelle">
+    <img src="interieur-arbres.jpg" alt="Végétation existante">
+    <img src="interieur-cabanon.jpg" alt="Vue intérieure">
+  </div>
+  <p class="photo-caption">Photographies prises le 2 septembre 2026.</p>
+</section>
+
+<!-- DIVISION -->
+<section id="division" class="sand-bg">
+  <div class="section-label">Division &amp; configuration</div>
+  <h2>Une division foncière déjà matérialisée</h2>
+
+  <p>Le document cadastral identifie deux lots issus de la parcelle initiale AD 128 :</p>
+
+  <div class="key-grid" style="grid-template-columns: 1fr 1fr; max-width: 500px;">
+    <div class="key-card" style="border-left: 4px solid var(--accent);">
+      <div class="value">456 m²</div>
+      <div class="label">LOT A — AD 165<br>Terrain proposé à la vente</div>
+    </div>
+    <div class="key-card" style="border-left: 4px solid var(--navy);">
+      <div class="value">757 m²</div>
+      <div class="label">LOT B — AD 164<br>Parcelle voisine (maison existante)</div>
+    </div>
+  </div>
+
+  <img class="img-full" src="plan-division.jpg" alt="Plan de division — Géomètre AG2M">
+  <p class="photo-caption">Plan de division dressé par Renaud de MINIAC, Géomètre-Expert Foncier — Dossier A25141, DMPC n° 2831N du 30/04/2026.</p>
+
+  <div class="warning">
+    <strong>Important :</strong> la conformité définitive de l'accès et de l'implantation restera à apprécier par le professionnel chargé du projet et par l'autorité compétente lors de l'autorisation d'urbanisme.
+  </div>
+</section>
+
+<!-- URBANISME -->
+<section id="urbanisme">
+  <div class="section-label">Urbanisme &amp; potentiel</div>
+  <h2>Zone Ub du PLU d'Erdeven</h2>
+
+  <p>La zone Ub correspond aux secteurs d'habitat de densité moyenne situés dans l'agglomération. Les constructions à usage d'habitation y sont admises sous réserve du respect des dispositions du PLU.</p>
+
+  <table class="plu-table">
+    <tr><th>Critère</th><th>Disposition PLU</th></tr>
+    <tr><td>Emprise au sol maximale</td><td class="val">70 %</td></tr>
+    <tr><td>Implantation / voies</td><td class="val">0 m ou ≥ 3 m</td></tr>
+    <tr><td>Limites séparatives</td><td class="val">En limite ou recul ≥ 1,90 m</td></tr>
+    <tr><td>Hauteur à l'égout</td><td class="val">6 m max.</td></tr>
+    <tr><td>Hauteur au faîtage</td><td class="val">11 m max.</td></tr>
+    <tr><td>Hauteur à l'acrotère</td><td class="val">6 m max.</td></tr>
+    <tr><td>Accès / chaussée</td><td class="val">3,50 m minimum</td></tr>
+    <tr><td>Stationnement</td><td class="val">Hors voie publique</td></tr>
+  </table>
+
+  <div class="big-number">
+    <div class="num">≈ 319 m²</div>
+    <div class="desc">Emprise réglementaire maximale théorique · 456 m² × 70 %</div>
+  </div>
+
+  <div class="warning">
+    <strong>Attention :</strong> cette valeur constitue uniquement le plafond réglementaire théorique du coefficient d'emprise au sol. Elle ne constitue ni une surface constructible garantie ni une validation d'un projet de 319 m². L'implantation réelle dépend de la configuration de la parcelle, des retraits, accès, stationnements, eaux pluviales, contraintes techniques et de l'autorisation d'urbanisme.
+  </div>
+
+  <img class="img-full" src="extrait-cadastral.jpg" alt="Extrait du plan cadastral" style="max-width: 500px;">
+  <p class="photo-caption">Extrait du plan cadastral — édition du 02/06/2026. Source : cadastre.gouv.fr.</p>
+
+  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1.5rem;">
+    <a href="https://www.geoportail-urbanisme.gouv.fr/api/document/cc30e2799f801c9652a228ca12f8ed1c/files/56054_reglement_20250708.pdf" target="_blank" class="contact-link">📄 Règlement écrit du PLU</a>
+    <a href="https://www.geoportail-urbanisme.gouv.fr/map/?documentId=cc30e2799f801c9652a228ca12f8ed1c" target="_blank" class="contact-link">🗺️ PLU sur le Géoportail</a>
+    <a href="https://www.cadastre.gouv.fr/scpc/rechercherPlan.do" target="_blank" class="contact-link">📐 Plan cadastral</a>
+  </div>
+</section>
+
+<!-- RESEAUX -->
+<section id="reseaux" class="sand-bg">
+  <div class="section-label">Réseaux &amp; viabilisation</div>
+  <h2>Réseaux disponibles à proximité</h2>
+
+  <p class="lead">Le terrain est actuellement vendu non viabilisé. Les réseaux nécessaires sont accessibles depuis la rue et les raccordements seront à réaliser dans le cadre de la future construction.</p>
+
+  <div class="passport-grid">
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>⚡ Électricité</h4>
+        <p>Aucune extension du réseau nécessaire pour une puissance ≤ 36 kVA. Avis de Morbihan Énergies du 03/11/2025. Le futur acquéreur restera redevable de son branchement.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot blue"></div>
+      <div>
+        <h4>💧 Eau potable</h4>
+        <p>Raccordement au réseau public à réaliser conformément au PLU pour toute construction nécessitant une alimentation en eau.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot blue"></div>
+      <div>
+        <h4>🏠 Eaux usées</h4>
+        <p>Raccordement au réseau collectif d'assainissement prévu lorsque celui-ci existe. PFAC applicable (forfait base : 1 960 € pour ≤ 120 m²).</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot yellow"></div>
+      <div>
+        <h4>🌧️ Eaux pluviales</h4>
+        <p>Gestion à la parcelle obligatoire par rétention et infiltration. Justification technique requise lors du permis de construire. Étude de sol nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning">
+    Une enveloppe indicative de raccordement pourra être étudiée avec les concessionnaires et entreprises compétentes en fonction du projet retenu. <strong>Étude géotechnique G1 en cours — le rapport sera communiqué dès sa disponibilité.</strong>
+  </div>
+</section>
+
+<!-- PASSEPORT -->
+<section id="passeport">
+  <div class="section-label">Passeport Transparence</div>
+  <h2>L'état objectif, sans notation</h2>
+
+  <div class="passport-grid">
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>Constructibilité — Vérifiée</h4>
+        <p>Certificat d'urbanisme opérationnel favorable (CU 56054 25 00235, 24/11/2025). Opération réalisable.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>Division — Autorisée</h4>
+        <p>Arrêté de non-opposition à la déclaration préalable (DP 56054 25 00173, 13/01/2026).</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>Bornage — Réalisé</h4>
+        <p>Bornage des limites divisoires le 09/04/2026 par M. de Miniac, géomètre-expert.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>Électricité — Pas d'extension</h4>
+        <p>Morbihan Énergies confirme qu'aucune extension n'est nécessaire ≤ 36 kVA.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>Adresse — Certifiée</h4>
+        <p>Certificat de numérotage délivré par la mairie le 31/12/2025 : 16 rue du Manémeur.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot yellow"></div>
+      <div>
+        <h4>Risques — À connaître</h4>
+        <p>Sismicité 2/5 (faible). Radon 3/3 (significatif). Argile 2/3 (exposition moyenne). Submersion marine (circulaire Xynthia).<br><a href="https://errial.georisques.gouv.fr/#/" target="_blank" style="color:var(--accent); font-weight:600;">→ Consulter l'ERP officiel</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot blue"></div>
+      <div>
+        <h4>Étude G1 — En cours</h4>
+        <p>Étude géotechnique en cours de réalisation. Résultats communiqués dès réception.</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot blue"></div>
+      <div>
+        <h4>Viabilisation — À réaliser</h4>
+        <p>Terrain vendu non viabilisé. Réseaux accessibles depuis la rue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCHE -->
+<section id="marche" class="sand-bg">
+  <div class="section-label">Positionnement marché</div>
+  <h2>Un prix placé dans le marché d'Erdeven</h2>
+
+  <div class="market-compare">
+    <div class="market-card highlight">
+      <div class="m-price">156 450 €</div>
+      <div class="m-pm2">343 €/m²</div>
+      <div class="m-label">16 rue du Manémeur · 456 m²<br>Non viabilisé</div>
+    </div>
+    <div class="market-card normal">
+      <div class="m-price" style="color:var(--navy)">176 550 €</div>
+      <div class="m-pm2" style="color:var(--text)">376 €/m²</div>
+      <div class="m-label">Concurrent · 469 m²<br>Non viabilisé</div>
+    </div>
+    <div class="market-card normal">
+      <div class="m-price" style="color:var(--navy)">159 000 €</div>
+      <div class="m-pm2" style="color:var(--text)">390 €/m²</div>
+      <div class="m-label">Concurrent · 408 m²<br>Viabilisé</div>
+    </div>
+  </div>
+
+  <div class="big-number">
+    <div class="num" style="color:var(--navy)">–9 %</div>
+    <div class="desc">sous la moyenne des prix affichés observée dans une recherche limitée aux terrains de 300 à 600 m² à Erdeven (18 annonces, moyenne 378 €/m²)</div>
+  </div>
+
+  <p class="photo-caption">Comparaison indicative établie à partir de prix de commercialisation observés au 02/09/2026. Les prix affichés ne constituent pas des prix de vente constatés et les caractéristiques, emplacements et niveaux de viabilisation des terrains diffèrent.</p>
+</section>
+
+<!-- CONSTRUCTEURS -->
+<section id="constructeurs" class="dark full-width" style="padding: 5rem 2rem;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="section-label">Pour les constructeurs</div>
+    <h2 style="color:var(--white)">Vous accompagnez un client qui souhaite construire à Erdeven ?</h2>
+
+    <p style="color:var(--light); max-width: 600px; margin-bottom: 2rem;">Ce dossier est aussi un outil de collaboration. 456 m² en zone Ub, libre de constructeur, avec un dossier technique complet disponible immédiatement.</p>
+
+    <div class="b2b-grid">
+      <div>
+        <p style="color:var(--gold); font-weight:600; margin-bottom: 1rem;">Je suis disponible pour :</p>
+        <ul class="b2b-services">
+          <li>Organiser une visite technique de la parcelle</li>
+          <li>Transmettre les documents d'urbanisme disponibles</li>
+          <li>Étudier avec vous une implantation indicative</li>
+          <li>Présenter votre projet terrain + maison à vos clients</li>
+          <li>Travailler en collaboration sur un acquéreur que vous accompagnez</li>
+        </ul>
+      </div>
+      <div class="b2b-docs">
+        <h3>DOSSIER TECHNIQUE DISPONIBLE</h3>
+        <ul>
+          <li>Plan cadastral</li>
+          <li>Document d'arpentage</li>
+          <li>Documents d'urbanisme (CU + DP)</li>
+          <li>Règlement PLU zone Ub</li>
+          <li>Avis réseaux (Morbihan Énergies, AQTA)</li>
+          <li>ERRIAL (état des risques)</li>
+          <li>Photographies HD</li>
+          <li>Étude G1 dès réception</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents" class="sand-bg">
+  <div class="section-label">Accès aux documents officiels</div>
+  <h2>Consultez les sources vous-même</h2>
+
+  <p class="lead">Chaque document cité dans ce dossier est vérifiable. Voici les liens directs vers les sources officielles.</p>
+
+  <div class="passport-grid">
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📜 PLU d'Erdeven — Règlement écrit</h4>
+        <p>Le règlement complet du PLU, incluant les dispositions de la zone Ub.<br>
+        <a href="https://www.geoportail-urbanisme.gouv.fr/api/document/cc30e2799f801c9652a228ca12f8ed1c/files/56054_reglement_20250708.pdf" target="_blank" style="color:var(--accent); font-weight:600;">→ Télécharger le règlement (PDF)</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>🗺️ PLU — Carte interactive</h4>
+        <p>Visualisez le zonage directement sur le Géoportail de l'Urbanisme.<br>
+        <a href="https://www.geoportail-urbanisme.gouv.fr/map/?documentId=cc30e2799f801c9652a228ca12f8ed1c" target="_blank" style="color:var(--accent); font-weight:600;">→ Ouvrir le PLU sur la carte</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>🌍 État des risques (ERRIAL)</h4>
+        <p>Consultez l'état des risques officiel de la parcelle sur Géorisques.<br>
+        <a href="https://errial.georisques.gouv.fr/#/" target="_blank" style="color:var(--accent); font-weight:600;">→ Consulter l'ERP officiel</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📐 Plan cadastral</h4>
+        <p>Parcelle AD 128 / AD 165, commune d'Erdeven, section AD.<br>
+        <a href="https://www.cadastre.gouv.fr/scpc/rechercherPlan.do" target="_blank" style="color:var(--accent); font-weight:600;">→ Accéder au cadastre</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>🏛️ Guichet unique urbanisme</h4>
+        <p>Déposez vos demandes d'urbanisme en ligne (PC, DP, CU) auprès d'AQTA.<br>
+        <a href="https://gnau9.operis.fr/aurayquiberonterreatlantique/gnau/#/" target="_blank" style="color:var(--accent); font-weight:600;">→ Accéder au guichet numérique</a></p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📋 Pièces écrites du PLU</h4>
+        <p>OAP, PADD, annexes et servitudes : toutes les pièces du dossier PLU.<br>
+        <a href="https://www.geoportail-urbanisme.gouv.fr/document/by-id/cc30e2799f801c9652a228ca12f8ed1c" target="_blank" style="color:var(--accent); font-weight:600;">→ Voir toutes les pièces du PLU</a></p>
+      </div>
+    </div>
+  </div>
+
+  <p class="photo-caption" style="margin-top:1rem;">Seuls les documents officiels font foi. Les liens ci-dessus renvoient vers les sites de l'État (Géoportail de l'Urbanisme, Géorisques, cadastre.gouv.fr) et de la collectivité (AQTA).</p>
+</section>
+
+<!-- PREUVES -->
+<section id="preuves">
+  <div class="section-label">Les preuves</div>
+  <h2>Chaque information a une source</h2>
+
+  <div class="passport-grid">
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📐 Division foncière</h4>
+        <p>DMPC n° 2831N — AG2M Auray<br>Renaud de Miniac, géomètre-expert</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📋 Certificat d'urbanisme</h4>
+        <p>CU 56054 25 00235 du 24/11/2025<br>Opération réalisable — Zone Ub</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>✅ Déclaration préalable</h4>
+        <p>DP 56054 25 00173 du 13/01/2026<br>Non-opposition à la division</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>⚡ Avis Morbihan Énergies</h4>
+        <p>Affaire 56054K2025064 du 03/11/2025<br>Pas d'extension nécessaire ≤ 36 kVA</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>💧 Avis AQTA — Eau</h4>
+        <p>Direction Cycle de l'EAU<br>Auray Quiberon Terre Atlantique</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>🌍 ERRIAL — Risques</h4>
+        <p>Parcelle 000-AD-128, établi le 12/06/2026<br>Sismicité 2 · Radon 3 · Argile 2</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📮 Certificat de numérotage</h4>
+        <p>Mairie d'Erdeven, 31/12/2025<br>16 rue du Manémeur</p>
+      </div>
+    </div>
+    <div class="passport-card">
+      <div class="passport-dot green"></div>
+      <div>
+        <h4>📜 Règlement PLU Ub</h4>
+        <p>PLU approuvé 17/02/2017<br>Modifié 02/04/2025 · MAJ 08/07/2025</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:2rem;">
+    <a href="mailto:rj.vluys@drhouse.immo?subject=Erdeven%20%E2%80%94%20dossier%20technique%20complet&body=Bonjour%2C%20je%20souhaite%20recevoir%20le%20dossier%20technique%20complet%20du%20terrain%2016%20rue%20du%20Man%C3%A9meur%20%C3%A0%20Erdeven.%20Merci." class="contact-link gold">📄 Recevoir le dossier technique complet</a>
+    <a href="https://www.geoportail-urbanisme.gouv.fr/api/document/cc30e2799f801c9652a228ca12f8ed1c/files/56054_reglement_20250708.pdf" target="_blank" class="contact-link">Règlement du PLU</a>
+    <a href="https://errial.georisques.gouv.fr/#/" target="_blank" class="contact-link">ERP officiel</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sand-bg">
+  <div class="section-label">Contact</div>
+  <h2>Organisons une visite du terrain</h2>
+
+  <p style="margin-bottom: 2rem;">Que vous soyez particulier, constructeur, maître d'œuvre ou professionnel du foncier, je peux vous transmettre l'ensemble des éléments disponibles et vous accompagner dans l'étude de cette opportunité.</p>
+
+  <div class="contact-card">
+    <div class="contact-info">
+      <h3>Roger-Jacques Vluys</h3>
+      <div class="role">Conseiller immobilier indépendant · Dr House Immo</div>
+      <a href="tel:+33614204847" class="contact-link gold">📞 06 14 20 48 47</a>
+      <a href="mailto:rj.vluys@drhouse.immo?subject=Erdeven%20%E2%80%94%2016%20rue%20du%20Man%C3%A9meur" class="contact-link">✉️ rj.vluys@drhouse.immo</a>
+    </div>
+  </div>
+
+  <div class="price-breakdown">
+    <div class="price-item"><div class="p-val">156 450 €</div><div class="p-label">Prix FAI</div></div>
+    <div class="price-item"><div class="p-val">149 000 €</div><div class="p-label">Net vendeur</div></div>
+    <div class="price-item"><div class="p-val">7 450 €</div><div class="p-label">Honoraires acquéreur TTC</div></div>
+    <div class="price-item"><div class="p-val">343 €/m²</div><div class="p-label">Prix au m²</div></div>
+  </div>
+
+  <p class="photo-caption" style="margin-top: 1rem;">RSAC Lorient 852 730 175.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="signe-badge">SIGNÉ · CADRE ESTATE SOLUTIONS · PRÉSENTATION VÉRIFIÉE · v2.2</div>
+  <p>Les informations présentées dans ce dossier sont fournies à titre informatif sur la base des documents disponibles à sa date d'édition. Tout projet de construction reste soumis à l'étude des professionnels compétents et à l'obtention des autorisations administratives nécessaires.</p>
+  <p style="margin-top: 0.8rem;"><strong>Commercialisation</strong> — Roger-Jacques Vluys, mandataire immobilier chez Dr House Immo (Nord-Sud Immo, SAS) — RCS Aix-en-Provence 789 995 107.</p>
+  <p><strong>Méthode SIGNÉ</strong> — éditée par Cadre Estate Solutions, 47 rue Vivienne, 75002 Paris.</p>
+  <p style="margin-top: 0.8rem;">SIGNÉ v2.2 · Erdeven · 16 rue du Manémeur · Septembre 2026</p>
+</footer>
+
+</body>
+</html>
